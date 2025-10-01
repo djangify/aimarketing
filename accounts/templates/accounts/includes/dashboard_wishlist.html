@@ -1,0 +1,17 @@
+<!-- Dashboard Wish List -->
+{% if favourite_products %}
+<div class="responsive-grid">
+  {% for product in favourite_products %}
+  <div class="responsive-card wishlist-card text-center">
+    <img src="{{ product.get_image_url }}" 
+         alt="{{ product.title }}" 
+         class="resource-image rounded mb-3">
+    <h4>{{ product.title }}</h4>
+    <p>£{{ product.price }}</p>
+    <a href="{% url 'shop:product_detail' product.slug %}" class="text-link">View Product</a>
+  </div>
+  {% endfor %}
+</div>
+{% else %}
+<p>No products in your wish list yet.</p>
+{% endif %}

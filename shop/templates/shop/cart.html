@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="shop-cart-container">
+  <h1 class="text-2xl md:text-3xl font-bold mb-8">Shopping Cart</h1>
+
+  <div class="shop-cart">
+    {% for item in cart %}
+    <div class="shop-cart-item">
+      <!-- Image + Info -->
+      <div class="flex items-start gap-4">
+        <img src="{{ item.product.get_image_url }}" 
+             alt="{{ item.product.title }}" 
+             class="shop-cart-img">
+        <div class="shop-cart-info">
+          <h3>{{ item.product.title }}</h3>
+          <p>Price: £{{ item.price|floatformat:2 }}</p>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="shop-cart-actions">
+        <form method="post" action="{% url 'shop:cart_update' item.product.id %}">
+          {% csrf_token %}
+          <input type="number" name="quantity" value="{{ item.quantity }}" min="1" max="99" class="shop-cart-qty">
+          <button type="submit" class="text-blue-600 hover:underline text-sm">Update</button>
+        </form>
+
+        <span class="shop-cart-total">£{{ item.total_price|floatformat:2 }}</span>
+
+        <form method="post" action="{% url 'shop:cart_remove' item.product.id %}">
+          {% csrf_token %}
+          <button type="submit" class="shop-remove">Remove</button>
+        </form>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- Summary -->
+  <div class="shop-cart-summary">
+  <!-- Totals row -->
+  <div class="shop-cart-totals">
+    <p>Total Items: <strong>{{ cart|length }}</strong></p>
+    <p>Total: <strong>£{{ cart.get_total_price|floatformat:2 }}</strong></p>
+  </div>
+
+  <!-- Buttons row -->
+  <div class="shop-cart-buttons">
+    <a href="{% url 'shop:product_list' %}" class="btn-secondary">Continue Shopping</a>
+    <a href="{% url 'shop:checkout' %}" class="btn-primary">Proceed to Checkout</a>
+  </div>
+</div>
+</div>
+
+{% endblock %}

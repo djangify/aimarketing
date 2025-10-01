@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="pageformat">
+
+    <!-- Shop Heading -->
+    <h1 class="text-3xl mt-8 text-center mb-4 font-semibold">
+        The AI Marketing Platform Shop
+    </h1>
+    <h2 class="leading-normal">
+        Practical guides and toolkits to support your local and online business.
+    </h2>
+    <!-- Shop Filters Section -->
+<section class="shop-filters mt-12">
+    <!-- Search Bar -->
+    <form method="get" action="." class="shop-search">
+        <label for="search" class="sr-only">Search products</label>
+        <input
+            type="text"
+            name="q"
+            id="search"
+            placeholder="Search guides and services..."
+            value="{{ request.GET.q }}"
+        />
+        <button type="submit">Search</button>
+    </form>
+</section>
+    <!-- Category Filter -->
+    <div class="shop-categories mb-12">
+        <!-- All Products -->
+        <a href="{% url 'shop:product_list' %}"
+           class="shop-pill {% if not current_category %}active{% endif %}">
+            All Products
+        </a>
+
+        <!-- Dynamic Category Pills -->
+        {% for category in categories %}
+        <a href="{{ category.get_absolute_url }}"
+           class="shop-pill {% if current_category and current_category.id == category.id %}active{% endif %}">
+            {{ category.name }}
+        </a>
+        {% endfor %}
+    </div>
+    <!-- Product Grid -->
+    {% if products %}
+    <div class="shop-grid-3">
+        {% for product in products %}
+        <div class="shop-card">
+            <a href="{{ product.get_absolute_url }}">
+                {% if product.get_image_url %}
+                <img src="{{ product.get_image_url }}" alt="{{ product.title }}" class="shop-image">
+                {% else %}
+                <div class="w-full h-80 bg-gray-100 flex items-center justify-center text-gray-500">
+                    No Image Available
+                </div>
+                {% endif %}
+            </a>
+            <div class="shop-card-content">
+                <h2 class="shop-title">
+                    <a href="{{ product.get_absolute_url }}">{{ product.title }}</a>
+                </h2>
+                <p class="shop-description">
+                    {{ product.description|striptags|truncatewords:26 }}
+                </p>
+                <div class="shop-footer">
+                    <span class="text-lg font-bold text-gray-900">
+                        £{{ product.current_price|floatformat:2 }}
+                    </span>
+                    <div class="flex items-center text-yellow-500 space-x-1">
+                        {% if product.average_rating %}
+                            {% for i in "12345"|make_list %}
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.562-.954L10 0l2.948 5.956 6.562.954-4.755 4.635 1.123 6.545z"
+                                      {% if forloop.counter <= product.average_rating %}
+                                      class="fill-current"
+                                      {% else %}
+                                      class="text-gray-300"
+                                      {% endif %}></path>
+                            </svg>
+                            {% endfor %}
+                            <span class="text-sm text-gray-600">({{ product.reviews.count }})</span>
+                        {% else %}
+                            <div class="h-5"></div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Pagination -->
+    {% if products.has_other_pages %}
+    <div class="mt-12">
+        <nav class="flex justify-center space-x-1 sm:space-x-2">
+            {% if products.has_previous %}
+            <a href="?page={{ products.previous_page_number }}" class="px-4 py-2 bg-gray-100 border rounded hover:bg-gray-200">Previous</a>
+            {% endif %}
+
+            {% for num in products.paginator.page_range %}
+            {% if products.number == num %}
+            <span class="px-4 py-2 bg-teal-700 text-white border rounded">{{ num }}</span> 
+            {% else %}
+            <a href="?page={{ num }}" class="px-4 py-2 bg-gray-100 border rounded hover:bg-gray-200">{{ num }}</a>
+            {% endif %}
+            {% endfor %}
+
+            {% if products.has_next %}
+            <a href="?page={{ products.next_page_number }}" class="px-4 py-2 bg-gray-100 border rounded hover:bg-gray-200">Next</a>
+            {% endif %}
+        </nav>
+    </div>
+    {% endif %}
+    {% endif %}
+</div>
+{% endblock %}

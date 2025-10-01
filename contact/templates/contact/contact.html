@@ -1,0 +1,149 @@
+{% load static %}
+<section id="contact" class="p-6 flex flex-col gap-y-10 bg-primary text-text md:p-16 lg:gap-x-10 lg:flex-row *:basis-full">
+    <div class="flex flex-col gap-y-5">
+        <div>
+            <h6 class="text-sm pl-6 uppercase relative before before:h-1 before:w-4 before:bg-accent before:top-2/4 before:-left-0 lg:text-lg">
+                Let's talk
+            </h6>
+            <h2 class="text-2xl capitalize  lg:text-3xl">
+                Ready to offload your Digital Marketing?
+            </h2>
+        </div>
+
+        {% if messages %}
+        <div class="messages mb-4">
+            {% for message in messages %}
+            <div class="p-4 rounded {% if message.tags == 'success' %}bg-green-100 text-green-800 border border-green-400{% else %}bg-red-100 text-red-800 border border-red-400{% endif %}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <form class="flex flex-col gap-y-2 *:px-4 *:py-2 *:rounded *:outline-none h-full" method="post" action="{% url 'contact:contact' %}">
+            {% csrf_token %}
+            
+            <!-- Name field -->
+            <input
+                class="bg-secondary text-text placeholder:text-text/80 h-12 sm:h-16"
+                type="text"
+                name="name"
+                placeholder="Name"
+                required
+                {% if form.name.value|default:'' %}value="{{ form.name.value }}"{% endif %}
+            />
+            
+            <!-- Email field -->
+            <input
+                class="bg-secondary text-text placeholder:text-text/80 h-12 sm:h-16"
+                type="email"
+                name="email"
+                placeholder="Business Emails Only"
+                required
+                {% if form.email.value|default:'' %}value="{{ form.email.value }}"{% endif %}
+            />
+                {% if form.email.errors %}
+                    <p class="text-red-500 font-bold mt-1">ERROR: {{ form.email.errors.0 }}</p>
+                {% endif %}
+            <!-- Phone field -->
+            <input
+                class="bg-secondary text-text placeholder:text-text/80 h-12 sm:h-16"
+                type="tel"
+                name="phone"
+                placeholder="Phone Number"
+                pattern="[0-9]*"
+                inputmode="numeric"
+                title="Please enter numbers only"
+                {% if form.phone.value|default:'' %}value="{{ form.phone.value }}"{% endif %}
+            />
+            
+            <!-- Service type dropdown -->
+            <select
+                class="bg-secondary text-text h-12 sm:h-16 appearance-none"
+                name="service_type"
+                required
+            >
+                <option value="" disabled {% if not form.service_type.value|default:'' %}selected{% endif %}>I need...</option>
+                <option value="tech_tune_up" {% if form.service_type.value|default:'' == 'tech_tune_up' %}selected{% endif %}>Tech Tune-Up</option>
+                <option value="short_term" {% if form.service_type.value|default:'' == 'short_term' %}selected{% endif %}>One-off Short-Term Help</option>
+                <option value="long_term" {% if form.service_type.value|default:'' == 'long_term' %}selected{% endif %}>Long Term Project Help</option>
+                <option value="other" {% if form.service_type.value|default:'' == 'other' %}selected{% endif %}>Something Else</option>
+            </select>
+
+            <!-- Message textarea -->
+            <textarea
+                class="bg-secondary text-text placeholder:text-text/80 h-48 lg:h-full"
+                name="message"
+                placeholder="Message"
+                required
+            >{% if form.message.value|default:'' %}{{ form.message.value }}{% endif %}</textarea>
+            
+            <!-- Used before dropdown -->
+            <select
+                class="bg-secondary text-text h-12 sm:h-16 appearance-none"
+                name="used_before"
+                required
+            >
+                <option value="" disabled {% if not form.used_before.value|default:'' %}selected{% endif %}>I have...</option>
+                <option value="yes" {% if form.used_before.value|default:'' == 'yes' %}selected{% endif %}>used Digital Marketing Services before</option>
+                <option value="no" {% if form.used_before.value|default:'' == 'no' %}selected{% endif %}>NEVER used Digital Marketing Services before</option>
+            </select>
+            
+            
+            <!-- Display form errors -->
+            {% if form and form.errors %}
+            <div class="p-4 rounded bg-red-100 text-red-800 border border-red-400 mb-4">
+                {% for field, errors in form.errors.items %}
+                    {% for error in errors %}
+                        <p>{{ field }}: {{ error }}</p>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+            {% endif %}
+            
+            <!-- Submit button -->
+            <input
+                class="border-2 font-bold border-accent bg-slate-50 text-text cursor-pointer h-12 sm:h-16 hover:bg-accent hover:underline uppercase"
+
+
+                type="submit"
+                value="Submit"
+            />
+ 
+        </form>
+    </div>
+
+    <div class="flex flex-col gap-y-5 lg:self-center xl:gap-y-10 *:space-y-2">
+        <div>
+            <h6 class="text-sm pl-6 uppercase relative before before:h-1 before:w-4 before:bg-accent before:top-2/4 before:-left-0 lg:text-lg">
+                Book A Consultation
+            </h6>
+            <p>
+            Contact me today for a free 20-minute consultation to discuss how I can help streamline your digital operations. 
+        </p>
+        
+        <p class="font-bold">Let me know if you are looking for:</p>
+        <ul class="list-disc list-inside ">
+            <li>
+                <strong>Tech Tune-Up:</strong> A one-time package to assess, organise, and optimise your current digital systems.
+            </li>
+            <li>
+                <strong>Monthly Maintenance:</strong> Ongoing website and digital systems maintenance to keep everything running smoothly.
+            </li>
+            <li>
+                <strong>Long Term Help:</strong> Comprehensive support for all your digital needs, allowing you to focus entirely on your core business.
+            </li>
+        </ul>
+        <div>
+            <h6 class="text-sm pl-6 uppercase relative before before:h-1 before:w-4 before:bg-accent before:top-2/4 before:-left-0 lg:text-lg">
+                Availability
+            </h6>
+        </div>
+        <p>
+            I am currently available on Tuesday and Wednesday. I am unavailable Monday and Friday. This is subject to change. 
+        </p>
+        </div>
+
+        
+    </div>
+</section>

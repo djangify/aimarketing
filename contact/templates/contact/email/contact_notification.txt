@@ -1,0 +1,15 @@
+NEW CONTACT FORM SUBMISSION
+
+Name: {{ name }}
+Email: {{ email }}
+{% if phone %}Phone: {{ phone }}{% endif %}
+Service Type: {{ service_type }}
+Used Digital Marketing Services Before: {{ used_before }}
+
+Message:
+{{ message }}
+
+Submitted on: {{ created_at|date:"F j, Y, H:i" }}
+
+---
+This is an automated message from your AI Marketing Platform website.

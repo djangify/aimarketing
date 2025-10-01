@@ -1,0 +1,224 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="pageformat">
+  <div class="container mx-auto px-4 py-12">
+
+    <!-- Breadcrumb -->
+    {% include 'components/breadcrumb.html' %}
+
+    <!-- Main Product Section -->
+    <div class="shop-detail">
+
+      <!-- LEFT: Sidebar -->
+      <div class="shop-detail-image">
+
+        <!-- Main Product Image -->
+        <img
+          id="main-product-image"
+          src="{{ product.get_image_url|default:'/static/images/placeholder.png' }}"
+          alt="{{ product.title }}"
+        />
+
+        <!-- Thumbnails -->
+        <div class="shop-thumbnails">
+          <img
+            src="{{ product.get_image_url|default:'/static/images/placeholder.png' }}"
+            data-src="{{ product.get_image_url|default:'/static/images/placeholder.png' }}"
+            alt="{{ product.title }}"
+            class="product-thumbnail active-thumbnail"
+          />
+          {% if product.image %}
+          <img src="{{ product.image.url }}" data-src="{{ product.image.url }}" alt="{{ product.title }}" class="product-thumbnail" />
+          {% endif %}
+          {% for img in product.images.all %}
+          <img src="{{ img.image.url }}" data-src="{{ img.image.url }}" alt="{{ img.alt_text|default:'Additional product image' }}" class="product-thumbnail" />
+          {% endfor %}
+        </div>
+
+        <!-- Cart + Wishlist -->
+        <div class="shop-actions">
+          <!-- Row 1: Quantity + Add to Cart -->
+          <form method="post" action="{% url 'shop:cart_add' product.id %}" class="flex items-center gap-4">
+            {% csrf_token %}
+            <div class="flex items-center gap-2">
+              <label for="quantity" class="whitespace-nowrap">Qty:</label>
+              <input type="number" id="quantity" name="quantity" value="1" min="1" max="10"
+                    class="w-16 h-11 text-center border rounded">
+            </div>
+            <button type="submit" class="btn-primary h-11">Add to Cart</button>
+          </form>
+
+          <!-- Row 2: Wishlist -->
+          <form method="post" action="{% url 'accounts:add_to_wishlist' product.slug %}" class="mt-3">
+            {% csrf_token %}
+            <button type="submit" class="btn-accent w-full">
+              {% if product in user.profile.favourite_products.all %}
+                  ❤️ Remove from Wish List
+              {% else %}
+                  🤍 Add To Wish List
+              {% endif %}
+            </button>
+          </form>
+        </div>
+
+        <!-- Download Preview -->
+        {% if product.get_preview_url %}
+        <div class="shop-extras mt-6">
+          <h3>Download Preview of {{ product.title }}</h3>
+          <a href="{{ product.get_preview_url }}" class="btn-secondary" download>
+            Download Product Preview
+          </a>
+        </div>
+        {% endif %}
+
+        <!-- Video Preview -->
+        {% if product.video_url %}
+        <div class="shop-extras mt-6">
+          <h3>Video Preview</h3>
+          <div class="aspect-video">
+            <iframe src="{{ product.video_url }}" frameborder="0" allowfullscreen class="w-full h-64 rounded"></iframe>
+          </div>
+        </div>
+        {% endif %}
+
+        <!-- Disclaimer -->
+        <div class="shop-extras mt-6">
+          <h3>Disclaimer</h3>
+          <p class="prose text-sm">
+            We want to keep our guides affordable and accessible. To do that, every copy includes
+            a small, invisible digital watermark linked to your order. It does not affect how
+            the guide looks or functions. This helps protect our work from being shared around
+            the internet, while keeping our prices low. Thank you for respecting this and
+            supporting independent creators.
+          </p>
+        </div>
+      </div>
+
+      <!-- RIGHT: Product Info -->
+      <div class="shop-detail-info leading-normal">
+        <h1>{{ product.title }}</h1>
+
+        <!-- Price -->
+        <div class="shop-price">
+          £{{ product.current_price }}
+          {% if product.is_on_sale %}
+          <span class="old-price">£{{ product.price }}</span>
+          {% endif %}
+        </div>
+
+        <!-- Rating -->
+        <div class="shop-rating">
+          <div>
+            {% for i in "12345"|make_list %}
+              {% if forloop.counter <= product.average_rating %}
+                ⭐
+              {% else %}
+                ☆
+              {% endif %}
+            {% endfor %}
+          </div>
+          <span>({{ product.total_reviews }} review{{ product.total_reviews|pluralize }})</span>
+        </div>
+
+        <!-- Short Description -->
+        <div class="mb-4">{{ product.description|safe }}</div>
+
+        <!-- Accordion: Product Info -->
+        <div class="accordion-header" data-target="product-info">
+          <h3>Product Information</h3>
+          <span class="accordion-icon">▼</span>
+        </div>
+        <div id="product-info" class="accordion-content">
+          {{ product.long_description|safe }}
+          <div class="shop-actions">
+            <form method="post" action="{% url 'shop:cart_add' product.id %}" class="flex items-center gap-4">
+              {% csrf_token %}
+              <div class="flex items-center gap-2">
+                <label for="quantity" class="whitespace-nowrap">Qty:</label>
+                <input type="number" id="quantity" name="quantity" value="1" min="1" max="10"
+                      class="w-16 h-11 text-center border rounded">
+              </div>
+              <button type="submit" class="btn-primary h-11">Add to Cart</button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div> <!-- END shop-detail -->
+
+    <!-- Reviews Section -->
+    <div class="shop-reviews mt-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Customer Reviews</h2>
+      {% include 'components/reviews.html' %}
+    </div>
+
+    <!-- Related Products Section -->
+    {% if related_products %}
+    <div class="shop-related mt-20">
+      <h2 class="text-2xl font-bold text-gray-900 mb-8">Related Products</h2>
+      <div class="shop-grid-3">
+        {% for item in related_products %}
+        <div class="featured-card">
+          <a href="{{ item.get_absolute_url }}">
+            {% if item.get_image_url %}
+            <img src="{{ item.get_image_url }}" alt="{{ item.title }}" class="shop-image">
+            {% else %}
+            <div class="w-full h-48 bg-slate-100 flex items-center justify-center text-slate-500">
+              No Image
+            </div>
+            {% endif %}
+          </a>
+          <div class="card-content">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">
+              <a href="{{ item.get_absolute_url }}" class="hover:text-accent">
+                {{ item.title }}
+              </a>
+            </h3>
+            {% comment %} <p class="text-sm text-gray-600 mb-3">
+              {{ item.description|striptags|truncatewords:20 }}
+            </p> {% endcomment %}
+            <div class="flex items-center justify-between">
+              <span class="text-lg font-bold text-gray-900">£{{ item.current_price }}</span>
+              {% if item.is_on_sale %}
+              <span class="text-sm text-slate-500 line-through">£{{ item.price }}</span>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+  </div>
+</div>
+
+<script>
+/* Thumbnail switching */
+document.addEventListener("DOMContentLoaded", function () {
+    const mainImage = document.getElementById("main-product-image");
+    const thumbnails = document.querySelectorAll(".product-thumbnail");
+    thumbnails.forEach((thumb) => {
+        thumb.addEventListener("click", function () {
+            thumbnails.forEach(t => t.classList.remove("active-thumbnail"));
+            this.classList.add("active-thumbnail");
+            const newSrc = this.getAttribute("data-src");
+            if (newSrc) mainImage.setAttribute("src", newSrc);
+        });
+    });
+});
+
+/* Accordion toggle */
+document.addEventListener("DOMContentLoaded", function () {
+    const headers = document.querySelectorAll(".accordion-header");
+    headers.forEach(header => {
+        header.addEventListener("click", function () {
+            const target = document.getElementById(this.dataset.target);
+            target.classList.toggle("active");
+        });
+    });
+});
+</script>
+{% endblock %}

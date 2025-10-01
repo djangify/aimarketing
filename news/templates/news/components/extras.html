@@ -1,0 +1,90 @@
+<!-- news/components/extras.html -->
+<div class="postextras px-4 md:px-8 xl:px-0 pb-24 text-base leading-relaxed">
+
+  <!-- Navigation -->
+  <nav class="post-nav">
+    <div class="flex flex-col sm:flex-row justify-between items-center mb-8 mt-4 gap-6">
+      {% if previous_post %}
+      <a href="{{ previous_post.get_absolute_url }}"
+         >
+        <svg class="mr-2 h-4 w-4 text-gray-400 group-hover:text-accent" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        <div>
+          <span class="block text-sm text-gray-400">PREVIOUS:</span>
+          <span class="block text-sm">{{ previous_post.title|truncatechars:25 }}</span>
+        </div>
+      </a>
+      {% endif %}
+
+      {% if next_post %}
+      <a href="{{ next_post.get_absolute_url }}"
+         <a href="{{ next_post.get_absolute_url }}"
+          >
+
+        <div class="text-right">
+          <span class="block text-sm text-gray-400">NEXT:</span>
+          <span class="block text-sm">{{ next_post.title|truncatechars:25 }}</span>
+        </div>
+        <svg class="ml-2 h-4 w-4 text-gray-400 group-hover:text-accent" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+      {% endif %}
+    </div>
+  </nav>
+
+  <!-- Category Link Pill (separated from nav) -->
+  <div class="category-pills text-center my-8">
+    <a href="{{ post.category.get_absolute_url }}" class="category-pill">
+      <span class="mr-2">All articles in category:</span>
+      {{ post.category.name }}
+    </a>
+  </div>
+
+  <!-- Related Posts -->
+  <div class="card-content mt-12 mb-24">
+    <h2 class="text-2xl font-bold mb-8">Related Posts</h2>
+    <div class="related-posts">
+      {% for related in related_posts|slice:":2" %}
+      <a href="{{ related.get_absolute_url }}" class="group block">
+        <div class="h-48 w-full overflow-hidden rounded-lg bg-primary/10 mb-4">
+          {% if related.external_image_url %}
+          <img src="{{ related.external_image_url }}"
+               alt="{{ related.title }}"
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200">
+          {% elif related.image %}
+          <img src="{{ related.image.url }}"
+               alt="{{ related.title }}"
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200">
+          {% else %}
+          <div class="w-full h-full flex items-center justify-center bg-accent/10">
+            <span class="text-accent">No Image</span>
+          </div>
+          {% endif %}
+        </div>
+        <p class="text-lg text-text group-hover:text-accent transition-colors duration-200">
+          {{ related.title|truncatechars:60 }}
+        </p>
+      </a>
+      {% empty %}
+      <div class="text-center text-gray-400 py-4">No related posts found</div>
+      {% endfor %}
+    </div>
+  </div>
+
+  {% if related_posts|length > 2 %}
+  <div class="mt-8 mb-16">
+    <h3 class="text-xl font-semibold mb-4">More from this category</h3>
+    <ul class="list-disc list-inside space-y-2">
+      {% for related in related_posts|slice:"2:8" %}
+      <li>
+        <a href="{{ related.get_absolute_url }}" class="text-accent hover:underline">
+          {{ related.title }}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+</div>

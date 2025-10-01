@@ -1,0 +1,47 @@
+{% load static %}
+<!-- Member Resources Section -->
+<div class="mt-8">
+  {% if member_resources %}
+  <div class="resources-grid">
+    {% for resource in member_resources %}
+    <div class="responsive-card flex flex-col">
+      <a href="{{ resource.file.url }}" target="_blank" class="flex flex-col h-full">
+        
+        <!-- Thumbnail -->
+        <img src="{{ resource.thumbnail.url }}"
+             alt="{{ resource.title }}"
+             class="w-full h-48 object-contain bg-gray-50 rounded mb-3">
+        
+        <!-- Title -->
+        <h3 class="font-medium text-gray-900 mb-1">{{ resource.title }}</h3>
+        
+        <!-- Description -->
+        <p class="text-sm text-gray-600 flex-grow">
+          {{ resource.description|truncatechars:90 }}
+        </p>
+        
+        <!-- Download link -->
+        <span class="inline-flex items-center text-accent text-sm font-medium mt-3">
+          <svg xmlns="http://www.w3.org/2000/svg"
+               class="download-icon"
+               fill="none"
+               viewBox="0 0 24 24"
+               stroke="currentColor">
+            <path stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
+          </svg>
+          Download PDF
+        </span>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="text-center py-8">
+    <p class="text-gray-600 mb-2">No resources available yet.</p>
+    <p class="text-gray-600">Check back soon for free writing guides and templates!</p>
+  </div>
+  {% endif %}
+</div>

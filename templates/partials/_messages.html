@@ -1,0 +1,18 @@
+{% if messages %}
+<div class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50" id="messages-container">
+  {% for message in messages %}
+    <div class="alert
+                {% if message.tags == 'success' %}alert-success
+                {% elif message.tags == 'error' %}alert-error
+                {% else %}alert-info{% endif %}"
+         role="alert">
+      <strong class="font-bold">
+        {% if message.tags == 'success' %}Success!
+        {% elif message.tags == 'error' %}Error!
+        {% else %}Notice{% endif %}
+      </strong>
+      <span class="ml-2">{{ message }}</span>
+    </div>
+  {% endfor %}
+</div>
+{% endif %}

@@ -1,0 +1,68 @@
+{% load static %}
+<footer class="bg-secondary">
+  <div class="footer-container">
+    
+    <!-- Grid Columns -->
+    <div class="footer-grid">
+      
+      <!-- Logo + Info -->
+      <div class="brand-block">
+        <div class="flex space-x-3 mb-3">
+          <img src="{% static 'images/aimarketingplatform-logo.png' %}" alt="AI Marketing Platform Logo" class="h-8">
+          <span class="text-lg font-semibold">AI Marketing Platform</span>
+        </div>
+        <p class="prose text-sm">
+          Digital Marketing Specialist. Making digital marketing simple, practical, and sustainable for small businesses by focusing on the essential systems that create steady sales.
+        </p> 
+      </div>
+      
+      <!-- Links -->
+      <div>
+        <h3 class="font-semibold mb-3">Pages</h3>
+        <ul class="space-y-1">
+          <li><a href="{% url 'core:home' %}" class="hover:text-accent transition-colors">Home</a></li>
+          <li><a href="{% url 'shop:product_list' %}" class="hover:text-accent transition-colors">Shop</a></li>
+          <li><a href="{% url 'news:list' %}" class="hover:text-accent transition-colors">Blog</a></li>
+          <li><a href="{% url 'core:about' %}" class="hover:text-accent transition-colors">About</a></li>
+          {% if not request.user.is_authenticated %}
+              <li><a href="{% url 'accounts:register' %}" class="text-slate-400 hover:text-white">Register</a></li>
+              <li><a href="{% url 'accounts:login' %}" class="text-slate-400 hover:text-white">Login</a></li>
+          {% endif %}
+          {% if request.user.is_authenticated %}
+              <li><a href="{% url 'accounts:logout' %}" class="text-slate-400 hover:text-white">Logout</a></li>
+          {% endif %}
+        </ul>
+      </div>
+      
+      <!-- Resources -->
+      <div>
+        <h3 class="font-semibold mb-3">Resources</h3>
+        <ul class="space-y-1">
+          <li><a href="{% url 'core:local_ai_search' %}" class="hover:text-accent transition-colors">Local AI Search</a></li>
+          <li><a href="{% url 'core:ai_search' %}" class="hover:text-accent transition-colors">AI Search Readiness</a></li>
+          <li><a href="{% url 'core:digital_marketing_specialist' %}" class="hover:text-accent transition-colors">Digital Marketing</a></li>
+          <li><a href="{% url 'core:pdf_creation' %}" class="hover:text-accent transition-colors">PDF Creation</a></li>
+        </ul>
+      </div>
+      
+      <!-- Policies -->
+      <div>
+        <h3 class="font-semibold mb-3">Policies</h3>
+        <ul class="space-y-1">
+          <li><a href="{% url 'core:affiliate_policy' %}" class="hover:text-accent transition-colors">Affiliate/Ads</a></li>
+          <li><a href="{% url 'core:ai_writing_policy' %}" class="hover:text-accent transition-colors">AI Policy</a></li>
+          <li><a href="{% url 'core:cookie_policy' %}" class="hover:text-accent transition-colors">Cookie Policy</a></li>
+          <li><a href="{% url 'core:privacy_policy' %}" class="hover:text-accent transition-colors">Privacy Policy</a></li>
+          <li><a href="{% url 'core:support_policy' %}" class="hover:text-accent transition-colors">Support Policy</a></li>
+          <li><a href="{% url 'core:terms_conditions' %}" class="hover:text-accent transition-colors">Terms & Conditions</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Bottom Copyright -->
+    <div class="footer-bottom">
+      &copy; 2025 AI Marketing Platform. Digital Marketing Specialist. All rights reserved.
+    </div>
+    
+  </div>
+</footer>

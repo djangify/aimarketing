@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% load static %}
+
+<!-- news/templates/news/category.html -->
+{% block content %}
+<div class="pageformat">
+    <!-- Category title -->
+    <h1 class="leading-normal">{{ category.name }}</h1>
+    <br>
+    <a href="{% url 'news:list' %}" class="text-blue-600 hover:text-accent mb-8 px-6 inline-block">← Back to News</a>
+
+    <!-- Posts grid -->
+    <div class="latest-grid endpage-grid mt-8">
+        {% for post in posts %}
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="w-full h-48 overflow-hidden">
+                    {% if post.external_image_url %}
+                        <img src="{{ post.external_image_url }}" 
+                             alt="{{ post.title }}" 
+                             class="w-full h-full object-contain bg-slate-100">
+                    {% elif post.get_image_url %}
+                        <img src="{{ post.get_image_url }}" 
+                             alt="{{ post.title }}" 
+                             class="w-full h-full object-cover">
+                    {% elif post.youtube_url %}
+                        <img src="https://img.youtube.com/vi/{{ post.get_youtube_video_id }}/maxresdefault.jpg" 
+                             alt="{{ post.title }}"
+                             class="w-full h-full object-cover"
+                             onerror="this.onerror=null; this.src='https://img.youtube.com/vi/{{ post.get_youtube_video_id }}/hqdefault.jpg';">
+                    {% else %}
+                        <div class="w-full h-full bg-accent/20 flex items-center justify-center">
+                            <span class="text-accent">No Image Available</span>
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <div class="p-6">
+                    <h2 class="leading-normal">{{ post.title }}</h2>
+                    <p class="text-gray-600 text-sm mb-4">{{ post.publish_date|date:"F j" }}</p>
+                    {% if "?" not in post.slug and "&" not in post.slug %}
+                        <a href="{{ post.get_absolute_url }}">
+                            <span class="text-gray-900 hover:text-blue-800">Read More →</span>
+                        </a>
+                    {% else %}
+                        <span class="text-gray-400">Coming Soon</span>
+                    {% endif %}
+                </div>
+            </div>
+        {% empty %}
+            <div class="col-span-2 text-center py-12">
+                <p class="text-gray-600">New posts coming soon.</p>
+            </div>
+        {% endfor %}
+    </div>
+    
+    <!-- New Pagination (same as list.html) -->
+    {% if posts.has_other_pages %}
+        <div class="pagination mt-12">
+            {% if posts.has_previous %}
+                <a href="?page={{ posts.previous_page_number }}" 
+                    class="px-4 py-2 rounded-l-md border border-accent text-accent hover:bg-accent hover:text-white transition-colors">
+                    Previous
+                </a>
+            {% else %}
+                <span class="px-4 py-2 rounded-l-md border border-gray-300 text-gray-400 cursor-not-allowed">
+                    Previous
+                </span>
+            {% endif %}
+
+            {% for i in posts.paginator.page_range %}
+                {% if posts.number == i %}
+                    <span class="px-4 py-2 border-t border-b border-accent bg-accent text-white">{{ i }}</span>
+                {% else %}
+                    <a href="?page={{ i }}" 
+                        class="px-4 py-2 border-t border-b border-accent text-accent hover:bg-accent hover:text-white transition-colors">
+                        {{ i }}
+                    </a>
+                {% endif %}
+            {% endfor %}
+
+            {% if posts.has_next %}
+                <a href="?page={{ posts.next_page_number }}" 
+                    class="px-4 py-2 rounded-r-md border border-accent text-accent hover:bg-accent hover:text-white transition-colors">
+                    Next
+                </a>
+            {% else %}
+                <span class="px-4 py-2 rounded-r-md border border-gray-300 text-gray-400 cursor-not-allowed">
+                    Next
+                </span>
+            {% endif %}
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

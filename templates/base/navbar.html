@@ -1,0 +1,51 @@
+{% load static %}
+<nav class="p-2 text-lg flex justify-between items-center bg-primary">
+    <figure class="p-2 flex justify-between items-center">
+        <a class="text-accent" href="/">
+            <img src="{% static 'images/aimarketingplatform-logo.png' %}" alt="AI Marketing Platform Logo" class="h-8">
+        </a>
+    </figure>
+    <ul class="nav fixed inset-0 top-14 flex flex-col items-center justify-center bg-primary -translate-y-full transition-transform sm:flex-row sm:scale-y-100 sm:backdrop-blur-0 sm:static sm:p-2 sm:bg-transparent sm:translate-y-0">
+        <li class="m-2"><a class="nav--link text-text hover:text-accent focus:text-accent active:text-accent border-b-2 border-transparent active:border-accent" href="/">Home</a></li>
+        <li class="m-2"><a class="nav--link text-text hover:text-accent focus:text-accent active:text-accent active:scale-95 transition-transform duration-150" href="/#about">About</a></li>
+        
+        <li class="m-2">
+            <a class="nav--link text-text sm:hover:text-accent sm:before:bg-accent"
+            href="{% url 'news:list' %}">
+            Blog
+            </a>
+        </li>
+        <li class="m-2"><a class="nav--link text-text sm:hover:text-accent sm:before:bg-accent" href="/#contact">Contact</a></li>
+        <li class="m-2">
+  <a class="nav--link text-text hover:text-accent focus:text-accent active:text-accent border-b-2 border-transparent active:border-accent"
+     href="{% url 'accounts:login' %}">
+    Login
+  </a>
+</li>
+
+    </ul>
+    <div class="flex items-center gap-4">
+    <!-- Mobile Hamburger -->
+    <div class="hamburger sm:hidden order-last self-center"></div>
+
+    <!-- Shop Button -->
+    <a class="uppercase border-2 hover:text-accent transition-colors cursor-pointer border-accent p-2 m-2 text-xs font-semibold rounded sm:text-lg sm:px-4"
+       href="{% url 'shop:product_list' %}">
+        <span>Shop</span>
+        <i class="fa-solid fa-angles-right text-text ml-2 group-hover:translate-x-2 transition-transform"></i>
+    </a>
+
+    <!-- Cart Icon -->
+    <a href="{% url 'shop:cart_detail' %}" class="relative text-text hover:text-accent">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1.2 6h12.4M10 21a1 1 0 11-2 0 1 1 0 012 0zm8 0a1 1 0 11-2 0 1 1 0 012 0z" />
+        </svg>
+            {% with total_items=cart|length %}
+            {% if total_items > 0 %}
+            <span class="cart-badge">{{ total_items }}</span>
+            {% endif %}
+            {% endwith %}
+        </a>
+    </div>
+</nav>

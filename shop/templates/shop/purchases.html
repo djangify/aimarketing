@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="shop-cart-container mx-auto px-4 py-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold mb-8 text-gray-900 dark:text-white">My Purchases</h1>
+
+        {% if orders %}
+            <div class="space-y-6">
+                {% for order in orders %}
+                <div class="shop-order-card bg-white border border-teal-700 dark:bg-gray-800 rounded-lg shadow overflow-hidden">
+
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h2 class="text-xl font-bold text-gray-900 dark:text-white">
+                                    Order #{{ order.id }}
+                                </h2>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">
+                                    Purchased on {{ order.created|date:"F j, Y" }}
+                                </p>
+                            </div>
+                            <span class="px-3 py-1 text-sm text-teal-700 bg-green-100 rounded-full">
+                                {{ order.get_status_display }}
+                            </span>
+                        </div>
+
+                        <div class="divide-y divide-gray-200 dark:divide-gray-700">
+                            {% for item in order.items.all %}
+                                <div class="py-4 flex justify-between items-center">
+                                <!-- Left: product + qty -->
+                                <div>
+                                    <h3 class="text-gray-900 dark:text-white">{{ item.product.title }}</h3>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                                    Quantity: {{ item.quantity }}
+                                    </p>
+                                </div>
+
+                                <!-- Right: price + download link -->
+                                <div class="text-right">
+                                    <p class="text-gray-900 dark:text-white font-semibold">£{{ item.price|floatformat:2 }}</p>
+                                    {% if item.product.files or item.product.get_download_url %}
+                                    <a href="{% url 'shop:secure_download' item.id %}" 
+                                        class="text-sm font-medium hover:underline"
+                                        style="color: hsl(var(--color-green));">
+                                        Download
+                                    </a>
+                                    {% if item.product.product_type == "download" %}
+                                        <p class="text-xs text-gray-500 dark:text-gray-400">
+                                        {{ item.downloads_remaining }} left
+                                        </p>
+                                    {% endif %}
+                                    {% endif %}
+                                </div>
+                                </div>
+                            
+                            {% endfor %}
+                        </div>
+
+                        <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                            <div class="flex justify-between text-lg font-bold">
+                                <span class="text-gray-900 dark:text-white">Total</span>
+                                <span class="text-gray-900 dark:text-white">£{{ order.total_price|floatformat:2 }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="text-center py-12">
+                <p class="text-xl text-gray-600 dark:text-gray-400 mb-8">You haven't made any purchases yet</p>
+                <a href="{% url 'shop:product_list' %}" 
+                   class="btn-primary">
+                    Start Shopping
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,235 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Get Your Local Business Ready for AI Search{% endblock %}
+
+{% block open_graph_tags %}
+  <meta property="og:title" content="Get Your Local Business Ready for AI Search" />
+  <meta property="og:description" content="Learn how local shops, restaurants, and service providers can prepare for Google AI Overviews, Bing Copilot, and ChatGPT Browse. Optimise your Google Business Profile, reviews, FAQs, and schema." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+  <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}/static/images/local-ai-search-hero.jpg" />
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Get Your Local Business Ready for AI Search">
+  <meta name="twitter:description" content="Learn how local shops, restaurants, and service providers can prepare for AI search by updating profiles, reviews, FAQs, and schema.">
+  <meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}/static/images/local-ai-search.jpg">
+{% endblock %}
+
+{% block content %}
+<div class="pageformat">
+
+  <!-- Header -->
+  <header>
+    <h1 class="leading-normal">Get Your Local Business Ready for AI Search</h1>
+    <p>
+      Local search has changed. Instead of just showing a map or directory listing, Google, Bing, and AI tools now deliver direct answers. This guide helps your local business prepare by optimising your Google Business Profile, reviews, FAQs, and schema so you’re chosen when customers search.
+    </p>
+  </header>
+
+  <!-- Quote -->
+  <blockquote>
+    <p>“AI search doesn’t just show who’s nearby — it rewards businesses that keep their information accurate, trusted, and clear.”</p>
+  </blockquote>
+
+  <!-- Intro Grid -->
+  <div class="intro-grid mt-16">
+    <div>
+      <h2>What Does AI Search Readiness Mean for Local Businesses?</h2>
+      <p>
+        Being AI-search ready means structuring your business information so AI tools can easily recognise, trust, and recommend it in answers. For local shops, restaurants, and tradespeople, this means updating your Google Business Profile, gathering reviews, writing FAQs, and applying schema markup. When your information is AI-friendly, you’re more likely to appear in local recommendations, voice search results, and answer boxes.
+      </p>
+    </div>
+    <div>
+      <h3>Importance</h3>
+      <p>
+        Customers now ask AI tools “What’s the best café near me?” or “Which plumber is open now?” If your details aren’t structured for AI, your business may not be recommended — even if you’re the best option in town.
+      </p>
+    </div>
+  </div>
+
+  <!-- Steps -->
+  <section>
+    <h2 class="leading-normal">Steps to Get Local AI-Search Ready</h2>
+    <div class="responsive-grid">
+      <a href="/news/update-google-business-profile/" class="shop-category">
+        <div>Step 1</div>
+        <h3>Update Your Google Business Profile</h3>
+        <p>Keep your hours, services, photos, and contact details accurate.</p>
+      </a>
+      <a href="/news/local-cluster-pages/" class="shop-category">
+        <div>Step 2</div>
+        <h3>Build Local Cluster Pages</h3>
+        <p>Organise your services, service areas, or specialties into clear hubs.</p>
+      </a>
+      <a href="/news/local-faq-snippets/" class="shop-category">
+        <div>Step 3</div>
+        <h3>Add Customer FAQs</h3>
+        <p>Answer questions people ask AI tools about your services.</p>
+      </a>
+      <a href="/news/local-reviews-ai-search/" class="shop-category">
+        <div>Step 4</div>
+        <h3>Collect and Showcase Reviews</h3>
+        <p>Positive ratings and reviews are a strong signal for AI recommendations.</p>
+      </a>
+      <a href="/news/local-schema-markup/" class="shop-category">
+        <div>Step 5</div>
+        <h3>Apply Local Schema Markup</h3>
+        <p>Use structured data like LocalBusiness, FAQ, and Review schema.</p>
+      </a>
+      <a href="/news/formatting-for-ai-search-readiness/" class="shop-category">
+        <div>Step 6</div>
+        <h3>Format for AI</h3>
+        <p>Use short paragraphs, headings, and summaries that AI can parse quickly.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- Quick Answers -->
+  <section class="mt-16">
+    <h2>Quick Answers for Local Businesses</h2>
+    <div class="space-y-6">
+      <div>
+        <h3>What is AI search readiness for local businesses?</h3>
+        <p>AI search readiness for local businesses means ensuring your business details, website, and reviews are easy for AI tools to understand and recommend. This includes updating your Google Business Profile, adding clear FAQs, using schema markup, and keeping customer reviews active and positive.</p>
+      </div>
+      <div>
+        <h3>Will AI search reduce my local shop or clinic’s traffic?</h3>
+        <p>AI may reduce clicks by showing answers directly, but it can also increase visibility if your business is chosen. The goal is to be recommended directly by AI — which means keeping your listings, reviews, and FAQs accurate so you’re trusted as the best answer.</p>
+      </div>
+      <div>
+        <h3>Do reviews really affect AI search results?</h3>
+        <p>Yes. Positive reviews and ratings signal trust and quality. AI tools look at review patterns, average ratings, and freshness of feedback. A steady flow of genuine reviews helps your business appear in recommendations.</p>
+      </div>
+      <div>
+        <h3>How can small businesses compete with big brands in AI search?</h3>
+        <p>AI values relevance and trust over size. Local businesses can win by answering niche queries (“best vegan café in Bristol”), keeping details accurate, and showcasing strong reviews. Bigger brands often miss these specific, localised opportunities.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Additional Articles -->
+  <section class="mt-16">
+    <h2>Additional Articles Worth Reading</h2>
+    <div class="responsive-grid">
+      <a href="/news/how-local-businesses-can-get-ai-search-ready/" class="shop-category">
+        <h3>How Local Businesses Can Get AI Ready</h3>
+        <p>How to get your local business ready for AI Search in 2025 and beyond.</p>
+      </a>
+      <a href="/news/google-business-profile-ai/" class="shop-category">
+        <h3>Google Business Profile in the Age of AI</h3>
+        <p>How to keep your GBP optimised for AI-driven answers.</p>
+      </a>
+      <a href="/news/local-ai-vs-big-brands/" class="shop-category">
+        <h3>Competing With Chains</h3>
+        <p>How small local shops can still win against larger brands in AI search.</p>
+      </a>
+      <a href="/news/category/local-ai-search/" class="shop-category">
+        <h3>Blog Category</h3>
+        <p>See all articles on local AI search readiness.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="mt-16">
+    <h2>Frequently Asked Questions</h2>
+    <div class="max-w-3xl space-y-4">
+      <details class="bg-white rounded-lg shadow-sm p-4">
+        <summary class="font-semibold cursor-pointer">Do online directories like Yelp still matter in AI search?</summary>
+        <p>Yes. Directories such as Yelp, TripAdvisor, and industry-specific listings continue to play an important role in AI search. These sites provide trusted third-party signals that AI systems often cross-check to confirm the accuracy of your business information. If your name, address, phone number, and services are consistent across directories, AI tools are more likely to surface your business in results. This boosts your local visibility and reinforces the reliability of your online presence.</p>
+      </details>
+      <details class="bg-white rounded-lg shadow-sm p-4">
+        <summary class="font-semibold cursor-pointer">Can I prepare my business for AI search without coding?</summary>
+        <p>Yes. Most local businesses can get AI-ready without touching a single line of code. Free schema generators allow you to add structured data, while updates to your Google Business Profile ensure accurate local signals. You can also add FAQs directly to your website using simple copy-and-paste formats. Taken together, these steps make your business more visible to AI search tools without needing expensive developers, and they give you a head start on competitors who haven’t adapted yet.</p>
+      </details>
+      <details class="bg-white rounded-lg shadow-sm p-4">
+        <summary class="font-semibold cursor-pointer">Does AI search readiness replace local SEO?</summary>
+        <p>No. AI readiness builds on top of local SEO—it doesn’t replace it. Your Google Business Profile, customer reviews, and on-page SEO signals such as titles and meta descriptions still matter. What AI readiness adds is structured information like FAQs and schema markup, which AI tools use to provide instant answers. Think of it as layering: local SEO establishes your foundation, while AI search readiness ensures your business is presented clearly in emerging AI-driven results.</p>
+      </details>
+      <details class="bg-white rounded-lg shadow-sm p-4">
+        <summary class="font-semibold cursor-pointer">How can I make sure AI shows accurate information about my business?</summary>
+        <p>The key is consistency and engagement. Keep your details—such as opening hours, services, and contact information—accurate across all platforms including your Google Business Profile, Yelp, and your website. Update them regularly if anything changes. Responding to reviews also helps, as AI tools treat active engagement as a signal of trustworthiness and accuracy. By monitoring your listings and staying proactive, you increase the chance that AI-powered search engines will display correct and up-to-date information.</p>
+      </details>
+    </div>
+
+    <!-- FAQ schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do online directories like Yelp still matter in AI search?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Directories such as Yelp, TripAdvisor, and industry-specific listings continue to play an important role in AI search. These sites provide trusted third-party signals that AI systems often cross-check to confirm the accuracy of your business information. If your name, address, phone number, and services are consistent across directories, AI tools are more likely to surface your business in results."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I prepare my business for AI search without coding?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Most local businesses can get AI-ready without touching a single line of code. Free schema generators allow you to add structured data, while updates to your Google Business Profile ensure accurate local signals."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does AI search readiness replace local SEO?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. AI readiness builds on top of local SEO—it doesn’t replace it. Your Google Business Profile, customer reviews, and on-page SEO signals such as titles and meta descriptions still matter."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I make sure AI shows accurate information about my business?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The key is consistency and engagement. Keep your details—such as opening hours, services, and contact information—accurate across all platforms including your Google Business Profile, Yelp, and your website."
+          }
+        }
+      ]
+    }
+    </script>
+  </section>
+
+  <!-- Free Download -->
+  <section class="mt-16">
+    <div class="bg-slate-50 border border-indigo-100 rounded-2xl p-6">
+      <h2>Free Download: Local AI Search Checklist</h2>
+      <p>Get a simple, step-by-step checklist to make your shop, restaurant, or service AI-search ready today.</p>
+      <div class="mt-4 flex gap-4">
+        <a href="https://aimarketingplatform.com/media/news/resources/local-ai-search-readiness-checklist.pdf" class="btn-primary">Get the PDF</a>
+        <a href="/shop/" class="btn-secondary">Explore Our Shop</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Cluster Pages -->
+  <section class="mt-16">
+    <h2>Related Cluster Pages</h2>
+    <div class="cluster-grid">
+      <a href="https://aimarketingplatform.com/digital-marketing-specialist" class="shop-category">
+        <h3>Digital Marketing Specialist</h3>
+        <p>Support for small businesses to simplify and delegate tech tasks.</p>
+      </a>
+      <a href="https://aimarketingplatform.com/pdf-creation" class="shop-category">
+        <h3>PDF Creation</h3>
+        <p>Turn your expertise into DIY guides and resources.</p>
+      </a>
+      <a href="https://aimarketingplatform.com/ai-search-readiness/" class="shop-category">
+        <h3>AI Search Readiness</h3>
+        <p>Prepare your website to perform in AI-driven search.</p>
+      </a>
+      <a href="https://aimarketingplatform.com/local-business-ai-search/" class="shop-category">
+        <h3>Local Business AI Search</h3>
+        <p>Get your local business found in AI-powered search results.</p>
+      </a>
+    </div>
+  </section>
+
+</div>
+{% endblock %}
