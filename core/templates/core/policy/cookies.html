@@ -4,124 +4,127 @@
 {% block title %}Cookie Policy - AI Marketing Platform{% endblock %}
 
 {% block content %}
-<div class="px-6 md:px-16 py-12 text-[--color-font-main] space-y-16">
-     <!-- Include the breadcrumb here -->
+<div class="px-6 md:px-16 py-16 text-[color:var(--color-font-main)] space-y-24">
+
   {% include "core/components/breadcrumb.html" %}
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Table of Contents -->
-        <div class="mb-12">
-            <h1 class="text-2xl font-bold mb-8">Cookie Policy</h1>
-            <p class="text-text/80 mb-6">Last updated: January 2025</p>
-            <div class="bg-primary p-6 rounded-lg">
-                <h2 class="text-lg font-semibold mb-4">Contents:</h2>
-                <ol class="space-y-2">
-                    <li><a href="#overview" class="text-accent hover:text-text transition-colors">Overview</a></li>
-                    <li><a href="#essential" class="text-accent hover:text-text transition-colors">Essential Cookies</a></li>
-                    <li><a href="#functional" class="text-accent hover:text-text transition-colors">Functional Cookies</a></li>
-                    <li><a href="#shop" class="text-accent hover:text-text transition-colors">Shop Cookies</a></li>
-                    <li><a href="#third-party" class="text-accent hover:text-text transition-colors">Third-Party Cookies</a></li>
-                    <li><a href="#duration" class="text-accent hover:text-text transition-colors">Cookie Duration</a></li>
-                    <li><a href="#management" class="text-accent hover:text-text transition-colors">Cookie Management</a></li>
-                    <li><a href="#updates" class="text-accent hover:text-text transition-colors">Updates to This Policy</a></li>
-                </ol>
-            </div>
-        </div>
 
-        <!-- Cookie Policy Content -->
-        <div class="prose prose-invert max-w-none">
-            <section id="overview" class="mb-12">
-                <h2 class="text-2xl font-bold mb-4">1. Overview</h2>
-                <p class="mb-4">This Cookie Policy explains how AI Marketing Platform uses cookies and similar technologies on our website. We use cookies to enhance your browsing experience, provide secure shopping features, and improve our services.</p>
-                <p class="mb-4">By continuing to use our website, you agree to our use of cookies as described in this policy.</p>
-            </section>
+  <!-- Header -->
+  <header class="max-w-3xl mx-auto text-center space-y-6">
+    <h1 class="text-3xl md:text-4xl font-semibold text-[color:var(--color-brand-primary)] leading-snug">
+      Cookie Policy
+    </h1>
+    <p class="text-sm text-[color:var(--color-brand-accent)]">Last updated: January 2025</p>
+  </header>
 
-            <section id="essential" class="mb-12">
-                <h2 class="text-2xl font-bold mb-4">2. Essential Cookies</h2>
-                <p class="mb-4">Essential cookies are necessary for our website to function properly. These include:</p>
-                <ul class="list-disc pl-6 mb-4">
-                    <li>Session cookies for managing user sessions</li>
-                    <li>CSRF security tokens for form submission protection</li>
-                    <li>Authentication cookies to maintain your login status</li>
-                    <li>Shopping cart session cookies</li>
-                </ul>
-                <p></p>
-                <p class="mb-4">These cookies are strictly necessary and cannot be disabled as they ensure core website functionality and security.</p>
-            </section>
+  <!-- Contents -->
+  <section class="max-w-3xl mx-auto bg-[color:var(--color-brand-light)] rounded-xl p-8 shadow-sm space-y-4">
+    <h2 class="text-lg font-semibold text-[color:var(--color-brand-primary)]">Contents</h2>
+    <ol class="list-decimal list-inside space-y-2 text-[color:var(--color-font-main)]">
+      <li><a href="#overview" class="text-[color:var(--color-brand-accent)] hover:text-[color:var(--color-brand-dark)] transition">Overview</a></li>
+      <li><a href="#essential" class="text-[color:var(--color-brand-accent)] hover:text-[color:var(--color-brand-dark)] transition">Essential Cookies</a></li>
+      <li><a href="#functional" class="text-[color:var(--color-brand-accent)] hover:text-[color:var(--color-brand-dark)] transition">Functional Cookies</a></li>
+      <li><a href="#shop" class="text-[color:var(--color-brand-accent)] hover:text-[color:var(--color-brand-dark)] transition">Shop Cookies</a></li>
+      <li><a href="#third-party" class="text-[color:var(--color-brand-accent)] hover:text-[color:var(--color-brand-dark)] transition">Third-Party Cookies</a></li>
+      <li><a href="#duration" class="text-[color:var(--color-brand-accent)] hover:text-[color:var(--color-brand-dark)] transition">Cookie Duration</a></li>
+      <li><a href="#management" class="text-[color:var(--color-brand-accent)] hover:text-[color:var(--color-brand-dark)] transition">Cookie Management</a></li>
+      <li><a href="#updates" class="text-[color:var(--color-brand-accent)] hover:text-[color:var(--color-brand-dark)] transition">Updates to This Policy</a></li>
+    </ol>
+  </section>
 
-            <section id="functional" class="mb-12">
-                <h2 class="text-2xl font-bold mb-4">3. Functional Cookies</h2>
-                <p class="mb-4">Functional cookies help enhance your experience by remembering your preferences:</p>
-                <ul class="list-disc pl-6 mb-4">
-                    <li>User interface preferences</li>
-                    <li>Newsletter subscription status</li>
-                    <li>Previously viewed shop items</li>
-                    <li>Login remember-me functionality</li>
-                </ul>
-            </section>
+  <!-- Policy Sections -->
+  <section class="max-w-3xl mx-auto space-y-16">
 
-            <section id="shop" class="mb-12">
-                <h2 class="text-2xl font-bold mb-4">4. Shop Cookies</h2>
-                <p class="mb-4">Our shop functionality uses cookies to:</p>
-                <ul class="list-disc pl-6 mb-4">
-                    <li>Maintain your shopping cart contents</li>
-                    <li>Remember your shipping preferences</li>
-                    <li>Track order progress</li>
-                    <li>Facilitate secure checkout processes</li>
-                    <li>Store product preferences and history</li>
-                </ul>
-            </section>
-
-            <section id="third-party" class="mb-12">
-                <h2 class="text-2xl font-bold mb-4">5. Third-Party Cookies</h2>
-                <p class="mb-4">We use third-party services that may set cookies:</p>
-                <ul class="list-disc pl-6 mb-4">
-                    <li><strong>Payment Processing:</strong>
-                        <ul class="list-disc pl-6 mt-2">
-                            <li>Stripe cookies for secure payment processing</li>
-                            <li>PayPal cookies for payment functionality</li>
-                        </ul>
-                    </li>
-                    <li><strong>Analytics:</strong> For website usage analysis and improvement</li>
-                    <li><strong>Newsletter Service:</strong> For managing email subscriptions</li>
-                </ul>
-                <p></p>
-                <p class="mb-4">These third-party services have their own privacy and cookie policies which control how they use this information.</p>
-            </section>
-
-            <section id="duration" class="mb-12">
-                <h2 class="text-2xl font-bold mb-4">6. Cookie Duration</h2>
-                <p class="mb-4">Our cookies have varying lifespans:</p>
-                <ul class="list-disc pl-6 mb-4">
-                    <li><strong>Session Cookies:</strong> Temporary cookies that expire when you close your browser</li>
-                    <li><strong>Persistent Cookies:</strong>
-                        <ul class="list-disc pl-6 mt-2">
-                            <li>Authentication cookies: 14 days (with "Remember Me")</li>
-                            <li>Shopping cart: 7 days</li>
-                            <li>User preferences: 30 days</li>
-                        </ul>
-                    </li>
-                </ul>
-            </section>
-
-            <section id="management" class="mb-12">
-                <h2 class="text-2xl font-bold mb-4">7. Cookie Management</h2>
-                <p class="mb-4">You can control cookies through your browser settings. Here's how to manage cookies in popular browsers:</p>
-                <ul class="list-disc pl-6 mb-4">
-                    <li>Chrome: Settings → Privacy and Security → Cookies</li>
-                    <li>Firefox: Options → Privacy & Security → Cookies</li>
-                    <li>Safari: Preferences → Privacy → Cookies</li>
-                    <li>Edge: Settings → Privacy & Security → Cookies</li>
-                </ul>
-                <p></p>
-                <p class="mb-4">Please note that disabling essential cookies will affect the website's core functionality and shopping features.</p>
-            </section>
-
-            <section id="updates" class="mb-12">
-                <h2 class="text-2xl font-bold mb-4">8. Updates to This Policy</h2>
-                <p class="mb-4">We may update this Cookie Policy periodically to reflect changes in our practices or for operational and legal requirements. Changes will be posted on this page with an updated revision date.</p>
-                <p class="mb-4">For questions about our Cookie Policy, please contact us at support@aimarketingplatform.app</p>
-            </section>
-        </div>
+    <div id="overview" class="space-y-4 rounded-xl p-6">
+      <h2 class="text-2xl font-semibold text-[color:var(--color-brand-primary)]">1. Overview</h2>
+      <p class="leading-relaxed">This Cookie Policy explains how AI Marketing Platform uses cookies and similar technologies on our website. We use cookies to enhance your browsing experience, provide secure shopping features, and improve our services.</p>
+      <p class="leading-relaxed">By continuing to use our website, you agree to our use of cookies as described in this policy.</p>
     </div>
+
+    <div id="essential" class="space-y-4 bg-[color:var(--color-brand-light)] rounded-xl p-6">
+      <h2 class="text-2xl font-semibold text-[color:var(--color-brand-primary)]">2. Essential Cookies</h2>
+      <p class="leading-relaxed">Essential cookies are necessary for our website to function properly. These include:</p>
+      <ul class="list-disc pl-6 space-y-1">
+        <li>Session cookies for managing user sessions</li>
+        <li>CSRF security tokens for form submission protection</li>
+        <li>Authentication cookies to maintain your login status</li>
+        <li>Shopping cart session cookies</li>
+      </ul>
+      <p class="leading-relaxed">These cookies are strictly necessary and cannot be disabled as they ensure core website functionality and security.</p>
+    </div>
+
+    <div id="functional" class="space-y-4 rounded-xl p-6">
+      <h2 class="text-2xl font-semibold text-[color:var(--color-brand-primary)]">3. Functional Cookies</h2>
+      <p class="leading-relaxed">Functional cookies help enhance your experience by remembering your preferences:</p>
+      <ul class="list-disc pl-6 space-y-1">
+        <li>User interface preferences</li>
+        <li>Newsletter subscription status</li>
+        <li>Previously viewed shop items</li>
+        <li>Login remember-me functionality</li>
+      </ul>
+    </div>
+
+    <div id="shop" class="space-y-4 bg-[color:var(--color-brand-light)] rounded-xl p-6">
+      <h2 class="text-2xl font-semibold text-[color:var(--color-brand-primary)]">4. Shop Cookies</h2>
+      <p class="leading-relaxed">Our shop functionality uses cookies to:</p>
+      <ul class="list-disc pl-6 space-y-1">
+        <li>Maintain your shopping cart contents</li>
+        <li>Remember your shipping preferences</li>
+        <li>Track order progress</li>
+        <li>Facilitate secure checkout processes</li>
+        <li>Store product preferences and history</li>
+      </ul>
+    </div>
+
+    <div id="third-party" class="space-y-4 rounded-xl p-6">
+      <h2 class="text-2xl font-semibold text-[color:var(--color-brand-primary)]">5. Third-Party Cookies</h2>
+      <p class="leading-relaxed">We use third-party services that may set cookies:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Payment Processing:</strong>
+          <ul class="list-disc pl-6 mt-2">
+            <li>Stripe cookies for secure payment processing</li>
+            <li>PayPal cookies for payment functionality</li>
+          </ul>
+        </li>
+        <li><strong>Analytics:</strong> For website usage analysis and improvement</li>
+        <li><strong>Newsletter Service:</strong> For managing email subscriptions</li>
+      </ul>
+      <p class="leading-relaxed">These third-party services have their own privacy and cookie policies which control how they use this information.</p>
+    </div>
+
+    <div id="duration" class="space-y-4 bg-[color:var(--color-brand-light)] rounded-xl p-6">
+      <h2 class="text-2xl font-semibold text-[color:var(--color-brand-primary)]">6. Cookie Duration</h2>
+      <p class="leading-relaxed">Our cookies have varying lifespans:</p>
+      <ul class="list-disc pl-6 space-y-1">
+        <li><strong>Session Cookies:</strong> Temporary cookies that expire when you close your browser</li>
+        <li><strong>Persistent Cookies:</strong>
+          <ul class="list-disc pl-6 mt-2">
+            <li>Authentication cookies: 14 days (with "Remember Me")</li>
+            <li>Shopping cart: 7 days</li>
+            <li>User preferences: 30 days</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div id="management" class="space-y-4 rounded-xl p-6">
+      <h2 class="text-2xl font-semibold text-[color:var(--color-brand-primary)]">7. Cookie Management</h2>
+      <p class="leading-relaxed">You can control cookies through your browser settings. Here's how to manage cookies in popular browsers:</p>
+      <ul class="list-disc pl-6 space-y-1">
+        <li>Chrome: Settings → Privacy and Security → Cookies</li>
+        <li>Firefox: Options → Privacy & Security → Cookies</li>
+        <li>Safari: Preferences → Privacy → Cookies</li>
+        <li>Edge: Settings → Privacy & Security → Cookies</li>
+      </ul>
+      <p class="leading-relaxed">Please note that disabling essential cookies will affect the website's core functionality and shopping features.</p>
+    </div>
+
+    <div id="updates" class="space-y-4 bg-[color:var(--color-brand-light)] rounded-xl p-6">
+      <h2 class="text-2xl font-semibold text-[color:var(--color-brand-primary)]">8. Updates to This Policy</h2>
+      <p class="leading-relaxed">We may update this Cookie Policy periodically to reflect changes in our practices or for operational and legal requirements. Changes will be posted on this page with an updated revision date.</p>
+      <p class="leading-relaxed">For questions about our Cookie Policy, please contact us at support@aimarketingplatform.app</p>
+    </div>
+
+  </section>
+
 </div>
 {% endblock %}

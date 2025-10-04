@@ -4,84 +4,90 @@
 {% block title %}AI Writing Policy - AI Marketing Platform{% endblock %}
 
 {% block content %}
-<div class="px-6 md:px-16 py-12 text-[--color-font-main] space-y-16">
-     <!-- Include the breadcrumb here -->
+<div class="px-6 md:px-16 py-16 text-[color:var(--color-font-main)] space-y-24">
+
   {% include "core/components/breadcrumb.html" %}
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Table of Contents -->
-        <div class="mb-12">
-            <h1 class="text-4xl font-bold mb-8">AI Writing Policy</h1>
-            <p class="text-text/80 mb-6">Last updated: September 2025</p>
-            <div class="bg-primary p-6 rounded-lg">
-                <h2 class="text-lg font-semibold mb-4">Contents:</h2>
-                <ol class="space-y-2">
-                  <li><a href="#introduction" class="text-accent hover:text-text transition-colors">Introduction</a></li>
-                  <li><a href="#how-we-use-ai" class="text-accent hover:text-text transition-colors">How We Use AI</a></li>
-                  <li><a href="#human-oversight" class="text-accent hover:text-text transition-colors">Human Oversight & Editing</a></li>
-                  <li><a href="#why-this-matters" class="text-accent hover:text-text transition-colors">Why This Matters</a></li>
-                  <li><a href="#updates" class="text-accent hover:text-text transition-colors">Updating & Transparency</a></li>
-                  <li><a href="#contact" class="text-accent hover:text-text transition-colors">Contact Information</a></li>
-              </ul>
-            </div>
-        </div>
 
-        <!-- AI Writing Policy Content -->
-        <div class="prose prose-invert max-w-none">
-            <section id="introduction" class="mb-12">
-                <h2 class="text-2xl font-bold mb-4">1. Introduction</h2>
-                <p class="mb-4">
-                    At AI Marketing Platform, we believe in transparency. This AI Writing Policy explains how artificial intelligence tools are used to support our content creation process and how we ensure that all final content is accurate, trustworthy, and aligned with our values.
-                </p>
-            </section>
+  <!-- Header -->
+  <header class="max-w-3xl mx-auto text-center space-y-6">
+    <h1 class="text-3xl md:text-4xl font-semibold text-[color:var(--color-brand-primary)] leading-snug">
+      AI Writing Policy
+    </h1>
+    <p class="text-sm text-[color:var(--color-brand-accent)]">Last updated: September 2025</p>
+  </header>
 
-            <section id="how-we-use-ai" class="mb-12">
-                <h2 class="text-2xl font-bold mb-4">2. How We Use AI</h2>
-                <p class="mb-4">
-                    We use AI tools as part of our writing workflow to help with:
-                </p>
-                <ul class="list-disc pl-6 mb-4">
-                    <li>Structuring articles, guides, and resources more efficiently</li>
-                    <li>Rewriting and updating older content (originally created between 2010–2016)</li>
-                    <li>Creating first drafts of new content (for example, our AI Search Readiness materials)</li>
-                </ul>
-                <p class="mb-4">
-                    AI is treated as a supportive tool, not a replacement for human expertise.
-                </p>
-            </section>
+  <!-- Contents -->
+  <section class="max-w-3xl mx-auto bg-[color:var(--color-brand-light)]  p-8 shadow-sm space-y-4">
+    <h2 class="text-lg font-semibold text-[color:var(--color-brand-primary)]">Contents</h2>
+    <ol class="list-decimal list-inside space-y-2 text-[color:var(--color-font-main)]">
+      <li><a href="#introduction" class="text-[color:var(--color-brand-accent)] hover:text-[color:var(--color-brand-dark)] transition">Introduction</a></li>
+      <li><a href="#how-we-use-ai" class="text-[color:var(--color-brand-accent)] hover:text-[color:var(--color-brand-dark)] transition">How We Use AI</a></li>
+      <li><a href="#human-oversight" class="text-[color:var(--color-brand-accent)] hover:text-[color:var(--color-brand-dark)] transition">Human Oversight & Editing</a></li>
+      <li><a href="#why-this-matters" class="text-[color:var(--color-brand-accent)] hover:text-[color:var(--color-brand-dark)] transition">Why This Matters</a></li>
+      <li><a href="#updates" class="text-[color:var(--color-brand-accent)] hover:text-[color:var(--color-brand-dark)] transition">Updating & Transparency</a></li>
+      <li><a href="#contact" class="text-[color:var(--color-brand-accent)] hover:text-[color:var(--color-brand-dark)] transition">Contact Information</a></li>
+    </ol>
+  </section>
 
-            <section id="human-oversight" class="mb-12">
-                <h2 class="text-2xl font-bold mb-4">3. Human Oversight & Editing</h2>
-                <p class="mb-4">
-                    All AI-assisted drafts are reviewed, fact-checked, and edited by a human before being published. We make sure that the tone, accuracy, and practicality of every piece meet the standards of our brand.
-                </p>
-                <p class="mb-4">
-                    The final responsibility for the accuracy and integrity of our content always rests with us, not with AI.
-                </p>
-            </section>
+  <!-- Policy Sections -->
+  <section class="max-w-3xl mx-auto space-y-16">
 
-            <section id="why-this-matters" class="mb-12">
-                <h2 class="text-2xl font-bold mb-4">4. Why This Matters</h2>
-                <p class="mb-4">
-                    We believe it is important to be clear about how our content is created. While AI helps us save time and stay productive, every resource we share is human-checked to ensure reliability. This balance allows us to create practical, actionable content without compromising quality or ethics.
-                </p>
-            </section>
-
-            <section id="updates" class="mb-12">
-                <h2 class="text-2xl font-bold mb-4">5. Updating & Transparency</h2>
-                <p class="mb-4">
-                    If our approach to using AI changes in the future, we will update this policy accordingly. You can always refer back to this page to see the most recent version of our AI Writing Policy.
-                </p>
-            </section>
-
-            <section id="contact" class="mb-12">
-                <h2 class="text-2xl font-bold mb-4">6. Contact Information</h2>
-                <p class="mb-4">For questions about this AI Writing Policy, please contact us at:</p>
-                <ul class="list-disc pl-6 mb-4">
-                    <li>Email: support@aimarketingplatform.app</li>
-                    <li>Address: 11 Solomon Street, Shropshire TF12</li>
-                </ul>
-            </section>
-        </div>
+    <div id="introduction" class="space-y-4  p-6 shadow-sm">
+      <h2 class="text-2xl font-semibold text-[color:var(--color-brand-primary)]">1. Introduction</h2>
+      <p class="leading-relaxed">
+        At AI Marketing Platform, we believe in transparency. This AI Writing Policy explains how artificial intelligence tools are used to support our content creation process and how we ensure that all final content is accurate, trustworthy, and aligned with our values.
+      </p>
     </div>
+
+    <div id="how-we-use-ai" class="space-y-4  p-6 shadow-sm bg-[color:var(--color-brand-light)]">
+      <h2 class="text-2xl font-semibold text-[color:var(--color-brand-primary)]">2. How We Use AI</h2>
+      <p class="leading-relaxed">
+        We use AI tools as part of our writing workflow to help with:
+      </p>
+      <ul class="list-disc pl-6 space-y-1">
+        <li>Structuring articles, guides, and resources more efficiently</li>
+        <li>Rewriting and updating older content (originally created between 2010–2016)</li>
+        <li>Creating first drafts of new content (for example, our AI Search Readiness materials)</li>
+      </ul>
+      <p class="leading-relaxed">
+        AI is treated as a supportive tool, not a replacement for human expertise.
+      </p>
+    </div>
+
+    <div id="human-oversight" class="space-y-4  p-6 shadow-sm">
+      <h2 class="text-2xl font-semibold text-[color:var(--color-brand-primary)]">3. Human Oversight & Editing</h2>
+      <p class="leading-relaxed">
+        All AI-assisted drafts are reviewed, fact-checked, and edited by a human before being published. We make sure that the tone, accuracy, and practicality of every piece meet the standards of our brand.
+      </p>
+      <p class="leading-relaxed">
+        The final responsibility for the accuracy and integrity of our content always rests with us, not with AI.
+      </p>
+    </div>
+
+    <div id="why-this-matters" class="space-y-4  p-6 shadow-sm bg-[color:var(--color-brand-light)]">
+      <h2 class="text-2xl font-semibold text-[color:var(--color-brand-primary)]">4. Why This Matters</h2>
+      <p class="leading-relaxed">
+        We believe it is important to be clear about how our content is created. While AI helps us save time and stay productive, every resource we share is human-checked to ensure reliability. This balance allows us to create practical, actionable content without compromising quality or ethics.
+      </p>
+    </div>
+
+    <div id="updates" class="space-y-4  p-6 shadow-sm">
+      <h2 class="text-2xl font-semibold text-[color:var(--color-brand-primary)]">5. Updating & Transparency</h2>
+      <p class="leading-relaxed">
+        If our approach to using AI changes in the future, we will update this policy accordingly. You can always refer back to this page to see the most recent version of our AI Writing Policy.
+      </p>
+    </div>
+
+    <div id="contact" class="space-y-4  p-6 shadow-sm bg-[color:var(--color-brand-light)]">
+      <h2 class="text-2xl font-semibold text-[color:var(--color-brand-primary)]">6. Contact Information</h2>
+      <p class="leading-relaxed">For questions about this AI Writing Policy, please contact us at:</p>
+      <ul class="list-disc pl-6 space-y-1 text-[color:var(--color-font-main)]">
+        <li>Email: support@aimarketingplatform.app</li>
+        <li>Address: 11 Solomon Street, Shropshire TF12</li>
+      </ul>
+    </div>
+
+  </section>
+
 </div>
 {% endblock %}

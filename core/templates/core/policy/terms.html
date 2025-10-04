@@ -4,148 +4,149 @@
 {% block title %}Terms and Conditions - AI Marketing Platform{% endblock %}
 
 {% block content %}
-<div class="px-6 md:px-16 py-12 text-[--color-font-main] space-y-16">
-     <!-- Include the breadcrumb here -->
+<div class="px-6 md:px-16 py-16 text-[color:var(--color-font-main)] space-y-24">
+
   {% include "core/components/breadcrumb.html" %}
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Table of Contents -->
-        <div class="mb-12">
-            <h1 class="text-4xl font-bold mb-8">Terms and Conditions</h1>
-            <p class="text-text/80 mb-6">Last updated: August 2025</p>
-            <p></p>
-            <div class="bg-primary p-6 rounded-lg">
-                <h2 class="text-lg font-semibold mb-4">Contents:</h2>
-                <ol class="space-y-2">
-                  <li><a href="#overview" class="text-accent hover:text-text transition-colors">Overview</a></li>
-                  <li><a href="#accounts" class="text-accent hover:text-text transition-colors">User Accounts</a></li>
-                  <li><a href="#products" class="text-accent hover:text-text transition-colors">Products and Services</a></li>
-                  <li><a href="#purchases" class="text-accent hover:text-text transition-colors">Purchases and Payments</a></li>
-                  <li><a href="#intellectual-property" class="text-accent hover:text-text transition-colors">Intellectual Property</a></li>
-                  <li><a href="#prohibited" class="text-accent hover:text-text transition-colors">Prohibited Activities</a></li>
-                  <li><a href="#liability" class="text-accent hover:text-text transition-colors">Limitation of Liability</a></li>
-                  <li><a href="#termination" class="text-accent hover:text-text transition-colors">Account Termination</a></li>
-                  <li><a href="#changes" class="text-accent hover:text-text transition-colors">Changes to Terms</a></li>
-                  <li><a href="#contact" class="text-accent hover:text-text transition-colors">Contact Information</a></li>
-              </ol>
-            </div>
-        </div>
 
-        <!-- Terms Content -->
-        <div class="prose prose-invert max-w-none">
-            <section id="overview" class="mb-12">
-                <h2 class="text-2xl font-bold mb-4">1. Overview</h2>
-                <p class="mb-4">Welcome to AI Marketing Platform. By accessing or using our website, you agree to be bound by these Terms and Conditions. If you disagree with any part of these terms, you may not access our services.</p>
-            </section>
+  <!-- Header -->
+  <header class="max-w-3xl mx-auto text-center space-y-6">
+    <h1 class="text-3xl md:text-4xl font-semibold text-[color:var(--color-brand-primary)] leading-snug">
+      Terms and Conditions
+    </h1>
+    <p class="text-sm text-[color:var(--color-brand-accent)]">Last updated: August 2025</p>
+  </header>
 
-            <section id="accounts" class="mb-12">
-                <h2 class="text-2xl font-bold mb-4">2. User Accounts</h2>
-                <p class="mb-4">When creating an account, you agree to:</p>
-                <ul class="list-disc pl-6 mb-4">
-                    <li>Provide accurate and complete registration information</li>
-                    <li>Maintain the security of your account credentials</li>
-                    <li>Promptly update your account information when necessary</li>
-                    <li>Accept responsibility for all activities under your account</li>
-                </ul>
-                <p></p>
-                <p class="mb-4">We reserve the right to suspend or terminate accounts for violations of these terms.</p>
-            </section>
+  <!-- Contents -->
+  <section class="max-w-3xl mx-auto bg-[color:var(--color-brand-light)] rounded-xl p-8 shadow-sm space-y-4">
+    <h2 class="text-lg font-semibold text-[color:var(--color-brand-primary)]">Contents</h2>
+    <ol class="list-decimal list-inside space-y-2 text-[color:var(--color-font-main)]">
+      <li><a href="#overview" class="text-[color:var(--color-brand-accent)] hover:text-[color:var(--color-brand-dark)] transition">Overview</a></li>
+      <li><a href="#accounts" class="text-[color:var(--color-brand-accent)] hover:text-[color:var(--color-brand-dark)] transition">User Accounts</a></li>
+      <li><a href="#products" class="text-[color:var(--color-brand-accent)] hover:text-[color:var(--color-brand-dark)] transition">Products and Services</a></li>
+      <li><a href="#purchases" class="text-[color:var(--color-brand-accent)] hover:text-[color:var(--color-brand-dark)] transition">Purchases and Payments</a></li>
+      <li><a href="#intellectual-property" class="text-[color:var(--color-brand-accent)] hover:text-[color:var(--color-brand-dark)] transition">Intellectual Property</a></li>
+      <li><a href="#prohibited" class="text-[color:var(--color-brand-accent)] hover:text-[color:var(--color-brand-dark)] transition">Prohibited Activities</a></li>
+      <li><a href="#liability" class="text-[color:var(--color-brand-accent)] hover:text-[color:var(--color-brand-dark)] transition">Limitation of Liability</a></li>
+      <li><a href="#termination" class="text-[color:var(--color-brand-accent)] hover:text-[color:var(--color-brand-dark)] transition">Account Termination</a></li>
+      <li><a href="#changes" class="text-[color:var(--color-brand-accent)] hover:text-[color:var(--color-brand-dark)] transition">Changes to Terms</a></li>
+      <li><a href="#contact" class="text-[color:var(--color-brand-accent)] hover:text-[color:var(--color-brand-dark)] transition">Contact Information</a></li>
+    </ol>
+  </section>
 
-            <section id="products" class="mb-12">
-                <h2 class="text-2xl font-bold mb-4">3. Products and Services</h2>
-                <p class="mb-4">Our products and services include:</p>
-                <ul class="list-disc pl-6 mb-4">
-                    <li>Digital products and downloads</li>
-                    <li>Educational content and resources</li>
-                    <li>Newsletter subscriptions</li>
-                    <li>Web development and digital marketing services</li>
-                </ul>
-                <p></p>
-                <p class="mb-4">All product descriptions and specifications are subject to change without notice.</p>
-            </section>
+  <!-- Terms Sections -->
+  <section class="max-w-3xl mx-auto space-y-16">
 
-            <section id="purchases" class="mb-12">
-                <h2 class="text-2xl font-bold mb-4">4. Purchases and Payments</h2>
-                <p class="mb-4">By making a purchase via this website, you acknowledge that:</p>
-                <ul class="list-disc pl-6 mb-4">
-                    <li>Prices are subject to change without notice</li>
-                    <li>Payments are processed securely through Stripe or PayPal</li>
-                    <li>Digital products are non-refundable unless defective</li>
-                    <li>You must provide accurate billing information</li>
-                </ul>
-                <p></p>
-                <p class="mb-4">Refund requests will be evaluated on a case-by-case basis according to our refund policy.</p>
-            </section>
-            <section id="purchases" class="mb-12">
-                <h2 class="text-2xl font-bold mb-4">4a. Third-Party Purchases</h2>
-                <p class="mb-4">Some products or services promoted on this website are sold through third-party providers. If you make a purchase via a third-party website, your transaction will be subject to that provider’s terms and policies. We are not responsible for processing, delivery, or refunds of purchases made outside of this website. Please direct any questions or refund requests for such purchases to the provider’s support team.</p>
-
-
-            <section id="intellectual-property" class="mb-12">
-                <h2 class="text-2xl font-bold mb-4">5. Intellectual Property</h2>
-                <p class="mb-4">All content on this website, including but not limited to:</p>
-                <ul class="list-disc pl-6 mb-4">
-                    <li>Text, graphics, logos, and images</li>
-                    <li>Software code and applications</li>
-                    <li>Educational materials and resources</li>
-                    <li>Product documentation</li>
-                </ul>
-                <p></p>
-                <p class="mb-4">is the property of AI Marketing Platform and protected by intellectual property laws. You may not reproduce, distribute, or create derivative works without our express permission.</p>
-            </section>
-
-            <section id="prohibited" class="mb-12">
-                <h2 class="text-2xl font-bold mb-4">6. Prohibited Activities</h2>
-                <p class="mb-4">The following activities are prohibited:</p>
-                <ul class="list-disc pl-6 mb-4">
-                    <li>Using the service for any unlawful purpose</li>
-                    <li>Attempting to gain unauthorized access to systems</li>
-                    <li>Sharing account credentials with others</li>
-                    <li>Reselling or redistributing our products</li>
-                    <li>Engaging in any activity that disrupts our services</li>
-                </ul>
-            </section>
-
-            <section id="liability" class="mb-12">
-                <h2 class="text-2xl font-bold mb-4">7. Limitation of Liability</h2>
-                <p class="mb-4">AI Marketing Platform shall not be liable for:</p>
-                <ul class="list-disc pl-6 mb-4">
-                    <li>Indirect or consequential damages</li>
-                    <li>Loss of data or business interruption</li>
-                    <li>Issues arising from third-party services</li>
-                    <li>Technical problems beyond our control</li>
-                </ul>
-                <p></p>
-                <p class="mb-4">We do not guarantee that our services will be uninterrupted or error-free. We are not responsible for any damages resulting from the use or inability to use our services.</p>
-                <p class="mb-4">Our maximum liability shall be limited to the amount paid for the product or service in question.</p>
-            </section>
-
-            <section id="termination" class="mb-12">
-                <h2 class="text-2xl font-bold mb-4">8. Account Termination</h2>
-                <p class="mb-4">We may terminate or suspend access to our service immediately, without prior notice, for:</p>
-                <ul class="list-disc pl-6 mb-4">
-                    <li>Violations of these Terms</li>
-                    <li>Fraudulent or illegal activities</li>
-                    <li>Non-payment of fees</li>
-                    <li>Behavior that harms other users</li>
-                </ul>
-                <p class="mb-4">Upon termination, your right to use the service will immediately cease. All provisions of these terms that by their nature should survive termination shall survive.</p>
-                <p class="mb-4">To request deletion of your personal data, please email us at support@aimarketingplatform.app with the subject line "Data Deletion Request." In your request, please specify what information you would like deleted and provide sufficient information to verify your identity. We will process your request within 30 days of receipt and confirm once deletion is complete. Please note that some information may be retained for legal, security, or fraud prevention purposes as permitted by applicable laws. </p>
-            </section>
-
-            <section id="changes" class="mb-12">
-                <h2 class="text-2xl font-bold mb-4">9. Changes to Terms</h2>
-                <p class="mb-4">We reserve the right to modify these terms at any time. Changes will be effective immediately upon posting to the website. Continued use of our services constitutes acceptance of the new terms.</p>
-            </section>
-
-            <section id="contact" class="mb-12">
-                <h2 class="text-2xl font-bold mb-4">10. Contact Information</h2>
-                <p class="mb-4">For questions about these Terms and Conditions, please contact us at:</p>
-                <ul class="list-disc pl-6 mb-4">
-                    <li>Email: support@aimarketingplatform.app</li>
-                    <li>Address: 11 Solomon Street, Shropshire TF12</li>
-                </ul>
-            </section>
-        </div>
+    <div id="overview" class="space-y-4 rounded-xl p-6">
+      <h2 class="text-2xl font-semibold text-[color:var(--color-brand-primary)]">1. Overview</h2>
+      <p class="leading-relaxed">Welcome to AI Marketing Platform. By accessing or using our website, you agree to be bound by these Terms and Conditions. If you disagree with any part of these terms, you may not access our services.</p>
     </div>
+
+    <div id="accounts" class="space-y-4 bg-[color:var(--color-brand-light)] rounded-xl p-6">
+      <h2 class="text-2xl font-semibold text-[color:var(--color-brand-primary)]">2. User Accounts</h2>
+      <p class="leading-relaxed">When creating an account, you agree to:</p>
+      <ul class="list-disc pl-6 space-y-1">
+        <li>Provide accurate and complete registration information</li>
+        <li>Maintain the security of your account credentials</li>
+        <li>Promptly update your account information when necessary</li>
+        <li>Accept responsibility for all activities under your account</li>
+      </ul>
+      <p class="leading-relaxed">We reserve the right to suspend or terminate accounts for violations of these terms.</p>
+    </div>
+
+    <div id="products" class="space-y-4 rounded-xl p-6">
+      <h2 class="text-2xl font-semibold text-[color:var(--color-brand-primary)]">3. Products and Services</h2>
+      <p class="leading-relaxed">Our products and services include:</p>
+      <ul class="list-disc pl-6 space-y-1">
+        <li>Digital products and downloads</li>
+        <li>Educational content and resources</li>
+        <li>Newsletter subscriptions</li>
+        <li>Web development and digital marketing services</li>
+      </ul>
+      <p class="leading-relaxed">All product descriptions and specifications are subject to change without notice.</p>
+    </div>
+
+    <div id="purchases" class="space-y-4 bg-[color:var(--color-brand-light)] rounded-xl p-6">
+      <h2 class="text-2xl font-semibold text-[color:var(--color-brand-primary)]">4. Purchases and Payments</h2>
+      <p class="leading-relaxed">By making a purchase via this website, you acknowledge that:</p>
+      <ul class="list-disc pl-6 space-y-1">
+        <li>Prices are subject to change without notice</li>
+        <li>Payments are processed securely through Stripe or PayPal</li>
+        <li>Digital products are non-refundable unless defective</li>
+        <li>You must provide accurate billing information</li>
+      </ul>
+      <p class="leading-relaxed">Refund requests will be evaluated on a case-by-case basis according to our refund policy.</p>
+    </div>
+
+    <div id="third-party" class="space-y-4 rounded-xl p-6">
+      <h2 class="text-2xl font-semibold text-[color:var(--color-brand-primary)]">4a. Third-Party Purchases</h2>
+      <p class="leading-relaxed">Some products or services promoted on this website are sold through third-party providers. If you make a purchase via a third-party website, your transaction will be subject to that provider’s terms and policies. We are not responsible for processing, delivery, or refunds of purchases made outside of this website. Please direct any questions or refund requests for such purchases to the provider’s support team.</p>
+    </div>
+
+    <div id="intellectual-property" class="space-y-4 bg-[color:var(--color-brand-light)] rounded-xl p-6">
+      <h2 class="text-2xl font-semibold text-[color:var(--color-brand-primary)]">5. Intellectual Property</h2>
+      <p class="leading-relaxed">All content on this website, including but not limited to:</p>
+      <ul class="list-disc pl-6 space-y-1">
+        <li>Text, graphics, logos, and images</li>
+        <li>Software code and applications</li>
+        <li>Educational materials and resources</li>
+        <li>Product documentation</li>
+      </ul>
+      <p class="leading-relaxed">is the property of AI Marketing Platform and protected by intellectual property laws. You may not reproduce, distribute, or create derivative works without our express permission.</p>
+    </div>
+
+    <div id="prohibited" class="space-y-4 rounded-xl p-6">
+      <h2 class="text-2xl font-semibold text-[color:var(--color-brand-primary)]">6. Prohibited Activities</h2>
+      <p class="leading-relaxed">The following activities are prohibited:</p>
+      <ul class="list-disc pl-6 space-y-1">
+        <li>Using the service for any unlawful purpose</li>
+        <li>Attempting to gain unauthorized access to systems</li>
+        <li>Sharing account credentials with others</li>
+        <li>Reselling or redistributing our products</li>
+        <li>Engaging in any activity that disrupts our services</li>
+      </ul>
+    </div>
+
+    <div id="liability" class="space-y-4 bg-[color:var(--color-brand-light)] rounded-xl p-6">
+      <h2 class="text-2xl font-semibold text-[color:var(--color-brand-primary)]">7. Limitation of Liability</h2>
+      <p class="leading-relaxed">AI Marketing Platform shall not be liable for:</p>
+      <ul class="list-disc pl-6 space-y-1">
+        <li>Indirect or consequential damages</li>
+        <li>Loss of data or business interruption</li>
+        <li>Issues arising from third-party services</li>
+        <li>Technical problems beyond our control</li>
+      </ul>
+      <p class="leading-relaxed">We do not guarantee that our services will be uninterrupted or error-free. We are not responsible for any damages resulting from the use or inability to use our services.</p>
+      <p class="leading-relaxed">Our maximum liability shall be limited to the amount paid for the product or service in question.</p>
+    </div>
+
+    <div id="termination" class="space-y-4 rounded-xl p-6">
+      <h2 class="text-2xl font-semibold text-[color:var(--color-brand-primary)]">8. Account Termination</h2>
+      <p class="leading-relaxed">We may terminate or suspend access to our service immediately, without prior notice, for:</p>
+      <ul class="list-disc pl-6 space-y-1">
+        <li>Violations of these Terms</li>
+        <li>Fraudulent or illegal activities</li>
+        <li>Non-payment of fees</li>
+        <li>Behavior that harms other users</li>
+      </ul>
+      <p class="leading-relaxed">Upon termination, your right to use the service will immediately cease. All provisions of these terms that by their nature should survive termination shall survive.</p>
+      <p class="leading-relaxed">To request deletion of your personal data, please email us at support@aimarketingplatform.app with the subject line "Data Deletion Request." In your request, please specify what information you would like deleted and provide sufficient information to verify your identity. We will process your request within 30 days of receipt and confirm once deletion is complete. Please note that some information may be retained for legal, security, or fraud prevention purposes as permitted by applicable laws.</p>
+    </div>
+
+    <div id="changes" class="space-y-4 bg-[color:var(--color-brand-light)] rounded-xl p-6">
+      <h2 class="text-2xl font-semibold text-[color:var(--color-brand-primary)]">9. Changes to Terms</h2>
+      <p class="leading-relaxed">We reserve the right to modify these terms at any time. Changes will be effective immediately upon posting to the website. Continued use of our services constitutes acceptance of the new terms.</p>
+    </div>
+
+    <div id="contact" class="space-y-4 rounded-xl p-6">
+      <h2 class="text-2xl font-semibold text-[color:var(--color-brand-primary)]">10. Contact Information</h2>
+      <p class="leading-relaxed">For questions about these Terms and Conditions, please contact us at:</p>
+      <ul class="list-disc pl-6 space-y-1 text-[color:var(--color-font-main)]">
+        <li>Email: support@aimarketingplatform.app</li>
+        <li>Address: 11 Solomon Street, Shropshire TF12</li>
+      </ul>
+    </div>
+
+  </section>
+
 </div>
 {% endblock %}

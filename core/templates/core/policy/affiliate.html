@@ -4,62 +4,70 @@
 {% block title %}Affiliate, Sponsorship, and Advertising Policy - AI Marketing Platform{% endblock %}
 
 {% block content %}
-<div class="px-6 md:px-16 py-12 text-[--color-font-main] space-y-16">
+<div class="px-6 md:px-16 py-16 text-[color:var(--color-font-main)] space-y-24">
+
   {% include "core/components/breadcrumb.html" %}
-    <!-- Header -->
-    <div class="mb-12">
-      <h1 class="text-4xl font-bold mb-8">Affiliate, Sponsorship, and Advertising Policy</h1>
-      <p class="text-text/80 mb-6">Last updated: January 2025</p>
-      <div class="bg-primary p-6 rounded-lg">
-        <h2 class="text-lg font-semibold mb-4">Contents:</h2>
-        <ol class="space-y-2">
-          <li><a href="#affiliate" class="text-accent hover:text-text transition-colors">Affiliate Links</a></li>
-          <li><a href="#sponsorship" class="text-accent hover:text-text transition-colors">Sponsorships</a></li>
-          <li><a href="#advertising" class="text-accent hover:text-text transition-colors">Advertising</a></li>
-          <li><a href="#transparency" class="text-accent hover:text-text transition-colors">Transparency Commitment</a></li>
-          <li><a href="#changes" class="text-accent hover:text-text transition-colors">Changes to This Policy</a></li>
-          <li><a href="#contact" class="text-accent hover:text-text transition-colors">Contact Information</a></li>
-        </ol>
-      </div>
+
+  <!-- Header -->
+  <header class="max-w-3xl mx-auto text-center space-y-6">
+    <h1 class="text-3xl md:text-4xl font-semibold text-[color:var(--color-brand-primary)] leading-snug">
+      Affiliate, Sponsorship, and Advertising Policy
+    </h1>
+    <p class="text-sm text-[color:var(--color-brand-accent)]">Last updated: January 2025</p>
+  </header>
+
+  <!-- Contents -->
+  <section class="max-w-3xl mx-auto bg-[color:var(--color-brand-light)]  p-8 shadow-sm space-y-4">
+    <h2 class="text-lg font-semibold text-[color:var(--color-brand-primary)]">Contents</h2>
+    <ol class="list-decimal list-inside space-y-2 text-[color:var(--color-font-main)]">
+      <li><a href="#affiliate" class="text-[color:var(--color-brand-accent)] hover:text-[color:var(--color-brand-dark)] transition">Affiliate Links</a></li>
+      <li><a href="#sponsorship" class="text-[color:var(--color-brand-accent)] hover:text-[color:var(--color-brand-dark)] transition">Sponsorships</a></li>
+      <li><a href="#advertising" class="text-[color:var(--color-brand-accent)] hover:text-[color:var(--color-brand-dark)] transition">Advertising</a></li>
+      <li><a href="#transparency" class="text-[color:var(--color-brand-accent)] hover:text-[color:var(--color-brand-dark)] transition">Transparency Commitment</a></li>
+      <li><a href="#changes" class="text-[color:var(--color-brand-accent)] hover:text-[color:var(--color-brand-dark)] transition">Changes to This Policy</a></li>
+      <li><a href="#contact" class="text-[color:var(--color-brand-accent)] hover:text-[color:var(--color-brand-dark)] transition">Contact Information</a></li>
+    </ol>
+  </section>
+
+  <!-- Policy Sections -->
+  <section class="max-w-3xl mx-auto space-y-16">
+
+    <div id="affiliate" class="space-y-4  p-6 shadow-sm">
+      <h2 class="text-2xl font-semibold text-[color:var(--color-brand-primary)]">1. Affiliate Links</h2>
+      <p class="leading-relaxed">This website may contain affiliate links. If you click on an affiliate link and make a purchase, we may receive a small commission at no additional cost to you. These commissions help support the operation of this website and allow us to continue providing resources and content.</p>
+      <p class="leading-relaxed">We only recommend products, tools, or services that we believe provide value to our readers. However, you should always perform your own research before making a purchase decision.</p>
     </div>
 
-    <!-- Content -->
-    <div class="prose prose-invert max-w-none">
-      <section id="affiliate" class="mb-12">
-        <h2 class="text-2xl font-bold mb-4">1. Affiliate Links</h2>
-        <p class="mb-4">This website may contain affiliate links. If you click on an affiliate link and make a purchase, we may receive a small commission at no additional cost to you. These commissions help support the operation of this website and allow us to continue providing resources and content.</p>
-        <p class="mb-4">We only recommend products, tools, or services that we believe provide value to our readers. However, you should always perform your own research before making a purchase decision.</p>
-      </section>
-
-      <section id="sponsorship" class="mb-12">
-        <h2 class="text-2xl font-bold mb-4">2. Sponsorships</h2>
-        <p class="mb-4">From time to time, we may publish sponsored content. Sponsored posts or resources will always be clearly disclosed at the beginning of the content. We work only with partners whose values align with our audience, but inclusion of sponsored content does not constitute an endorsement of the sponsor’s products or services.</p>
-      </section>
-
-      <section id="advertising" class="mb-12">
-        <h2 class="text-2xl font-bold mb-4">3. Advertising</h2>
-        <p class="mb-4">This website may display third-party advertisements. These ads may be delivered by ad networks or partners and are clearly marked as advertisements. We do not control all aspects of the ads shown and cannot guarantee the claims or offers made by advertisers.</p>
-      </section>
-
-      <section id="transparency" class="mb-12">
-        <h2 class="text-2xl font-bold mb-4">4. Transparency Commitment</h2>
-        <p class="mb-4">We believe in honesty and transparency. Whenever there is a financial relationship tied to the content you see on this website, it will be clearly disclosed. Our goal is to provide useful information while being open about how this site is supported.</p>
-      </section>
-
-      <section id="changes" class="mb-12">
-        <h2 class="text-2xl font-bold mb-4">5. Changes to This Policy</h2>
-        <p class="mb-4">We may update this Affiliate, Sponsorship, and Advertising Policy from time to time. Changes will be effective immediately upon posting. Continued use of our website indicates acceptance of the updated policy.</p>
-      </section>
-
-      <section id="contact" class="mb-12">
-        <h2 class="text-2xl font-bold mb-4">6. Contact Information</h2>
-        <p class="mb-4">If you have questions about this policy, please contact us at:</p>
-        <ul class="list-disc pl-6 mb-4">
-          <li>Email: support@aimarketingplatform.app</li>
-          <li>Address: 11 Solomon Street, Shropshire TF12</li>
-        </ul>
-      </section>
+    <div id="sponsorship" class="space-y-4  p-6 shadow-sm bg-[color:var(--color-brand-light)]">
+      <h2 class="text-2xl font-semibold text-[color:var(--color-brand-primary)]">2. Sponsorships</h2>
+      <p class="leading-relaxed">From time to time, we may publish sponsored content. Sponsored posts or resources will always be clearly disclosed at the beginning of the content. We work only with partners whose values align with our audience, but inclusion of sponsored content does not constitute an endorsement of the sponsor’s products or services.</p>
     </div>
-  </div>
+
+    <div id="advertising" class="space-y-4  p-6 shadow-sm">
+      <h2 class="text-2xl font-semibold text-[color:var(--color-brand-primary)]">3. Advertising</h2>
+      <p class="leading-relaxed">This website may display third-party advertisements. These ads may be delivered by ad networks or partners and are clearly marked as advertisements. We do not control all aspects of the ads shown and cannot guarantee the claims or offers made by advertisers.</p>
+    </div>
+
+    <div id="transparency" class="space-y-4  p-6 shadow-sm bg-[color:var(--color-brand-light)]">
+      <h2 class="text-2xl font-semibold text-[color:var(--color-brand-primary)]">4. Transparency Commitment</h2>
+      <p class="leading-relaxed">We believe in honesty and transparency. Whenever there is a financial relationship tied to the content you see on this website, it will be clearly disclosed. Our goal is to provide useful information while being open about how this site is supported.</p>
+    </div>
+
+    <div id="changes" class="space-y-4  p-6 shadow-sm">
+      <h2 class="text-2xl font-semibold text-[color:var(--color-brand-primary)]">5. Changes to This Policy</h2>
+      <p class="leading-relaxed">We may update this Affiliate, Sponsorship, and Advertising Policy from time to time. Changes will be effective immediately upon posting. Continued use of our website indicates acceptance of the updated policy.</p>
+    </div>
+
+    <div id="contact" class="space-y-4  p-6 shadow-sm bg-[color:var(--color-brand-light)]">
+      <h2 class="text-2xl font-semibold text-[color:var(--color-brand-primary)]">6. Contact Information</h2>
+      <p class="leading-relaxed">If you have questions about this policy, please contact us at:</p>
+      <ul class="list-disc pl-6 space-y-1 text-[color:var(--color-font-main)]">
+        <li>Email: support@aimarketingplatform.app</li>
+        <li>Address: 11 Solomon Street, Shropshire TF12</li>
+      </ul>
+    </div>
+
+  </section>
+
 </div>
 {% endblock %}
