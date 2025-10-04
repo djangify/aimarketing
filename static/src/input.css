@@ -21,17 +21,31 @@
 
 /* Tailwind v4 theme color variables */
 @theme {
+  /* Core brand palette */
   --color-brand-primary: #227c81;
   /* teal-green */
   --color-brand-secondary: #606060;
-  /* new muted blue */
+  /* muted gray */
   --color-brand-accent: #4974a5;
-  /* gray accent */
+  /* blue-gray accent */
   --color-brand-dark: #004040;
   /* dark teal */
   --color-brand-light: #f8fafc;
   /* soft light background */
 
+  /* Font */
   --color-font-main: #222222;
-  /* primary text color */
+  /* primary text */
+
+  /* Extended palette for badges and alerts */
+  --color-badge-rose: #f4c2c2;
+  /* light rose pink */
+  --color-badge-mint: #b7e4c7;
+  /* mint green */
+  --color-badge-yellow: #fff7b2;
+  /* pale yellow */
+  --color-badge-red-light: #f8d7da;
+  /* light red for SALE */
+  --color-badge-red-text: #7a1c1c;
+  /* readable red text */
 }

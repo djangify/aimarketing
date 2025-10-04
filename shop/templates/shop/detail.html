@@ -1,224 +1,402 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block content %}
-<div class="px-6 md:px-16 py-12 text-[--color-font-main] space-y-16">
-  <div class="container mx-auto px-4 py-12">
+{% block open_graph_tags %}
+  <meta property="og:title" content="{{ product.meta_title|default:product.title }}" />
+  {% if product.meta_description %}
+    <meta property="og:description" content="{{ product.meta_description|truncatewords:25 }}" />
+  {% else %}
+    <meta property="og:description" content="{{ product.description|truncatewords:25 }}" />
+  {% endif %}
+  <meta property="og:image" content="{{ product.get_image_url|default:'https://aimarketingplatform.app/static/images/placeholder.png' }}" />
+  <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+  <meta property="og:type" content="product" />
 
-    <!-- Breadcrumb -->
+  <!-- Twitter (X) Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{ product.meta_title|default:product.title }}" />
+  {% if product.meta_description %}
+    <meta name="twitter:description" content="{{ product.meta_description|truncatewords:25 }}" />
+  {% else %}
+    <meta name="twitter:description" content="{{ product.description|truncatewords:25 }}" />
+  {% endif %}
+  <meta name="twitter:image" content="{{ product.get_image_url|default:'https://aimarketingplatform.app/static/images/placeholder.png' }}" />
+{% endblock %}
+
+{% block extra_head %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "{{ product.title|escapejs }}",
+  "image": [
+    "{{ product.get_image_url|default:'https://aimarketingplatform.app/static/images/placeholder.png' }}"
+  ],
+  "description": "{{ product.meta_description|default:product.description|truncatewords:30|escapejs }}",
+  "sku": "{{ product.public_id|default:product.id }}",
+  "brand": {
+    "@type": "Brand",
+    "name": "AI Marketing Platform"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "{{ request.build_absolute_uri }}",
+    "priceCurrency": "GBP",
+    "price": "{{ product.current_price }}",
+    "availability": "https://schema.org/{% if product.is_active %}InStock{% else %}OutOfStock{% endif %}"
+  }
+  {% if product.total_reviews > 0 %},
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "{{ product.average_rating|floatformat:1 }}",
+    "reviewCount": "{{ product.total_reviews }}"
+  },
+  "review": [
+    {% for review in product.reviews.all %}
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "{{ review.user.get_full_name|default:review.user.username|escapejs }}"
+      },
+      "datePublished": "{{ review.created|date:'Y-m-d' }}",
+      "reviewBody": "{{ review.comment|truncatewords:40|escapejs }}",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "{{ review.rating }}",
+        "bestRating": "5",
+        "worstRating": "1"
+      }
+    }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ]
+  {% endif %}
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="min-h-screen mt-16 bg-[color:var(--color-brand-light)]">
+  <div class="container mx-auto px-4 py-12">
     {% include 'components/breadcrumb.html' %}
 
-    <!-- Main Product Section -->
-    <div class="shop-detail">
-
-      <!-- LEFT: Sidebar -->
-      <div class="shop-detail-image">
-
-        <!-- Main Product Image -->
-        <img
-          id="main-product-image"
-          src="{{ product.get_image_url|default:'/static/images/placeholder.png' }}"
-          alt="{{ product.title }}"
-        />
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-start lg:gap-20">
+    <!-- LEFT COLUMN -->
+    <div class="w-full lg:w-5/12 px-4 space-y-6">
+        <div class="relative bg-[color:var(--color-brand-light)] overflow-hidden rounded-lg">
+          <img
+            id="main-product-image"
+            src="{{ product.get_image_url|default:'/static/images/placeholder.png' }}"
+            alt="{{ product.title }}"
+            class="block h-auto w-full max-w-md object-contain mx-auto transition duration-300"
+          />
+          <div class="absolute top-4 left-4">
+            <span class="px-3 py-1 text-sm font-semibold rounded-full bg-[color:var(--color-brand-secondary)] text-white">
+              {{ product.get_product_type_display }}
+            </span>
+          </div>
+          {% if product.is_on_sale %}
+           <div class="absolute top-4 right-4">
+              <span class="px-3 py-1 text-sm font-bold bg-[color:var(--color-badge-rose)] text-[color:var(--color-font-main)] rounded-md shadow-sm">
+                SALE
+              </span>
+            </div>
+          {% endif %}
+        </div>
 
         <!-- Thumbnails -->
-        <div class="shop-thumbnails">
+        <div class="flex mt-4 gap-4 justify-center">
           <img
             src="{{ product.get_image_url|default:'/static/images/placeholder.png' }}"
             data-src="{{ product.get_image_url|default:'/static/images/placeholder.png' }}"
             alt="{{ product.title }}"
-            class="product-thumbnail active-thumbnail"
+            class="w-20 h-20 object-cover border-2 border-[color:var(--color-brand-primary)] rounded hover:shadow-md cursor-pointer product-thumbnail active-thumbnail"
           />
           {% if product.image %}
-          <img src="{{ product.image.url }}" data-src="{{ product.image.url }}" alt="{{ product.title }}" class="product-thumbnail" />
+          <img
+            src="{{ product.image.url }}"
+            data-src="{{ product.image.url }}"
+            alt="{{ product.title }}"
+            class="w-20 h-20 object-cover border border-[color:var(--color-brand-accent)] rounded hover:shadow-md cursor-pointer product-thumbnail"
+          />
           {% endif %}
           {% for img in product.images.all %}
-          <img src="{{ img.image.url }}" data-src="{{ img.image.url }}" alt="{{ img.alt_text|default:'Additional product image' }}" class="product-thumbnail" />
+          <img
+            src="{{ img.image.url }}"
+            data-src="{{ img.image.url }}"
+            alt="{{ img.alt_text|default:'Additional product image' }}"
+            class="w-20 h-20 object-cover border border-[color:var(--color-brand-accent)] rounded hover:shadow-md cursor-pointer product-thumbnail"
+          />
           {% endfor %}
         </div>
 
-        <!-- Cart + Wishlist -->
-        <div class="shop-actions">
-          <!-- Row 1: Quantity + Add to Cart -->
-          <form method="post" action="{% url 'shop:cart_add' product.id %}" class="flex items-center gap-4">
+        <!-- Quantity + Add to Cart -->
+        <div class="pt-6 space-y-6">
+          {% if product.status == "publish" %}
+          <form method="post" action="{% url 'shop:cart_add' product.id %}" class="space-y-4">
             {% csrf_token %}
-            <div class="flex items-center gap-2">
-              <label for="quantity" class="whitespace-nowrap">Qty:</label>
-              <input type="number" id="quantity" name="quantity" value="1" min="1" max="10"
-                    class="w-16 h-11 text-center border rounded">
+            <div class="flex items-center space-x-4">
+              <label class="text-sm font-medium text-[color:var(--color-font-main)]">Quantity:</label>
+              <input type="number" name="quantity" value="1" min="1" max="10"
+                     class="w-16 px-3 py-2 border border-[color:var(--color-brand-accent)] rounded text-center">
             </div>
-            <button type="submit" class="btn-primary h-11">Add to Cart</button>
-          </form>
-
-          <!-- Row 2: Wishlist -->
-          <form method="post" action="{% url 'accounts:add_to_wishlist' product.slug %}" class="mt-3">
-            {% csrf_token %}
-            <button type="submit" class="btn-accent w-full">
-              {% if product in user.profile.favourite_products.all %}
-                  ❤️ Remove from Wish List
-              {% else %}
-                  🤍 Add To Wish List
-              {% endif %}
+            <button type="submit"
+              class="w-full bg-[color:var(--color-brand-primary)] hover:bg-[color:var(--color-brand-secondary)] text-[color:var(--color-brand-light)] font-bold py-4 px-6 rounded-xl transition duration-300 hover:scale-105 shadow-lg">
+              Add to Cart
             </button>
           </form>
-        </div>
+          {% else %}
+          <div class="text-[color:var(--color-brand-dark)] bg-[color:var(--color-brand-light)] border border-[color:var(--color-brand-accent)] p-4 rounded">
+            This product is <strong>{{ product.get_status_display }}</strong>.
+          </div>
+          {% endif %}
 
-        <!-- Download Preview -->
-        {% if product.get_preview_url %}
-        <div class="shop-extras mt-6">
-          <h3>Download Preview of {{ product.title }}</h3>
-          <a href="{{ product.get_preview_url }}" class="btn-secondary" download>
-            Download Product Preview
-          </a>
+          <!-- Wishlist / Share -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <button
+              class="favourite-btn bg-[color:var(--color-brand-secondary)] w-full text-[color:var(--color-brand-light)] py-3 rounded-xl shadow-md font-semibold hover:bg-[color:var(--color-brand-primary)] transition"
+              data-product-slug="{{ product.slug }}"
+              data-action-url="{% url 'accounts:add_to_wishlist' product.slug %}"
+              data-csrf="{{ csrf_token }}"
+            >
+              {% if product in user.profile.favourite_products.all %}
+                ❤️ Remove from Wish List
+              {% else %}
+                🤍 Add To Wish List
+              {% endif %}
+            </button>
+
+            <div class="relative">
+              <button id="share-toggle" type="button"
+                      class="flex items-center justify-center w-full px-4 py-3 border border-[color:var(--color-brand-accent)] rounded-lg text-[color:var(--color-font-main)] hover:bg-[color:var(--color-brand-light)] transition">
+                🔗 Share
+              </button>
+              <div id="share-options" class="absolute z-10 hidden bg-[color:var(--color-brand-light)] border border-[color:var(--color-brand-accent)] rounded-lg shadow-md mt-2 w-64">
+                <ul class="text-sm text-[color:var(--color-font-main)] p-2">
+                  <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" class="block px-4 py-2 hover:bg-[color:var(--color-brand-secondary)] hover:text-white">📘 Facebook</a></li>
+                  <li><a href="https://x.com/intent/tweet?url={{ request.build_absolute_uri }}&text={{ product.title }}" target="_blank" class="block px-4 py-2 hover:bg-[color:var(--color-brand-secondary)] hover:text-white">🐦 X</a></li>
+                  <li><a href="https://wa.me/?text={{ product.title }} {{ request.build_absolute_uri }}" target="_blank" class="block px-4 py-2 hover:bg-[color:var(--color-brand-secondary)] hover:text-white">📱 WhatsApp</a></li>
+                  <li><a href="mailto:?subject={{ product.title }}&body=Check out this product: {{ request.build_absolute_uri }}" class="block px-4 py-2 hover:bg-[color:var(--color-brand-secondary)] hover:text-white">✉️ Email</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- Download preview -->
+      {% if product.get_preview_url %}
+      <div class="mt-12 mb-8 p-6 rounded-lg border border-[color:var(--color-brand-accent)]/30">
+        <h3 class="text-xl font-semibold mb-4 flex items-center text-[color:var(--color-font-main)]">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-[color:var(--color-brand-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          Download Preview Of {{ product.title }}
+        </h3>
+        <a href="{{ product.get_preview_url }}" download class="inline-flex items-center px-6 py-3 bg-[color:var(--color-brand-light)] border border-[color:var(--color-brand-accent)] rounded-md hover:bg-[color:var(--color-brand-secondary)] hover:text-white transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+          </svg>
+          Download Product Preview
+        </a>
+      </div>
+      {% endif %}
+
+      <!-- Purchased note + badges -->
+      <div class="border-t border-[color:var(--color-brand-accent)] pt-6">
+        {% if has_purchased and order_item %}
+        <div class="bg-[color:var(--color-brand-light)] border border-[color:var(--color-brand-primary)] text-[color:var(--color-brand-dark)] font-semibold p-4 rounded mb-4">
+          ✅ You purchased this product on {{ order_item.order.created|date:"j M Y" }} (Order ID: {{ order_item.order.order_id }})
         </div>
         {% endif %}
-
-        <!-- Video Preview -->
-        {% if product.video_url %}
-        <div class="shop-extras mt-6">
-          <h3>Video Preview</h3>
-          <div class="aspect-video">
-            <iframe src="{{ product.video_url }}" frameborder="0" allowfullscreen class="w-full h-64 rounded"></iframe>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm text-[color:var(--color-font-main)]">
+          <div class="flex items-center"><span class="text-green-500 mr-2">✔</span>Secure Payment</div>
+          <div class="flex items-center"><span class="text-blue-500 mr-2">↩</span>Easy Downloads</div>
+          <div class="flex items-center">
+            <svg class="w-5 h-5 text-purple-600 mr-2" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5.121 17.804A9.003 9.003 0 0112 15c2.157 0 4.124.763 5.879 2.032M15 11a3 3 0 11-6 0 3 3 0 016 0zM12 3.75a8.25 8.25 0 100 16.5 8.25 8.25 0 000-16.5z" />
+            </svg>
+            <span><a href="{% url 'accounts:register' %}" class="hover:text-[color:var(--color-brand-primary)]">Register Here</a></span>
           </div>
         </div>
-        {% endif %}
-
-        <!-- Disclaimer -->
-        <div class="shop-extras mt-6">
-          <h3>Disclaimer</h3>
-          <p class="prose text-sm">
-            We want to keep our guides affordable and accessible. To do that, every copy includes
-            a small, invisible digital watermark linked to your order. It does not affect how
-            the guide looks or functions. This helps protect our work from being shared around
-            the internet, while keeping our prices low. Thank you for respecting this and
-            supporting independent creators.
+      </div>
+          
+          <!-- Disclaimer -->
+          <p class="mt-6 pt-4 border-t border-[color:var(--color-brand-accent)] text-[color:var(--color-font-main)] text-sm leading-relaxed">
+            <strong>DISCLAIMER:</strong> We want to keep our guides affordable and accessible. Every copy includes a small, invisible digital watermark linked to your order. It does not affect how you use the product but helps protect our work. Thank you for supporting independent creators.
           </p>
+          
+          {% include 'components/videos.html' %}
         </div>
+        
       </div>
 
-      <!-- RIGHT: Product Info -->
-      <div class="shop-detail-info leading-normal">
-        <h1>{{ product.title }}</h1>
+      <!-- RIGHT COLUMN -->
+      <div class="pl-24 lg:col-span-2 space-y-6">
+        <div>
+          <span class="inline-block bg-[color:var(--color-brand-light)] text-[color:var(--color-brand-accent)] px-3 py-1 rounded-full text-sm font-medium mb-2">
+            {{ product.category.name }}
+          </span>
+          <h1 class="text-3xl lg:text-4xl font-bold text-[color:var(--color-brand-dark)] mb-4">
+            {{ product.title }}
+          </h1>
+        </div>
 
-        <!-- Price -->
-        <div class="shop-price">
-          £{{ product.current_price }}
+        <div class="flex items-center space-x-4">
+          <span class="text-4xl font-bold text-[color:var(--color-brand-primary)]">£{{ product.current_price }}</span>
           {% if product.is_on_sale %}
-          <span class="old-price">£{{ product.price }}</span>
+          <span class="text-2xl text-[color:var(--color-brand-accent)] line-through ml-3">£{{ product.price }}</span>
           {% endif %}
         </div>
 
-        <!-- Rating -->
-        <div class="shop-rating">
-          <div>
+        <div class="flex items-center gap-1 mt-1">
+          <div class="flex">
             {% for i in "12345"|make_list %}
               {% if forloop.counter <= product.average_rating %}
-                ⭐
+                <svg class="w-5 h-5 text-[color:var(--color-brand-secondary)] fill-[color:var(--color-brand-secondary)]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.782L19.868 24 12 19.896 4.132 24l2.934-9.008L1.132 9.21l8.2-1.192z"/></svg>
               {% else %}
-                ☆
+                <svg class="w-5 h-5 text-[color:var(--color-brand-accent)]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.782L19.868 24 12 19.896 4.132 24l2.934-9.008L1.132 9.21l8.2-1.192z"/></svg>
               {% endif %}
             {% endfor %}
           </div>
-          <span>({{ product.total_reviews }} review{{ product.total_reviews|pluralize }})</span>
+          <span class="ml-2 text-sm text-[color:var(--color-font-main)]">
+            ({{ product.total_reviews }} review{{ product.total_reviews|pluralize }})
+          </span>
         </div>
 
-        <!-- Short Description -->
-        <div class="mb-4">{{ product.description|safe }}</div>
-
-        <!-- Accordion: Product Info -->
-        <div class="accordion-header" data-target="product-info">
-          <h3>Product Information</h3>
-          <span class="accordion-icon">▼</span>
+        <div class="max-w-none text-[color:var(--color-font-main)] leading-relaxed">
+          {{ product.description|safe }}
         </div>
-        <div id="product-info" class="accordion-content">
-          {{ product.long_description|safe }}
-          <div class="shop-actions">
-            <form method="post" action="{% url 'shop:cart_add' product.id %}" class="flex items-center gap-4">
-              {% csrf_token %}
-              <div class="flex items-center gap-2">
-                <label for="quantity" class="whitespace-nowrap">Qty:</label>
-                <input type="number" id="quantity" name="quantity" value="1" min="1" max="10"
-                      class="w-16 h-11 text-center border rounded">
-              </div>
-              <button type="submit" class="btn-primary h-11">Add to Cart</button>
-            </form>
+
+        <!-- Accordion -->
+        <div class="mt-6 border-t border-[color:var(--color-brand-accent)] pt-6">
+          <div class="accordion-header flex items-center justify-between cursor-pointer" data-target="product-long-description">
+            <h3 class="text-lg font-semibold text-[color:var(--color-brand-primary)]">More Product Info Here</h3>
+            <svg class="w-5 h-5 transition-transform accordion-icon text-[color:var(--color-brand-accent)]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
           </div>
 
+          <div id="product-long-description" class="hidden mt-4 text-[color:var(--color-font-main)] leading-relaxed">
+            {{ product.long_description|safe }}
+          </div>
         </div>
       </div>
-    </div> <!-- END shop-detail -->
+    </div>
 
-    <!-- Reviews Section -->
-    <div class="shop-reviews mt-16">
-      <h2 class="text-2xl font-bold text-gray-900 mb-6">Customer Reviews</h2>
+      <!--add a review-->
       {% include 'components/reviews.html' %}
-    </div>
 
-    <!-- Related Products Section -->
-    {% if related_products %}
-    <div class="shop-related mt-20">
-      <h2 class="text-2xl font-bold text-gray-900 mb-8">Related Products</h2>
-      <div class="shop-grid-3">
-        {% for item in related_products %}
-        <div class="featured-card">
-          <a href="{{ item.get_absolute_url }}">
-            {% if item.get_image_url %}
-            <img src="{{ item.get_image_url }}" alt="{{ item.title }}" class="shop-image">
-            {% else %}
-            <div class="w-full h-48 bg-slate-100 flex items-center justify-center text-slate-500">
-              No Image
+      {% if related_products %}
+      <section class="mt-20">
+        <h2 class="text-2xl font-bold text-gray-900 mb-8">Related Products</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {% for item in related_products %}
+          <a href="{{ item.get_absolute_url }}" class="group block">
+            <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+              <div class="relative aspect-square overflow-hidden">
+                <img src="{{ item.get_image_url|default:'/static/images/placeholder.png' }}"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                {% if item.is_on_sale %}
+                <span class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
+                  SALE
+                </span>
+                {% endif %}
+              </div>
+              <div class="p-4">
+                <h3 class="font-semibold text-gray-900 mb-2 group-hover:text-teal-700 transition-colors">
+                  {{ item.title }}
+                </h3>
+                <div class="flex items-center space-x-2">
+                  <span class="text-lg font-bold text-gray-900">${{ item.current_price }}</span>
+                  {% if item.is_on_sale %}
+                  <span class="text-sm text-gray-500 line-through">${{ item.price }}</span>
+                  {% endif %}
+                </div>
+              </div>
             </div>
-            {% endif %}
           </a>
-          <div class="card-content">
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">
-              <a href="{{ item.get_absolute_url }}" class="hover:text-accent">
-                {{ item.title }}
-              </a>
-            </h3>
-            {% comment %} <p class="text-sm text-gray-600 mb-3">
-              {{ item.description|striptags|truncatewords:20 }}
-            </p> {% endcomment %}
-            <div class="flex items-center justify-between">
-              <span class="text-lg font-bold text-gray-900">£{{ item.current_price }}</span>
-              {% if item.is_on_sale %}
-              <span class="text-sm text-slate-500 line-through">£{{ item.price }}</span>
-              {% endif %}
-            </div>
-          </div>
+          {% endfor %}
         </div>
-        {% endfor %}
-      </div>
+      </section>
+      {% endif %}
     </div>
-    {% endif %}
-
   </div>
 </div>
 
 <script>
-/* Thumbnail switching */
 document.addEventListener("DOMContentLoaded", function () {
     const mainImage = document.getElementById("main-product-image");
     const thumbnails = document.querySelectorAll(".product-thumbnail");
+
     thumbnails.forEach((thumb) => {
         thumb.addEventListener("click", function () {
-            thumbnails.forEach(t => t.classList.remove("active-thumbnail"));
-            this.classList.add("active-thumbnail");
-            const newSrc = this.getAttribute("data-src");
-            if (newSrc) mainImage.setAttribute("src", newSrc);
-        });
-    });
-});
+            // Remove active class from all thumbnails
+            thumbnails.forEach(t => {
+                t.classList.remove("active-thumbnail", "border-purple-500", "border-2");
+                t.classList.add("border");
+            });
 
-/* Accordion toggle */
-document.addEventListener("DOMContentLoaded", function () {
-    const headers = document.querySelectorAll(".accordion-header");
-    headers.forEach(header => {
-        header.addEventListener("click", function () {
-            const target = document.getElementById(this.dataset.target);
-            target.classList.toggle("active");
+            // Add active class to clicked thumbnail
+            this.classList.add("active-thumbnail", "border-purple-500", "border-2");
+            this.classList.remove("border");
+
+            // Update main image
+            const newSrc = this.getAttribute("data-src");
+            if (newSrc) {
+                mainImage.setAttribute("src", newSrc);
+            }
         });
     });
 });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const shareToggle = document.getElementById("share-toggle");
+    const shareOptions = document.getElementById("share-options");
+
+    if (shareToggle) {
+        shareToggle.addEventListener("click", function () {
+            shareOptions.classList.toggle("hidden");
+        });
+
+        document.addEventListener("click", function (e) {
+            if (!shareToggle.contains(e.target) && !shareOptions.contains(e.target)) {
+                shareOptions.classList.add("hidden");
+            }
+        });
+    }
+});
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const labels = document.querySelectorAll("#star-rating label");
+
+    labels.forEach(label => {
+      label.addEventListener("click", function () {
+        const ratingValue = this.getAttribute("data-rating");
+
+        // Set the corresponding radio input to checked
+        const radio = document.getElementById(`rating${ratingValue}`);
+        if (radio) radio.checked = true;
+
+        // Reset all stars first
+        labels.forEach(l => {
+          l.querySelector("svg").classList.remove("fill-yellow-400", "text-yellow-400");
+          l.querySelector("svg").classList.add("fill-gray-300", "text-gray-300");
+        });
+
+        // Highlight stars up to the one selected
+        for (let i = 0; i < ratingValue; i++) {
+          const star = document.querySelector(`#rating${i + 1} + label svg`);
+          if (star) {
+            star.classList.remove("fill-gray-300", "text-gray-300");
+            star.classList.add("fill-yellow-400", "text-yellow-400");
+          }
+        }
+      });
+    });
+  });
+</script>
+
+{% block scripts %}
+<script src="{% static 'js/favourite-products.js' %}"></script>
+{% endblock %}
 {% endblock %}
