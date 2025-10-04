@@ -122,7 +122,7 @@ SESSION_COOKIE_AGE = 60 * 60 * 24 * 7  # 1 week
 SESSION_SAVE_EVERY_REQUEST = True
 CORS_SUPPORT_CREDENTIALS = True
 
-DEFAULT_FROM_EMAIL = "noreply@aimarketingplatform.com"
+DEFAULT_FROM_EMAIL = "noreply@aimarketingplatform.app"
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
 
@@ -146,9 +146,9 @@ EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD", default="")
 EMAIL_USE_TLS = env("EMAIL_USE_TLS", default=True)
 EMAIL_USE_SSL = env.bool("EMAIL_USE_SSL", default=False)
 DEFAULT_FROM_EMAIL = env(
-    "DEFAULT_FROM_EMAIL", default="noreply@aimarketingplatform.com"
+    "DEFAULT_FROM_EMAIL", default="noreply@aimarketingplatform.app"
 )
-SUPPORT_EMAIL = env("SUPPORT_EMAIL", default="noreply@aimarketingplatform.com")
+SUPPORT_EMAIL = env("SUPPORT_EMAIL", default="noreply@aimarketingplatform.app")
 
 
 TINYMCE_DEFAULT_CONFIG = {
