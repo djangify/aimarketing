@@ -4,26 +4,32 @@
 {% block title %}Digital Marketing & Ecommerce Specialist{% endblock %}
 
 {% block content %}
-<header class="p-6 bg-primary text-text relative md:p-16 flex flex-col gap-y-5 lg:gap-y-20">
-    {% include 'core/hero.html' %}
+<header class="p-6 bg-[--color-brand-primary] text-[--color-brand-light] relative md:p-16 flex flex-col gap-y-5 lg:gap-y-20">
+  {% include 'core/hero.html' %}
 </header>
 
 <main>
   <!-- About Section -->
-  <section id="about" class="scroll-mt-16 p-6 flex flex-col gap-y-10 bg-secondary text-text lg:gap-x-10 lg:flex-row-reverse *:basis-full md:p-16 2xl:rounded">
+  <section
+    id="about"
+    class="scroll-mt-16 p-6 flex flex-col gap-y-10 bg-[--color-brand-secondary] text-[--color-font-main] lg:gap-x-10 lg:flex-row-reverse *:basis-full md:p-16 2xl:rounded"
+  >
     <div class="space-y-5 *:space-y-2 lg:self-center xl:space-y-10">
       <div>
-        <h6 class="text-sm pl-6 uppercase relative before before:h-1 before:w-4 before:bg-accent before:top-2/4 before:-translate-y-2/4 before:left-0 lg:text-lg">
+        <h6
+          class="text-sm pl-6 uppercase relative before before:h-1 before:w-4 before:bg-[--color-brand-accent] before:top-2/4 before:-translate-y-2/4 before:left-0 lg:text-lg text-[--color-brand-light]"
+        >
           About
         </h6>
-        <h2 class="text-2xl capitalize font-bold lg:text-3xl">
+        <h2 class="text-2xl capitalize font-bold lg:text-3xl text-[--color-brand-light]">
           Digital Marketing & Ecommerce Support
         </h2>
       </div>
 
-      <div class="space-y-5 *:space-y-2 lg:self-center xl:space-y-10">
+      <div class="space-y-5 *:space-y-2 lg:self-center xl:space-y-10 text-[--color-brand-light]/90">
         <p>
-          Your business deserves simple, reliable systems online. Instead of juggling dozens of tools, you can focus on the essentials: <strong>your website and online delivery platform, ecommerce setup or technical SEO basics</strong>.
+          Your business deserves simple, reliable systems online. Instead of juggling dozens of tools, you can focus on the essentials:
+          <strong>your website and online delivery platform, ecommerce setup or technical SEO basics</strong>.
         </p>
         <p>
           You also have access to <strong>PDF guides and toolkits</strong> that make digital marketing practical and easy to follow. These resources give you clarity, and if you prefer hands-on help, you can book a focused setup service.
@@ -32,48 +38,67 @@
           The goal is always the same: build on what already works for you, simplify where possible, and add what’s missing so your systems run smoothly.
         </p>
         <p>
-          <a class="uppercase p-2 border-2 border-accent self-start hover:text-accent transition-colors cursor-pointer text-xs rounded sm:text-lg mt-8 sm:px-4" href="/about/">About Diane</a>
+          <a
+            class="uppercase p-2 border-2 border-[--color-brand-accent] self-start hover:text-[--color-brand-accent] transition cursor-pointer text-xs rounded sm:text-lg mt-8 sm:px-4 text-[--color-brand-light]"
+            href="/about/"
+          >
+            About Diane
+          </a>
         </p>
       </div>
     </div>
 
     <!-- Services Grid -->
-    <div class="grid gap-5 sm:grid-cols-1 md:grid-cols-2 *:gap-y-5 *:items-center *:border-2 *:border-accent *:rounded *:p-8 ">
+    <div class="grid gap-5 sm:grid-cols-1 md:grid-cols-2 *:gap-y-5 *:items-center *:border-2 *:border-[--color-brand-accent] *:rounded *:p-8 bg-[--color-brand-light] text-[--color-font-main]">
       <div>
-        <figure class="h-12">
-          <img src="{% static 'images/service-1.png' %}" alt="Marketing System Setup" />
+        <figure class="h-12 flex items-center justify-center">
+          <img src="{% static 'images/service-1.png' %}" 
+              alt="Marketing System Setup" 
+              class="h-full w-auto object-contain" />
         </figure>
-        <h5 class="text-xl text-accent text-center">Marketing System Setup</h5>
+        <h5 class="text-xl text-[--color-brand-primary] text-center">
+          Marketing System Setup
+        </h5>
         <p class="text-center">
           Landing pages, funnels, and email sequences ready to go. A complete online system that helps you reach and convert customers.
         </p>
       </div>
 
       <div>
-        <figure class="h-12">
-          <img src="{% static 'images/service-2.png' %}" alt="AI Search Readiness" />
+        <figure class="h-12 flex items-center justify-center">
+          <img src="{% static 'images/service-2.png' %}" 
+              alt="AI Search Readiness" 
+              class="h-full w-auto object-contain" />
         </figure>
-        <h5 class="text-xl text-accent text-center">AI Search Readiness</h5>
+        <h5 class="text-xl text-[--color-brand-primary] text-center">
+          AI Search Readiness
+        </h5>
         <p class="text-center">
           Cluster pages, FAQs, and schema added to your site so your business can be found in AI results and featured snippets.
         </p>
       </div>
 
       <div>
-        <figure class="h-12">
-          <img src="{% static 'images/service-3.png' %}" alt="DIY Resource Shop" />
+        <figure class="h-12 flex items-center justify-center">
+          <img src="{% static 'images/service-3.png' %}" 
+              alt="DIY Resource Shop" 
+              class="h-full w-auto object-contain" />
         </figure>
-        <h5 class="text-xl text-accent text-center">DIY Resource Shop</h5>
+        <h5 class="text-xl text-[--color-brand-primary] text-center">
+          DIY Resource Shop
+        </h5>
         <p class="text-center">
           Step-by-step PDFs, guides, and toolkits that let you take action at your own pace and strengthen your online presence.
         </p>
       </div>
 
       <div>
-        <figure class="h-12">
-          <img src="{% static 'images/service-4.png' %}" alt="Mini Ecommerce Setup" />
+        <figure class="h-12 flex items-center justify-center">
+          <img src="{% static 'images/service-4.png' %}" 
+              alt="Mini Ecommerce Setup" 
+              class="h-full w-auto object-contain" />
         </figure>
-        <h5 class="text-xl text-accent text-center">Mini Ecommerce Setup</h5>
+        <h5 class="text-xl text-[--color-brand-primary] text-center">Mini Ecommerce Setup</h5>
         <p class="text-center">
           Add products, connect checkout, and test payments so your shop is ready to sell quickly and confidently.
         </p>
@@ -86,25 +111,20 @@
     {% include 'contact/contact.html' %}
   </section>
 
-  <!-- Gallery Section -->
-  {% comment %} <section id="gallery" class="scroll-mt-16">
-    {% include 'base/gallery.html' %}
-  </section> {% endcomment %}
-
   <!-- News Section -->
   <section id="news" class="scroll-mt-16">
     {% include 'base/news.html' %}
   </section>
 
   <!-- Motto -->
-  <section class="p-6 mb-8 text-text md:p-16 2xl:rounded">
+  <section class="p-6 mb-8 text-[--color-font-main] md:p-16 2xl:rounded bg-[--color-brand-light]">
     <div class="p-2 flex flex-col gap-y-5 lg:w-3/4 lg:mx-auto lg:relative lg:after lg:after:h-2 lg:after:w-16 lg:after:-bottom-6 lg:after:left-2/4 lg:after:-translate-x-2/4">
       <blockquote cite="https://martinfowler.com/books/refactoring.html">
-        <p class="before:content-['\201C'] after:content-['\201D'] text-xl text-center lg:text-2xl">
+        <p class="before:content-['\201C'] after:content-['\201D'] text-xl text-center lg:text-2xl text-[--color-brand-dark]">
           If you can get today’s work done today, but you do it in such a way that you can’t possibly get tomorrow’s work done tomorrow, then you lose.
         </p>
       </blockquote>
-      <p class="text-center font-bold">
+      <p class="text-center font-bold text-[--color-brand-primary]">
         — Martin Fowler, <cite>Refactoring: Improving the Design of Existing Code</cite>
       </p>
     </div>

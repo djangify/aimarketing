@@ -1,46 +1,60 @@
 {% load static %}
-<section class="flex flex-col bg-primary gap-10 lg:flex-row lg:*:basis-full lg:gap-x-24 xl:gap-x-12">
+<section class="flex flex-col bg-[--color-brand-primary] gap-10 lg:flex-row lg:*:basis-full lg:gap-x-24 xl:gap-x-12 text-[--color-font-main]">
   <div class="flex flex-col gap-y-5 lg:gap-y-12 xl:self-center xl:gap-y-24">
+
+    <!-- Heading -->
     <div class="space-y-2 lg:space-y-4">
-      <h6 class="text-sm pl-6 uppercase relative before before:h-1 before:w-4 before:bg-accent before:top-2/4 before:-translate-y-2/4 before:left-0 lg:text-lg">
+      <h6 class="text-sm pl-6 uppercase relative before before:h-1 before:w-4 before:bg-[--color-brand-accent] before:top-2/4 before:-translate-y-2/4 before:left-0 lg:text-lg text-[--color-brand-light]">
         Build Simple Systems Online
       </h6>
-      <h1 class="text-4xl font-semibold lg:text-7xl">Digital Marketing & Ecommerce Specialist</h1>
+      <h1 class="text-4xl font-semibold lg:text-7xl text-[--color-brand-light]">
+        Digital Marketing & Ecommerce Specialist
+      </h1>
     </div>
 
-    <div class="flex flex-col bg-primary gap-y-5 lg:gap-y-8 xl:pl-16 xl:relative xl:before:h-full xl:before xl:before:w-5 xl:before:top-0 xl:before:left-0">
-      <ul class="flex gap-x-5">
-        <li class="hover:text-accent transition-colors cursor-pointer lg:text-2xl">
+    <!-- Content -->
+    <div class="flex flex-col bg-[--color-brand-primary] gap-y-5 lg:gap-y-8 xl:pl-16 xl:relative xl:before:h-full xl:before xl:before:w-5 xl:before:top-0 xl:before:left-0">
+      <!-- Social Links -->
+      <ul class="flex gap-x-5 text-[--color-brand-light]">
+        <li class="hover:text-[--color-brand-secondary] transition cursor-pointer lg:text-2xl">
           <a href="https://www.linkedin.com/in/todianedev" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
             <i class="fa-brands fa-linkedin"></i>
           </a>
         </li>
-        <li class="hover:text-accent transition-colors cursor-pointer lg:text-2xl">
+        <li class="hover:text-[--color-brand-secondary] transition cursor-pointer lg:text-2xl">
           <a href="https://www.instagram.com/dicorriette" target="_blank" rel="noopener noreferrer" aria-label="Instagram Profile">
             <i class="fa-brands fa-instagram"></i>
           </a>
         </li>
-        <li class="hover:text-accent transition-colors cursor-pointer lg:text-2xl">
+        <li class="hover:text-[--color-brand-secondary] transition cursor-pointer lg:text-2xl">
           <a href="https://github.com/todiane" target="_blank">
             <i class="fa-brands fa-github"></i>
           </a>
         </li>
       </ul>
 
-      <p class="lg:text-lg">
-       Working from home and stuck on what to do next? I’ll help you set up what really matters for growth online. <strong>From website optimisation and landing pages</strong> to <strong>all-in-one platforms and ecommerce</strong>.
-       Learn at your own pace with guides and workbooks, or book a focused setup to have it done for you. Either way, you gain simple, reliable solutions without added complexity.
-      My goal is to make digital marketing practical and sustainable by focusing on the core essentials that lead to steady sales.
+      <!-- Text -->
+      <p class="lg:text-lg text-[--color-brand-light]/90">
+        Working from home and stuck on what to do next? I’ll help you set up what really matters for growth online. 
+        <strong>From website optimisation and landing pages</strong> to <strong>all-in-one platforms and ecommerce</strong>. 
+        Learn at your own pace with guides and workbooks, or book a focused setup to have it done for you. Either way, you gain simple, reliable solutions without added complexity.
+        My goal is to make digital marketing practical and sustainable by focusing on the core essentials that lead to steady sales.
       </p>
 
-      <div class=" flex gap-5">
-        <a class="uppercase btn-secondary" href="/shop/">Visit the Shop</a>
-        <a class="uppercase btn-accent" href="/#contact">Work With Me</a>
+      <!-- Buttons -->
+      <div class="flex gap-5">
+        <a href="/shop/" class="uppercase px-5 py-3 rounded bg-[--color-brand-secondary] text-white hover:bg-[--color-brand-accent] transition">
+          Visit the Shop
+        </a>
+        <a href="/#contact" class="uppercase px-5 py-3 rounded bg-[--color-brand-accent] text-white hover:bg-[--color-brand-secondary] transition">
+          Work With Me
+        </a>
       </div>
     </div>
   </div>
 
-  <figure class="lg:max-w-[550px] ">
-    <img src="{% static 'images/aimarketing.webp' %}" alt="Digital marketing and ecommerce systems for small businesses" />
+  <!-- Image -->
+  <figure class="lg:max-w-[550px]">
+    <img src="{% static 'images/aimarketing-home.webp' %}" alt="Digital marketing and ecommerce systems for small businesses" class="rounded-lg shadow-lg" />
   </figure>
 </section>

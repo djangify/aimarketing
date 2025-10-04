@@ -15,7 +15,6 @@ OLDsettings.py
 
 # Node/Tailwind
 node_modules/
-static/src/
 package-lock.json
 package.json
 tailwind.config.js

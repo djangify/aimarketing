@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+/* Global typography and link defaults */
+@layer base {
+  h1 {
+    @apply text-4xl font-bold text-[--color-brand-primary];
+  }
+
+  h2 {
+    @apply text-3xl font-semibold text-[--color-brand-primary];
+  }
+
+  p {
+    @apply text-base text-[--color-font-main] leading-relaxed;
+  }
+
+  a {
+    @apply text-[--color-brand-secondary] hover:text-[--color-brand-accent] transition-colors;
+  }
+}
+
+/* Tailwind v4 theme color variables */
+@theme {
+  --color-brand-primary: #227c81;
+  /* teal-green */
+  --color-brand-secondary: #606060;
+  /* new muted blue */
+  --color-brand-accent: #4974a5;
+  /* gray accent */
+  --color-brand-dark: #004040;
+  /* dark teal */
+  --color-brand-light: #f8fafc;
+  /* soft light background */
+
+  --color-font-main: #222222;
+  /* primary text color */
+}
