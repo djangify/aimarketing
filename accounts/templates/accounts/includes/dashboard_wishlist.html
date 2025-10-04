@@ -1,6 +1,6 @@
 <!-- Dashboard Wish List -->
 {% if favourite_products %}
-<div class="responsive-grid">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
   {% for product in favourite_products %}
   <div class="responsive-card wishlist-card text-center">
     <img src="{{ product.get_image_url }}" 

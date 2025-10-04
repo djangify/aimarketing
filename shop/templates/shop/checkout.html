@@ -44,7 +44,8 @@
             </div>
         </div>
         {% endif %}
-        <div class="shop-category mt-6">
+        <div class="block bg-[--color-brand-light] border border-[--color-brand-accent]/30 rounded-xl p-6 shadow-sm
+          hover:shadow-md hover:border-[--color-brand-accent] hover:bg-white transition mt-6">
             <h2 class="text-lg font-semibold mb-2 text-gray-800">Customer Details</h2>
             <p class="text-md text-gray-700">
                 <strong>Name:</strong> {{ request.user.first_name }} {{ request.user.last_name }}<br>

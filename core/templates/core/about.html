@@ -4,139 +4,118 @@
 {% block title %}About – Digital Marketing and eCommerce Specialist{% endblock %}
 
 {% block content %}
-<div class="pageformat">
+<div class="p-6 md:p-16 space-y-16">
 
-  <!-- Intro -->
-  <div class="responsive-grid">
-    <!-- Image -->
-    <div class="max-w-md mx-auto md:mx-0">
-      <img src="https://res.cloudinary.com/dtjypy9b9/image/upload/v1747736405/PXL_20240531_104611610_1_dth7q0.webp" 
-           alt="digital marketing specialist helping businesses" 
-           class="w-full h-auto rounded-xl object-cover shadow-md" loading="lazy">
-    </div>
-
-    <!-- Text -->
-    <div class="space-y-6">
-      <h1 class="leading-normal">Your Digital Marketing Specialist</h1>
-      <p class="text-gray-700 text-lg leading-normal">
-        I’m Diane Corriette, a Digital Marketing Specialist. This is me in my snoodie —
-        because that’s how I spend most of my days! I’m over 50, part of the 
-        <i>“We Do Not Care Club”</i>, and I run a lifestyle business with a cozy approach.  
+  <!-- Intro Section -->
+  <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+    <div class="space-y-6 order-2 lg:order-1">
+      <h1 class="text-3xl font-bold text-[--color-brand-primary]">Your Digital Marketing Specialist</h1>
+      <p class="text-[--color-font-main] leading-relaxed">
+        I’m Diane Corriette, a Digital Marketing Specialist. This is me in my snoodie — because that’s how I spend most of my days!  
+        I’m over 50, part of the <i>“We Do Not Care Club”</i>, and I run a lifestyle business with a cozy, practical approach.  
       </p>
-      <p class="text-gray-700 text-lg leading-relaxed">
-        My work is about helping small and local businesses set up online systems, 
-        simplify their tools, and avoid wasting money on subscriptions you don’t need.  
-        Whether you want to DIY or hand it over, I make the tech side easier. <a class="link-underline" href="#contact">Get In Touch</a>
+      <p class="text-[--color-font-main] leading-relaxed">
+        My work is about helping small and local businesses set up online systems, simplify their tools, and avoid wasting money on subscriptions you don’t need.  
+        Whether you want to DIY or hand it over, I make the tech side easier.  
+        <a href="#contact" class="text-[--color-brand-secondary] hover:text-[--color-brand-accent] underline transition">Get In Touch</a>
       </p>
     </div>
-  </div>
+    <div class="order-1 lg:order-2">
+      <img src="https://res.cloudinary.com/dtjypy9b9/image/upload/v1747736405/PXL_20240531_104611610_1_dth7q0.webp"
+           alt="digital marketing specialist helping businesses"
+           class="w-half h-auto rounded-xl object-cover shadow-md" loading="lazy">
+    </div>
+  </section>
 
-  <!-- Who I Am -->
-  <div class="responsive-grid">
-    <div class="rounded-lg border border-indigo-700 p-6 bg-white shadow-sm">
-      <h2 class="text-xl font-semibold text-indigo-700 mb-3">Who I Am</h2>
-      <p class="text-gray-700 leading-relaxed">
-        I started in online marketing and community building back in 2007, grew membership 
-        sites, and ran SEO services with Little Fish Digital Media.  
+  <!-- Certificates Section -->
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+  <img src="{% static 'images/full-stack-software-developer-certificate.png' %}" 
+       alt="Full-stack software developer certificate"
+       class="w-full h-72 object-cover rounded-xl shadow-md" />
+
+  <img src="{% static 'images/digital_marketing_certificate.jpg' %}" 
+       alt="Digital marketing specialist certificate"
+       class="w-full h-72 object-cover rounded-xl shadow-md" />
+</section>
+
+  <!-- Who I Am + How I Work -->
+  <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+    <div class="border border-[--color-brand-primary] rounded-lg bg-[--color-brand-light] p-6 md:p-8 shadow-sm">
+      <h2 class="text-xl font-semibold text-[--color-brand-primary] mb-4">Who I Am</h2>
+      <p class="text-[--color-font-main] leading-relaxed">
+        I started in online marketing and community building back in 2007, grew membership sites, 
+        and ran SEO services with Little Fish Digital Media.  
         In 2014 I trained in Digital Marketing, later qualifying as a full-stack developer.  
-        Today, I combine these skills to support small and local businesses with digital 
-        marketing and ecommerce.  
+        Today, I combine these skills to support small and local businesses with digital marketing and ecommerce.
       </p>
-      <p>
-        <a href="https://aimarketingplatform.app/news/my-technical-va-timeline/" 
-           class="text-blue-600 hover:text-blue-800 inline-flex items-center policy-card" 
-           target="_blank" rel="noopener noreferrer" 
-           aria-label="aimarketingplatform Timeline (opens in a new window)">
-           My Full Timeline
-           <svg class="policy-card" fill="currentColor" viewBox="0 0 20 20">
-             <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-           </svg>
+      <p class="mt-3">
+        <a href="https://aimarketingplatform.app/news/my-technical-va-timeline/"
+           target="_blank" rel="noopener noreferrer"
+           class="text-[--color-brand-secondary] hover:text-[--color-brand-accent] underline transition">
+          My Full Timeline →
         </a>
       </p>
     </div>
 
-    <!-- How I Work -->
-    <div class="rounded-lg border border-indigo-700 p-6 bg-white shadow-sm">
-      <h2 class="text-xl font-semibold text-indigo-700 mb-3">How I Work</h2>
-      <p class="text-gray-700 leading-relaxed">
+    <div class="border border-[--color-brand-primary] rounded-lg bg-[--color-brand-light] p-6 md:p-8 shadow-sm">
+      <h2 class="text-xl font-semibold text-[--color-brand-primary] mb-4">How I Work</h2>
+      <p class="text-[--color-font-main] leading-relaxed">
         I focus on keeping your digital marketing simple and sustainable.  
-        You can choose step-by-step DIY PDFs that guide you through setup, or done-for-you 
-        services where I build it for you.  
-        Either way, your systems will be professional, connected, and AI-search ready.  
+        You can choose step-by-step DIY PDFs that guide you through setup, or done-for-you services where I build it for you.  
+        Either way, your systems will be professional, connected, and AI-search ready.
       </p>
-      <p>
-        <a href="{% url 'shop:product_list' %}" 
-           class="text-blue-600 hover:text-blue-800 inline-flex items-center policy-card" 
-           target="_blank" rel="noopener noreferrer" 
-           aria-label="aimarketingplatform Shop (opens in a new window)">
-           Visit the AI Marketing Platform Shop
-           <svg class="policy-card" fill="currentColor" viewBox="0 0 20 20">
-             <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-           </svg>
+      <p class="mt-3">
+        <a href="{% url 'shop:product_list' %}"
+           target="_blank" rel="noopener noreferrer"
+           class="text-[--color-brand-secondary] hover:text-[--color-brand-accent] underline transition">
+          Visit the AI Marketing Platform Shop →
         </a>
       </p>
     </div>
-  </div>
+  </section>
 
-  <!-- Credentials -->
-  <div class="responsive-grid">
-    <div class="rounded-lg border border-indigo-700 p-6 bg-white shadow-sm">
-      <img src="{% static 'images/full-stack-software-developer-certificate.png' %}" 
-           alt="Full-stack software developer certificate" 
-           class="w-full h-auto rounded-xl object-cover shadow-md" loading="lazy">
-    </div>
-    <div class="rounded-lg border border-indigo-700 p-6 bg-white shadow-sm">
-      <img src="{% static 'images/digital_marketing_certificate.jpg' %}" 
-           alt="Digital marketing specialist certificate" 
-           class="w-full h-auto rounded-xl object-cover shadow-md" loading="lazy">
-    </div>
-  </div>
-
-  <!-- Tools I Recommend -->
-  <div class="responsive-grid">
-    <div class="rounded-lg border border-indigo-700 p-6 bg-white shadow-sm">
-      <h2 class="text-xl font-semibold text-indigo-700 mb-3">Why Systeme.io</h2>
-      <p class="text-gray-700 leading-relaxed">
-        <a href="https://systeme.io/?sa=sa02490211147f583955a3eb1c4b3f55247280cb2b" 
-           class="link-underline" target="_blank" rel="noopener noreferrer" 
-           aria-label="Systeme.io (opens in a new window)">
-           Systeme.io</a> is my go-to all-in-one platform. It brings funnels, websites, email, 
-        automation, and memberships together in one place. That means fewer tools, lower 
-        costs, and less hassle.
+  <!-- Tools Section -->
+  <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+    <div class="border border-[--color-brand-secondary] rounded-lg bg-[--color-brand-light] p-6 md:p-8 shadow-sm">
+      <h2 class="text-xl font-semibold text-[--color-brand-secondary] mb-4">Why Systeme.io</h2>
+      <p class="text-[--color-font-main] leading-relaxed">
+        <a href="https://systeme.io/?sa=sa02490211147f583955a3eb1c4b3f55247280cb2b"
+           target="_blank" rel="noopener noreferrer"
+           class="text-[--color-brand-secondary] hover:text-[--color-brand-accent] underline transition">Systeme.io</a>
+        is my go-to all-in-one platform. It brings funnels, websites, email, automation, and memberships together in one place.  
+        That means fewer tools, lower costs, and less hassle.
       </p>
     </div>
-    <div class="rounded-lg border border-indigo-700 p-6 bg-white shadow-sm">
-      <h2 class="text-xl font-semibold text-indigo-700 mb-3">Why ShopWired</h2>
-      <p class="text-gray-700 leading-relaxed">
-        <a href="https://www.shopwired.co.uk/?affiliate=djangify" 
-           class="link-underline" target="_blank" rel="noopener noreferrer" 
-           aria-label="ShopWired (opens in a new window)">
-           ShopWired</a> is the best UK alternative to Shopify. It handles VAT properly, has 
-        excellent support, and is built with UK businesses in mind. I recommend it to clients 
-        who want to sell products or services online.  
+
+    <div class="border border-[--color-brand-secondary] rounded-lg bg-[--color-brand-light] p-6 md:p-8 shadow-sm">
+      <h2 class="text-xl font-semibold text-[--color-brand-secondary] mb-4">Why ShopWired</h2>
+      <p class="text-[--color-font-main] leading-relaxed">
+        <a href="https://www.shopwired.co.uk/?affiliate=djangify"
+           target="_blank" rel="noopener noreferrer"
+           class="text-[--color-brand-secondary] hover:text-[--color-brand-accent] underline transition">ShopWired</a>
+        is the best UK alternative to Shopify. It handles VAT properly, has excellent support, and is built with UK businesses in mind.  
+        I recommend it to clients who want to sell products or services online.
       </p>
     </div>
-  </div>
+  </section>
 
   <!-- Beyond AI Marketing Platform -->
-  <div class="rounded-lg border border-indigo-700 p-6 bg-white shadow-sm">
-    <h2 class="text-xl font-semibold text-indigo-700 mb-3">Beyond AI Marketing Platform</h2>
-    <p class="text-gray-700 leading-relaxed">
-      Before moving into digital marketing, I worked as a life coach, mainly with women 
-      and teens on self-confidence. I now run 
-      <a href="https://www.inspirationalguidance.com" class="link-underline" target="_blank" 
-         aria-label="Inspirational Guidance (opens in a new window)">
-         Inspirational Guidance</a>, a personal development site that empowers women to live 
-      with more confidence, resilience, and self-authorship.  
+  <section class="border border-[--color-brand-primary] rounded-lg bg-[--color-brand-light] p-6 md:p-8 shadow-sm mb-16">
+    <h2 class="text-xl font-semibold text-[--color-brand-primary] mb-4">Beyond AI Marketing Platform</h2>
+    <p class="text-[--color-font-main] leading-relaxed">
+      Before moving into digital marketing, I worked as a life coach, mainly with women and teens on self-confidence.  
+      I now run
+      <a href="https://www.inspirationalguidance.com"
+         target="_blank" rel="noopener noreferrer"
+         class="text-[--color-brand-secondary] hover:text-[--color-brand-accent] underline transition">
+         Inspirational Guidance</a>, a personal development site that empowers women to live with more confidence, resilience, and self-authorship.
     </p>
-  </div>
+  </section>
 
   <!-- Contact -->
-  <div class="mt-8">
-    <section id="contact" class="scroll-mt-16">
-      {% include "contact/contact.html" %}
-    </section>
-  </div>
+  <section id="contact" class="scroll-mt-16">
+    {% include "contact/contact.html" %}
+  </section>
 
 </div>
 {% endblock %}

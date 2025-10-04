@@ -1,19 +1,21 @@
 {% load static %}
-<header class="loggedin-navbar bg-white">
+<header class="bg-white border-b border-[--color-brand-accent]/20">
   <div class="container mx-auto px-4">
-    <div class="flex justify-between pt-6 pb-6">
+    <div class="flex justify-between items-center py-6">
 
       <!-- Logo -->
-      <a href="{% url 'core:home' %}" class="flex items-center gap-2 font-semibold text-gray-900">
-        <img src="{% static 'images/aimarketing-logo.png' %}" class="h-8 w-auto" alt="AI Marketing Platform Logo">
-        AI Marketing Platform
+      <a href="/" class="flex items-center">
+        <img src="{% static 'images/amp-logo-icon.webp' %}" alt="AI Marketing Platform Logo" class="h-8">
+        <span class="pl-2 hidden sm:inline-block text-[--color-brand-primary] font-medium uppercase">
+          AI Marketing Platform
+        </span>
       </a>
 
-      <!-- Desktop Nav -->
-      <nav class="hidden md:flex items-center nav-links">
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-6">
 
         <!-- Cart -->
-        <a href="{% url 'shop:cart_detail' %}" class="relative hover:text-teal-700">
+        <a href="{% url 'shop:cart_detail' %}" class="relative text-[--color-brand-primary] hover:text-[--color-brand-accent] transition">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
               d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1.2 6h12.4M10 21a1 1 0 11-2 0 1 1 0zm8 0a1 1 0 11-2 0 1 1 0z" />
@@ -29,67 +31,50 @@
 
         <!-- User Dropdown -->
         <div class="relative">
-          <button
-            type="button"
-            id="user-menu-button"
-            class="flex items-center gap-1"
-          >
-            
-            <span class="font-medium mr-1 hidden sm:inline">
-              MENU
-            </span>
-            <!-- Chevron -->
-            <svg xmlns="http://www.w3.org/2000/svg" 
-                 class="chevron-icon w-4 h-4 transition-transform duration-200 ml-1" 
-                 viewBox="0 0 24 24" 
-                 fill="none" 
+          <button id="user-menu-button" type="button" class="flex items-center gap-1 text-[--color-brand-primary] hover:text-[--color-brand-accent] transition">
+            <span class="font-medium mr-1 hidden sm:inline">MENU</span>
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 class="chevron-icon w-4 h-4 transition-transform duration-200"
+                 viewBox="0 0 24 24"
+                 fill="none"
                  stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                    d="M19 9l-7 7-7-7" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
 
-          <!-- start hidden -->
-          <div id="user-dropdown" class="absolute right-0 mt-2 hidden" style="display: none; z-index: 9999;">
-
+          <!-- Dropdown Menu -->
+          <div id="user-dropdown"
+               class="absolute right-0 mt-2 hidden w-48 rounded-lg shadow-lg border border-[--color-brand-accent]/20 bg-[--color-brand-light] z-50"
+               style="display: none;">
             
-            <a href="{% url 'accounts:dashboard' %}" class="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded-md font-medium">Dashboard</a>
-            <a href="{% url 'shop:purchases' %}" class="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded-md font-medium">My Orders</a>
-            <a href="{% url 'accounts:profile' %}" class="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded-md font-medium">Profile Info</a>
-            <a href="/news/" class="block font-medium py-2 px-4 text-gray-700 hover:bg-gray-100 rounded-md {% if '/blog/' in request.path %}text-teal-700 {% endif %}">Blog</a>
-            <a href="{% url 'shop:product_list' %}" class="block font-medium py-2 px-4 text-gray-700 hover:bg-gray-100 rounded-md {% if '/shop/' in request.path %}text-teal-700 {% endif %}">Shop</a>
-            <a href="{% url 'core:support' %}" class="block font-medium py-2 px-4 text-gray-700 hover:bg-gray-100 rounded-md">Support</a>
-            <a href="{% url 'accounts:logout' %}" class="block font-medium py-2 px-4 text-red-600 hover:bg-red-50 rounded-md">Sign out</a>
+            <a href="{% url 'accounts:dashboard' %}" class="block py-2 px-4 text-[--color-font-main] hover:bg-[--color-brand-accent]/10 rounded-t-lg transition">Dashboard</a>
+            <a href="{% url 'shop:purchases' %}" class="block py-2 px-4 text-[--color-font-main] hover:bg-[--color-brand-accent]/10 transition">My Orders</a>
+            <a href="{% url 'accounts:profile' %}" class="block py-2 px-4 text-[--color-font-main] hover:bg-[--color-brand-accent]/10 transition">Profile Info</a>
+            <a href="/news/" class="block py-2 px-4 text-[--color-font-main] hover:bg-[--color-brand-accent]/10 transition {% if '/blog/' in request.path %}text-[--color-brand-primary]{% endif %}">Blog</a>
+            <a href="{% url 'shop:product_list' %}" class="block py-2 px-4 text-[--color-font-main] hover:bg-[--color-brand-accent]/10 transition {% if '/shop/' in request.path %}text-[--color-brand-primary]{% endif %}">Shop</a>
+            <a href="{% url 'core:support' %}" class="block py-2 px-4 text-[--color-font-main] hover:bg-[--color-brand-accent]/10 transition">Support</a>
+            <a href="{% url 'accounts:logout' %}" class="block py-2 px-4 text-red-600 hover:bg-red-50 rounded-b-lg font-medium transition">Sign out</a>
           </div>
         </div>
-        
       </nav>
     </div>
   </div>
 </header>
 
 <script>
- const dropdown = document.getElementById("user-dropdown");
-const button = document.getElementById("user-menu-button");
-const chevron = button.querySelector(".chevron-icon");
+  const dropdown = document.getElementById("user-dropdown");
+  const button = document.getElementById("user-menu-button");
+  const chevron = button.querySelector(".chevron-icon");
 
-// toggle open/close
-button.addEventListener("click", function (e) {
-  e.stopPropagation();
-  const isHidden = dropdown.classList.contains("hidden");
-  if (isHidden) {
-    dropdown.classList.remove("hidden");
-    dropdown.style.display = "block";
-    chevron.classList.add("rotate-180");  // rotate down
-  } else {
-    dropdown.classList.add("hidden");
-    dropdown.style.display = "none";
-    chevron.classList.remove("rotate-180"); // reset
-  }
-});
+  button.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const isHidden = dropdown.classList.contains("hidden");
+    dropdown.classList.toggle("hidden");
+    dropdown.style.display = isHidden ? "block" : "none";
+    chevron.classList.toggle("rotate-180");
+  });
 
-  // close on outside click
-  document.addEventListener("click", function (event) {
+  document.addEventListener("click", (event) => {
     if (!dropdown.contains(event.target) && !button.contains(event.target)) {
       dropdown.classList.add("hidden");
       dropdown.style.display = "none";

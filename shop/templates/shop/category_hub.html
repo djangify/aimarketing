@@ -14,7 +14,8 @@
     <!-- Dynamic Category Grid -->
     <div class="shop-grid-3 mb-8 mt-8">
         {% for category in categories %}
-        <div class="shop-category">
+        <div class="block bg-[--color-brand-light] border border-[--color-brand-accent]/30 rounded-xl p-6 shadow-sm
+          hover:shadow-md hover:border-[--color-brand-accent] hover:bg-white transition">
             <h3 class="text-xl font-semibold mb-2">
                 <a href="{{ category.get_absolute_url }}" class="text-accent hover:underline">
                     {{ category.name }}
@@ -38,17 +39,20 @@
     <!-- Cluster Pages -->
     <h2 class="text-2xl font-semibold mb-6">Explore Core Guides</h2>
     <div class="shop-grid-3">
-        <a href="{% url 'core:ai_search' %}" class="shop-category">
+        <a href="{% url 'core:ai_search' %}" class="block bg-[--color-brand-light] border border-[--color-brand-accent]/30 rounded-xl p-6 shadow-sm
+          hover:shadow-md hover:border-[--color-brand-accent] hover:bg-white transition">
             <h3 class="text-lg font-semibold mb-2 text-accent">AI Search Readiness</h3>
             <p class="text-text">Understand what it takes to get your website structured for AI search and visibility.</p>
         </a>
 
-        <a href="{% url 'core:local_ai_search' %}" class="shop-category">
+        <a href="{% url 'core:local_ai_search' %}" class="block bg-[--color-brand-light] border border-[--color-brand-accent]/30 rounded-xl p-6 shadow-sm
+          hover:shadow-md hover:border-[--color-brand-accent] hover:bg-white transition">
             <h3 class="text-lg font-semibold mb-2 text-accent">Local Business AI Search</h3>
             <p class="text-text">Guides tailored for local businesses that rely on foot traffic but need online presence too.</p>
         </a>
 
-        {% comment %} <a href="{% url 'core:tech_va' %}" class="shop-category">
+        {% comment %} <a href="{% url 'core:tech_va' %}" class="block bg-[--color-brand-light] border border-[--color-brand-accent]/30 rounded-xl p-6 shadow-sm
+          hover:shadow-md hover:border-[--color-brand-accent] hover:bg-white transition">
             <h3 class="text-lg font-semibold mb-2 text-accent">Tech VA</h3>
             <p class="text-text">See how a Tech VA can save you time by handling setup and integrations for you.</p>
         </a> {% endcomment %}
