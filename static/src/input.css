@@ -11,7 +11,7 @@
   }
 
   p {
-    @apply text-base text-[--color-font-main] leading-relaxed;
+    @apply text-lg text-[--color-font-main] leading-relaxed;
   }
 
   a {

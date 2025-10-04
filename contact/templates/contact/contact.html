@@ -1,72 +1,70 @@
 {% load static %}
-<section id="contact" class="p-6 flex flex-col gap-y-10 bg-[--color-brand-primary] text-[--color-brand-light] md:p-16 lg:gap-x-10 lg:flex-row *:basis-full">
-  <div class="flex flex-col gap-y-5">
-    <div>
-      <h6 class="text-sm pl-6 uppercase relative before before:h-1 before:w-4 before:bg-[--color-brand-accent] before:top-2/4 before:-translate-y-2/4 before:left-0 lg:text-lg">
-        Let's talk
-      </h6>
-      <h2 class="text-2xl capitalize lg:text-3xl text-[--color-brand-light]">
-        Ready to offload your Digital Marketing?
-      </h2>
-    </div>
+<section id="contact" class="p-6 md:p-16 flex flex-col lg:flex-row gap-y-10 lg:gap-x-10  text-[color:var(--color-brand-light)]">
+
+  <!-- Left Column (Form) -->
+  <div class="flex flex-col gap-y-6 w-full lg:w-1/2">
+  <div class="mb-8 lg:mb-12">
+    <h6 class="text-sm pl-6 uppercase relative before:content-[''] before:h-1 before:w-4 before:bg-[color:var(--color-brand-accent)] before:absolute before:top-1/2 before:-translate-y-1/2 before:left-0 lg:text-lg">
+      Let’s Talk
+    </h6>
+    <h2 class="text-2xl lg:text-3xl font-semibold text-[color:var(--color-brand-light)]">
+      Ready To Offload Your Digital Marketing?
+    </h2>
+  </div>
 
     {% if messages %}
-    <div class="messages mb-4">
-      {% for message in messages %}
-      <div class="p-4 rounded {% if message.tags == 'success' %}bg-[--color-brand-light]/10 text-[--color-brand-light] border border-[--color-brand-secondary]{% else %}bg-red-100 text-red-800 border border-red-400{% endif %}">
-        {{ message }}
+      <div class="messages mb-4">
+        {% for message in messages %}
+          <div class="p-4 rounded {% if message.tags == 'success' %}bg-[color:var(--color-brand-light)]/10 text-[color:var(--color-brand-light)] border border-[color:var(--color-brand-secondary)]{% else %}bg-red-100 text-red-800 border border-red-400{% endif %}">
+            {{ message }}
+          </div>
+        {% endfor %}
       </div>
-      {% endfor %}
-    </div>
     {% endif %}
 
-    <form
-      class="flex flex-col gap-y-2 *:px-4 *:py-2 *:rounded *:outline-none h-full"
-      method="post"
-      action="{% url 'contact:contact' %}"
-    >
+    <form method="POST" action="{% url 'contact:contact' %}" class="flex flex-col gap-y-4">
       {% csrf_token %}
 
-      <!-- Name field -->
+      <!-- Name -->
       <input
-        class="bg-[--color-brand-light] text-[--color-font-main] placeholder:text-[--color-font-main]/70 h-12 sm:h-16"
         type="text"
         name="name"
         placeholder="Name"
         required
+        class="rounded-md border border-[color:var(--color-brand-accent)] bg-[color:var(--color-brand-light)] text-[color:var(--color-font-main)] placeholder:text-[color:var(--color-font-main)]/60 px-4 py-3 h-12 sm:h-14 focus:outline-none focus:ring-2 focus:ring-[color:var(--color-brand-accent)]"
         {% if form.name.value|default:'' %}value="{{ form.name.value }}"{% endif %}
       />
 
-      <!-- Email field -->
+      <!-- Email -->
       <input
-        class="bg-[--color-brand-light] text-[--color-font-main] placeholder:text-[--color-font-main]/70 h-12 sm:h-16"
         type="email"
         name="email"
         placeholder="Business Emails Only"
         required
+        class="rounded-md border border-[color:var(--color-brand-accent)] bg-[color:var(--color-brand-light)] text-[color:var(--color-font-main)] placeholder:text-[color:var(--color-font-main)]/60 px-4 py-3 h-12 sm:h-14 focus:outline-none focus:ring-2 focus:ring-[color:var(--color-brand-accent)]"
         {% if form.email.value|default:'' %}value="{{ form.email.value }}"{% endif %}
       />
       {% if form.email.errors %}
-      <p class="text-red-500 font-bold mt-1">ERROR: {{ form.email.errors.0 }}</p>
+        <p class="text-red-500 font-semibold text-sm">ERROR: {{ form.email.errors.0 }}</p>
       {% endif %}
 
-      <!-- Phone field -->
+      <!-- Phone -->
       <input
-        class="bg-[--color-brand-light] text-[--color-font-main] placeholder:text-[--color-font-main]/70 h-12 sm:h-16"
         type="tel"
         name="phone"
         placeholder="Phone Number"
         pattern="[0-9]*"
         inputmode="numeric"
         title="Please enter numbers only"
+        class="rounded-md border border-[color:var(--color-brand-accent)] bg-[color:var(--color-brand-light)] text-[color:var(--color-font-main)] placeholder:text-[color:var(--color-font-main)]/60 px-4 py-3 h-12 sm:h-14 focus:outline-none focus:ring-2 focus:ring-[color:var(--color-brand-accent)]"
         {% if form.phone.value|default:'' %}value="{{ form.phone.value }}"{% endif %}
       />
 
-      <!-- Service type dropdown -->
+      <!-- Dropdown -->
       <select
-        class="bg-[--color-brand-light] text-[--color-font-main] h-12 sm:h-16 appearance-none"
         name="service_type"
         required
+        class="rounded-md border border-[color:var(--color-brand-accent)] bg-[color:var(--color-brand-light)] text-[color:var(--color-font-main)] px-4 py-3 h-12 sm:h-14 focus:outline-none focus:ring-2 focus:ring-[color:var(--color-brand-accent)]"
       >
         <option value="" disabled {% if not form.service_type.value|default:'' %}selected{% endif %}>I need...</option>
         <option value="tech_tune_up" {% if form.service_type.value|default:'' == 'tech_tune_up' %}selected{% endif %}>Tech Tune-Up</option>
@@ -75,73 +73,64 @@
         <option value="other" {% if form.service_type.value|default:'' == 'other' %}selected{% endif %}>Something Else</option>
       </select>
 
-      <!-- Message textarea -->
+      <!-- Message -->
       <textarea
-        class="bg-[--color-brand-light] text-[--color-font-main] placeholder:text-[--color-font-main]/70 h-48 lg:h-full"
         name="message"
         placeholder="Message"
         required
+        class="rounded-md border border-[color:var(--color-brand-accent)] bg-[color:var(--color-brand-light)] text-[color:var(--color-font-main)] placeholder:text-[color:var(--color-font-main)]/60 px-4 py-3 h-40 focus:outline-none focus:ring-2 focus:ring-[color:var(--color-brand-accent)]"
       >{% if form.message.value|default:'' %}{{ form.message.value }}{% endif %}</textarea>
 
-      <!-- Used before dropdown -->
+      <!-- Used Before -->
       <select
-        class="bg-[--color-brand-light] text-[--color-font-main] h-12 sm:h-16 appearance-none"
         name="used_before"
         required
+        class="rounded-md border border-[color:var(--color-brand-accent)] bg-[color:var(--color-brand-light)] text-[color:var(--color-font-main)] px-4 py-3 h-12 sm:h-14 focus:outline-none focus:ring-2 focus:ring-[color:var(--color-brand-accent)]"
       >
         <option value="" disabled {% if not form.used_before.value|default:'' %}selected{% endif %}>I have...</option>
         <option value="yes" {% if form.used_before.value|default:'' == 'yes' %}selected{% endif %}>used Digital Marketing Services before</option>
         <option value="no" {% if form.used_before.value|default:'' == 'no' %}selected{% endif %}>NEVER used Digital Marketing Services before</option>
       </select>
 
+      <!-- Form errors -->
       {% if form and form.errors %}
-      <div class="p-4 rounded bg-red-100 text-red-800 border border-red-400 mb-4">
-        {% for field, errors in form.errors.items %}
-        {% for error in errors %}
-        <p>{{ field }}: {{ error }}</p>
-        {% endfor %}
-        {% endfor %}
-      </div>
+        <div class="p-4 rounded bg-red-100 text-red-800 border border-red-400 mb-4">
+          {% for field, errors in form.errors.items %}
+            {% for error in errors %}
+              <p>{{ field }}: {{ error }}</p>
+            {% endfor %}
+          {% endfor %}
+        </div>
       {% endif %}
 
-      <!-- Submit button -->
+      <!-- Submit -->
       <input
-        class="border-2 font-bold border-[--color-brand-accent] bg-[--color-brand-light] text-[--color-font-main] cursor-pointer h-12 sm:h-16 hover:bg-[--color-brand-accent] hover:text-white uppercase transition"
         type="submit"
         value="Submit"
+        class="uppercase font-semibold cursor-pointer rounded-md bg-[color:var(--color-brand-primary)] text-white h-12 sm:h-14 hover:bg-[color:var(--color-brand-secondary)] transition"
       />
     </form>
   </div>
 
-  <!-- Right Column -->
-  <div class="flex flex-col gap-y-5 lg:self-center xl:gap-y-10 *:space-y-2 text-[--color-brand-light]/90">
+  <!-- Right Column (Text) -->
+  <div class="flex flex-col gap-y-6 lg:self-center xl:gap-y-10 w-full lg:w-1/2 text-[color:var(--color-brand-light)]/90">
     <div>
-      <h6 class="text-sm pl-6 uppercase relative before before:h-1 before:w-4 before:bg-[--color-brand-accent] before:top-2/4 before:-translate-y-2/4 before:left-0 lg:text-lg">
-        Book A Consultation
+      <h6 class="text-sm pl-6 uppercase relative before:content-[''] before:h-1 before:w-4 before:bg-[color:var(--color-brand-accent)] before:absolute before:top-1/2 before:-translate-y-1/2 before:left-0 lg:text-lg">
+        Book a Consultation
       </h6>
-      <p>
-        Contact me today for a free 20-minute consultation to discuss how I can help streamline your digital operations.
-      </p>
+      <p>Contact me today for a free 20-minute consultation to discuss how I can help streamline your digital operations.</p>
 
-      <p class="font-bold mt-2">Let me know if you are looking for:</p>
-      <ul class="list-disc list-inside">
-        <li>
-          <strong>Tech Tune-Up:</strong> A one-time package to assess, organise, and optimise your current digital systems.
-        </li>
-        <li>
-          <strong>Monthly Maintenance:</strong> Ongoing website and digital systems maintenance to keep everything running smoothly.
-        </li>
-        <li>
-          <strong>Long Term Help:</strong> Comprehensive support for all your digital needs, allowing you to focus entirely on your core business.
-        </li>
+      <p class="font-bold mt-3">Let me know if you are looking for:</p>
+      <ul class="list-disc list-inside space-y-2">
+        <li><strong>Tech Tune-Up:</strong> A one-time package to assess, organise, and optimise your current digital systems.</li>
+        <li><strong>Monthly Maintenance:</strong> Ongoing website and digital systems maintenance to keep everything running smoothly.</li>
+        <li><strong>Long Term Help:</strong> Comprehensive support for all your digital needs, allowing you to focus entirely on your core business.</li>
       </ul>
 
-      <h6 class="text-sm pl-6 uppercase relative mt-5 before before:h-1 before:w-4 before:bg-[--color-brand-accent] before:top-2/4 before:-translate-y-2/4 before:left-0 lg:text-lg">
+      <h6 class="text-sm pl-6 uppercase relative mt-5 before:content-[''] before:h-1 before:w-4 before:bg-[color:var(--color-brand-accent)] before:absolute before:top-1/2 before:-translate-y-1/2 before:left-0 lg:text-lg">
         Availability
       </h6>
-      <p>
-        I am currently available on Tuesday and Wednesday. I am unavailable Monday and Friday. This is subject to change.
-      </p>
+      <p>I am currently available on Tuesday and Wednesday. I am unavailable Monday and Friday. This is subject to change.</p>
     </div>
   </div>
 </section>
