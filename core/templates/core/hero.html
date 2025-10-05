@@ -1,62 +1,44 @@
 {% load static %}
-<section class="flex flex-col bg-[--color-brand-primary] gap-10 lg:flex-row lg:*:basis-full lg:gap-x-24 xl:gap-x-12 text-[--color-font-main]">
-  <div class="flex flex-col gap-y-5 lg:gap-y-12 xl:self-center xl:gap-y-24">
+<!-- Full-width background wrapper -->
+<div class="w-full bg-[color:var(--color-brand-light)]">
+  <section class="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row lg:*:basis-full lg:gap-x-24 xl:gap-x-12 text-[color:var(--color-font-main)] py-12 lg:py-20 px-6 lg:px-10">
+    
+    <!-- Text content -->
+    <div class="flex flex-col gap-y-6 lg:gap-y-10 xl:self-center">
+      <div class="space-y-3 lg:space-y-4">
+         <h6 class="text-sm pl-6 uppercase relative before:content-[''] before:h-1 before:w-4 before:bg-[color:var(--color-brand-accent)] before:absolute before:top-1/2 before:-translate-y-1/2 before:left-0 lg:text-lg">
+          Build an AI-Visible Website
+        </h6>
+        <h1 class="text-4xl font-bold lg:text-6xl text-[color:var(--color-brand-primary)] leading-tight">
+          Get Your Website Ready for AI Search
+        </h1>
+      </div>
 
-    <!-- Heading -->
-    <div class="space-y-2 lg:space-y-4">
-      <h6 class="text-sm pl-6 uppercase relative before before:h-1 before:w-4 before:bg-[--color-brand-accent] before:top-2/4 before:-translate-y-2/4 before:left-0 lg:text-lg text-[--color-brand-light]">
-        Build Simple Systems Online
-      </h6>
-      <h1 class="text-4xl font-semibold lg:text-7xl text-[--color-brand-light]">
-        Digital Marketing & Ecommerce Specialist
-      </h1>
+      <p class="lg:text-lg text-[color:var(--color-font-main)] leading-relaxed max-w-2xl">
+        AI search engines like Google AI Overviews, Bing Copilot, and ChatGPT no longer show long lists of links — they choose trusted content.
+        The AI Marketing Platform helps you build structured, AI-ready websites using
+        <strong>cluster pages, FAQs, and schema markup</strong> so your business is recognised and featured in AI results.
+      </p>
+
+      <div class="flex flex-wrap gap-4 mt-2">
+        <a href="/ai-search-readiness/" class="uppercase px-6 py-3 rounded bg-[color:var(--color-brand-primary)] text-[color:var(--color-brand-light)] hover:bg-[color:var(--color-brand-accent)] transition">
+          Learn More
+        </a>
+        <a href="/local-business-ai-search/" class="uppercase px-6 py-3 rounded border border-[color:var(--color-brand-primary)] text-[color:var(--color-brand-primary)] hover:bg-[color:var(--color-badge-mint)] transition">
+          Local AI Search
+        </a>
+      </div>
     </div>
 
-    <!-- Content -->
-<div class="flex flex-col bg-[--color-brand-primary] gap-y-5 lg:gap-y-8">
-  <!-- Social Links -->
-  <ul class="flex gap-x-5 text-[--color-brand-light]">
-    <li class="hover:text-[--color-brand-secondary] transition cursor-pointer lg:text-2xl">
-      <a href="https://www.linkedin.com/in/todianedev" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
-        <i class="fa-brands fa-linkedin"></i>
-      </a>
-    </li>
-    <li class="hover:text-[--color-brand-secondary] transition cursor-pointer lg:text-2xl">
-      <a href="https://www.instagram.com/dicorriette" target="_blank" rel="noopener noreferrer" aria-label="Instagram Profile">
-        <i class="fa-brands fa-instagram"></i>
-      </a>
-    </li>
-    <li class="hover:text-[--color-brand-secondary] transition cursor-pointer lg:text-2xl">
-      <a href="https://github.com/todiane" target="_blank">
-        <i class="fa-brands fa-github"></i>
-      </a>
-    </li>
-  </ul>
+    <!-- Image -->
+    <figure class="flex justify-center lg:justify-end items-center">
+      <img
+        src="{% static 'images/aimarketing-home.webp' %}"
+        alt="AI search readiness for modern websites"
+        class="max-w-full h-auto"
+        loading="eager"
+      />
+    </figure>
 
-  <!-- Text -->
-  <p class="lg:text-lg text-[--color-brand-light]/90">
-    Working from home and stuck on what to do next? I’ll help you set up what really matters for growth online. 
-    <strong>From website optimisation and landing pages</strong> to <strong>all-in-one platforms and ecommerce</strong>. 
-    Learn at your own pace with guides and workbooks, or book a focused setup to have it done for you. Either way, you gain simple, reliable solutions without added complexity.
-    My goal is to make digital marketing practical and sustainable by focusing on the core essentials that lead to steady sales.
-  </p>
-
-  <!-- Buttons -->
-  <div class="flex gap-5">
-    <a href="/shop/" class="uppercase px-5 py-3 rounded bg-[--color-brand-secondary] text-white hover:bg-[--color-brand-accent] transition">
-      Visit the Shop
-    </a>
-    <a href="/#contact" class="uppercase px-5 py-3 rounded bg-[--color-brand-accent] text-white hover:bg-[--color-brand-secondary] transition">
-      Work With Me
-    </a>
-  </div>
+  </section>
 </div>
-
-    </div>
-  </div>
-
-  <!-- Image -->
-  <figure class="lg:max-w-[550px]">
-    <img src="{% static 'images/aimarketing-home.webp' %}" alt="Digital marketing and ecommerce systems for small businesses"  />
-  </figure>
-</section>

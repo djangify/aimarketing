@@ -1,129 +1,117 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block content %}
+
 <section class="px-6 md:px-16 py-12 bg-[color:var(--color-brand-light)] text-[color:var(--color-font-main)]">
   <div class="max-w-7xl mx-auto">
 
     <!-- Page Heading -->
     <header class="text-center mb-12 space-y-4">
-      <h1 class="text-3xl font-bold text-[color:var(--color-brand-primary)]">The AI Marketing Platform Shop</h1>
+      <h1 class="text-3xl font-bold text-[color:var(--color-brand-primary)]">AI Marketing Insights</h1>
       <p class="max-w-2xl mx-auto leading-relaxed">
-        Practical guides and toolkits to support your local and online business.
+        News, updates, and guides on AI-powered marketing, search readiness, and digital strategy.
       </p>
     </header>
 
-    <!-- Search Bar -->
-    <form method="get" action="." class="flex flex-col sm:flex-row justify-center gap-3 max-w-md mx-auto mb-12">
-      <label for="search" class="sr-only">Search products</label>
-      <input
-        type="text"
-        name="q"
-        id="search"
-        placeholder="Search guides and services..."
-        value="{{ request.GET.q }}"
-        class="w-full border border-[color:var(--color-brand-accent)] rounded-lg px-4 py-2 focus:outline-none focus:border-[color:var(--color-brand-primary)]"
-      />
-      <button
-        type="submit"
-        class="px-6 py-2 bg-[color:var(--color-brand-primary)] text-white font-semibold rounded-lg hover:bg-[color:var(--color-brand-secondary)] transition"
-      >
-        Search
-      </button>
-    </form>
-
-    <!-- Category Filter -->
-    {% if categories %}
-    <div class="flex flex-wrap justify-center gap-3 mb-12">
-      <a href="{% url 'shop:product_list' %}"
-         class="px-5 py-2 rounded-full border border-[color:var(--color-brand-accent)] text-[color:var(--color-brand-primary)] hover:bg-[color:var(--color-brand-primary)] hover:text-white transition {% if not current_category %}bg-[color:var(--color-brand-primary)] text-white{% endif %}">
-        All Products
-      </a>
-      {% for category in categories %}
-        <a href="{{ category.get_absolute_url }}"
-           class="px-5 py-2 rounded-full border border-[color:var(--color-brand-accent)] text-[color:var(--color-brand-primary)] hover:bg-[color:var(--color-brand-primary)] hover:text-white transition {% if current_category and current_category.id == category.id %}bg-[color:var(--color-brand-primary)] text-white{% endif %}">
-          {{ category.name }}
-        </a>
-      {% endfor %}
-    </div>
+    <!-- Featured Post -->
+    {% if featured_posts %}
+    {% with main_post=featured_posts.0 %}
+    <section class="mb-16">
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <a href="{{ main_post.get_absolute_url }}">
+            {% if main_post.external_image_url %}
+              <img src="{{ main_post.external_image_url }}" alt="{{ main_post.title }}" class="w-full h-80 object-cover rounded-xl shadow-sm">
+            {% elif main_post.get_image_url %}
+              <img src="{{ main_post.get_image_url }}" alt="{{ main_post.title }}" class="w-full h-80 object-cover rounded-xl shadow-sm">
+            {% elif main_post.youtube_url %}
+              <img src="https://img.youtube.com/vi/{{ main_post.get_youtube_video_id }}/maxresdefault.jpg"
+                   alt="{{ main_post.title }}"
+                   class="w-full h-80 object-cover rounded-xl shadow-sm"
+                   onerror="this.onerror=null; this.src='https://img.youtube.com/vi/{{ main_post.get_youtube_video_id }}/hqdefault.jpg';">
+            {% endif %}
+          </a>
+        </div>
+        <div>
+          <h2 class="text-2xl font-semibold text-[color:var(--color-brand-primary)] mb-3">
+            <a href="{{ main_post.get_absolute_url }}">{{ main_post.title }}</a>
+          </h2>
+          <p class="text-[color:var(--color-font-main)]/80 mb-4">
+            {{ main_post.content|striptags|truncatewords:50 }}
+          </p>
+          <a href="{{ main_post.get_absolute_url }}"
+             class="inline-flex items-center font-semibold text-[color:var(--color-brand-primary)] hover:text-[color:var(--color-brand-accent)] transition">
+             Read Full Article
+             <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 20 20"><path d="M12.293 5.293a1 1 0 011.414 0l4 
+             4a1 1 0 010 1.414l-4 4a1 1 0 
+             01-1.414-1.414L14.586 11H3a1 1 0 
+             110-2h11.586l-2.293-2.293a1 1 0 
+             010-1.414z"></path></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+    {% endwith %}
     {% endif %}
 
-    <!-- Product Grid -->
-    {% if products %}
+    <!-- All News Posts -->
+    {% if posts %}
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      {% for product in products %}
+      {% for post in posts %}
       <article class="bg-white border border-[color:var(--color-brand-accent)]/30 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition flex flex-col">
-        <a href="{{ product.get_absolute_url }}">
-          {% if product.get_image_url %}
-            <img src="{{ product.get_image_url }}" alt="{{ product.title }}" class="w-full h-80 object-contain bg-[color:var(--color-brand-light)]">
-          {% else %}
-            <div class="w-full h-80 flex items-center justify-center bg-[color:var(--color-brand-light)] text-[color:var(--color-brand-accent)]">
-              No Image Available
-            </div>
+        <a href="{{ post.get_absolute_url }}">
+          {% if post.external_image_url %}
+            <img src="{{ post.external_image_url }}" alt="{{ post.title }}" class="w-full h-64 object-cover bg-[color:var(--color-brand-light)]">
+          {% elif post.get_image_url %}
+            <img src="{{ post.get_image_url }}" alt="{{ post.title }}" class="w-full h-64 object-cover bg-[color:var(--color-brand-light)]">
+          {% elif post.youtube_url %}
+            <img src="https://img.youtube.com/vi/{{ post.get_youtube_video_id }}/maxresdefault.jpg"
+                 alt="{{ post.title }}"
+                 class="w-full h-64 object-cover"
+                 onerror="this.onerror=null; this.src='https://img.youtube.com/vi/{{ post.get_youtube_video_id }}/hqdefault.jpg';">
           {% endif %}
         </a>
-
         <div class="p-6 flex flex-col flex-grow">
-          <h2 class="text-lg font-semibold text-[color:var(--color-brand-primary)] mb-2">
-            <a href="{{ product.get_absolute_url }}">{{ product.title }}</a>
-          </h2>
+          <h3 class="text-lg font-semibold text-[color:var(--color-brand-primary)] mb-2">
+            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+          </h3>
           <p class="flex-grow text-[color:var(--color-font-main)]/80 mb-4">
-            {{ product.description|striptags|truncatewords:26 }}
+            {{ post.content|striptags|truncatewords:30 }}
           </p>
-
-          <div class="flex items-center justify-between mt-auto">
-            <span class="text-lg font-bold text-[color:var(--color-font-main)]">
-              £{{ product.current_price|floatformat:2 }}
-            </span>
-            <div class="flex items-center text-yellow-500 space-x-1">
-              {% if product.average_rating %}
-                {% for i in "12345"|make_list %}
-                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.562-.954L10 0l2.948 5.956 6.562.954-4.755 4.635 1.123 6.545z"
-                      {% if forloop.counter <= product.average_rating %}
-                        class="fill-current"
-                      {% else %}
-                        class="text-[color:var(--color-brand-accent)]/30"
-                      {% endif %}></path>
-                  </svg>
-                {% endfor %}
-                <span class="text-sm text-[color:var(--color-font-main)]/70">({{ product.reviews.count }})</span>
-              {% else %}
-                <div class="h-5"></div>
-              {% endif %}
-            </div>
-          </div>
+          <a href="{{ post.get_absolute_url }}" class="text-[color:var(--color-brand-primary)] font-semibold hover:text-[color:var(--color-brand-accent)] transition">
+            Read More →
+          </a>
         </div>
       </article>
+      {% empty %}
+      <div class="col-span-3 text-center py-16 bg-white rounded-lg">
+        <h2 class="text-xl font-semibold text-[color:var(--color-brand-primary)] mb-2">No Articles Yet</h2>
+        <p class="text-[color:var(--color-font-main)]/70">Check back soon for the latest AI marketing insights.</p>
+      </div>
       {% endfor %}
     </div>
 
     <!-- Pagination -->
-    {% if products.has_other_pages %}
+    {% if posts.has_other_pages %}
     <div class="flex justify-center items-center gap-2 mt-12 flex-wrap">
-      {% if products.has_previous %}
-        <a href="?page={{ products.previous_page_number }}" class="px-4 py-2 border border-[color:var(--color-brand-primary)] text-[color:var(--color-brand-primary)] rounded hover:bg-[color:var(--color-brand-primary)] hover:text-white transition">Previous</a>
+      {% if posts.has_previous %}
+        <a href="?page={{ posts.previous_page_number }}" class="px-4 py-2 border border-[color:var(--color-brand-primary)] text-[color:var(--color-brand-primary)] rounded hover:bg-[color:var(--color-brand-primary)] hover:text-white transition">Previous</a>
       {% endif %}
-
-      {% for num in products.paginator.page_range %}
-        {% if products.number == num %}
+      {% for num in posts.paginator.page_range %}
+        {% if posts.number == num %}
           <span class="px-4 py-2 bg-[color:var(--color-brand-primary)] text-white border border-[color:var(--color-brand-primary)] rounded">{{ num }}</span>
         {% else %}
           <a href="?page={{ num }}" class="px-4 py-2 border border-[color:var(--color-brand-primary)] text-[color:var(--color-brand-primary)] rounded hover:bg-[color:var(--color-brand-primary)] hover:text-white transition">{{ num }}</a>
         {% endif %}
       {% endfor %}
-
-      {% if products.has_next %}
-        <a href="?page={{ products.next_page_number }}" class="px-4 py-2 border border-[color:var(--color-brand-primary)] text-[color:var(--color-brand-primary)] rounded hover:bg-[color:var(--color-brand-primary)] hover:text-white transition">Next</a>
+      {% if posts.has_next %}
+        <a href="?page={{ posts.next_page_number }}" class="px-4 py-2 border border-[color:var(--color-brand-primary)] text-[color:var(--color-brand-primary)] rounded hover:bg-[color:var(--color-brand-primary)] hover:text-white transition">Next</a>
       {% endif %}
     </div>
     {% endif %}
-    {% else %}
-    <div class="text-center py-16 bg-white rounded-lg mt-12">
-      <h2 class="text-2xl font-bold mb-4 text-[color:var(--color-brand-primary)]">No Products Found</h2>
-      <p class="text-[color:var(--color-font-main)]/70">Check back soon for new content!</p>
-    </div>
     {% endif %}
+
   </div>
 </section>
+
 {% endblock %}

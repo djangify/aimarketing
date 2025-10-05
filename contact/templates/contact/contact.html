@@ -4,11 +4,11 @@
   <!-- Left Column (Form) -->
   <div class="flex flex-col gap-y-6 w-full lg:w-1/2">
   <div class="mb-8 lg:mb-12">
-    <h6 class="text-sm pl-6 uppercase relative before:content-[''] before:h-1 before:w-4 before:bg-[color:var(--color-brand-accent)] before:absolute before:top-1/2 before:-translate-y-1/2 before:left-0 lg:text-lg">
+    <h6 class="text-[color:var(--color-font-main)] text-sm pl-6 uppercase relative before:content-[''] before:h-1 before:w-4 before:bg-[color:var(--color-brand-accent)] before:absolute before:top-1/2 before:-translate-y-1/2 before:left-0 lg:text-lg">
       Let’s Talk
     </h6>
-    <h2 class="text-2xl lg:text-3xl font-semibold text-[color:var(--color-brand-light)]">
-      Ready To Offload Your Digital Marketing?
+    <h2 class="text-2xl lg:text-3xl font-semibold text-[color:var(--color-font-main)]">
+      Ready to Make Your Website AI-Search Ready?
     </h2>
   </div>
 
@@ -39,7 +39,7 @@
       <input
         type="email"
         name="email"
-        placeholder="Business Emails Only"
+        placeholder="Business Email"
         required
         class="rounded-md border border-[color:var(--color-brand-accent)] bg-[color:var(--color-brand-light)] text-[color:var(--color-font-main)] placeholder:text-[color:var(--color-font-main)]/60 px-4 py-3 h-12 sm:h-14 focus:outline-none focus:ring-2 focus:ring-[color:var(--color-brand-accent)]"
         {% if form.email.value|default:'' %}value="{{ form.email.value }}"{% endif %}
@@ -52,7 +52,7 @@
       <input
         type="tel"
         name="phone"
-        placeholder="Phone Number"
+        placeholder="Phone Number (optional)"
         pattern="[0-9]*"
         inputmode="numeric"
         title="Please enter numbers only"
@@ -66,30 +66,31 @@
         required
         class="rounded-md border border-[color:var(--color-brand-accent)] bg-[color:var(--color-brand-light)] text-[color:var(--color-font-main)] px-4 py-3 h-12 sm:h-14 focus:outline-none focus:ring-2 focus:ring-[color:var(--color-brand-accent)]"
       >
-        <option value="" disabled {% if not form.service_type.value|default:'' %}selected{% endif %}>I need...</option>
-        <option value="tech_tune_up" {% if form.service_type.value|default:'' == 'tech_tune_up' %}selected{% endif %}>Tech Tune-Up</option>
-        <option value="short_term" {% if form.service_type.value|default:'' == 'short_term' %}selected{% endif %}>One-off Short-Term Help</option>
-        <option value="long_term" {% if form.service_type.value|default:'' == 'long_term' %}selected{% endif %}>Long Term Project Help</option>
+        <option value="" disabled {% if not form.service_type.value|default:'' %}selected{% endif %}>I’m interested in...</option>
+        <option value="ai_search_readiness" {% if form.service_type.value|default:'' == 'ai_search_readiness' %}selected{% endif %}>AI Search Readiness Audit</option>
+        <option value="local_ai_search" {% if form.service_type.value|default:'' == 'local_ai_search' %}selected{% endif %}>Local Business AI Search Setup</option>
+        <option value="prompt_library" {% if form.service_type.value|default:'' == 'prompt_library' %}selected{% endif %}>Prompt Library Access</option>
+        <option value="guides_toolkits" {% if form.service_type.value|default:'' == 'guides_toolkits' %}selected{% endif %}>Guides & Toolkits</option>
         <option value="other" {% if form.service_type.value|default:'' == 'other' %}selected{% endif %}>Something Else</option>
       </select>
 
       <!-- Message -->
       <textarea
         name="message"
-        placeholder="Message"
+        placeholder="Tell us what you’re working on or what you’d like help with."
         required
         class="rounded-md border border-[color:var(--color-brand-accent)] bg-[color:var(--color-brand-light)] text-[color:var(--color-font-main)] placeholder:text-[color:var(--color-font-main)]/60 px-4 py-3 h-40 focus:outline-none focus:ring-2 focus:ring-[color:var(--color-brand-accent)]"
       >{% if form.message.value|default:'' %}{{ form.message.value }}{% endif %}</textarea>
 
-      <!-- Used Before -->
+      <!-- Experience -->
       <select
         name="used_before"
         required
         class="rounded-md border border-[color:var(--color-brand-accent)] bg-[color:var(--color-brand-light)] text-[color:var(--color-font-main)] px-4 py-3 h-12 sm:h-14 focus:outline-none focus:ring-2 focus:ring-[color:var(--color-brand-accent)]"
       >
         <option value="" disabled {% if not form.used_before.value|default:'' %}selected{% endif %}>I have...</option>
-        <option value="yes" {% if form.used_before.value|default:'' == 'yes' %}selected{% endif %}>used Digital Marketing Services before</option>
-        <option value="no" {% if form.used_before.value|default:'' == 'no' %}selected{% endif %}>NEVER used Digital Marketing Services before</option>
+        <option value="yes" {% if form.used_before.value|default:'' == 'yes' %}selected{% endif %}>worked on SEO or search optimisation before</option>
+        <option value="no" {% if form.used_before.value|default:'' == 'no' %}selected{% endif %}>never worked on SEO or AI search before</option>
       </select>
 
       <!-- Form errors -->
@@ -113,24 +114,24 @@
   </div>
 
   <!-- Right Column (Text) -->
-  <div class="flex flex-col gap-y-6 lg:self-center xl:gap-y-10 w-full lg:w-1/2 text-[color:var(--color-brand-light)]/90">
+  <div class="flex flex-col gap-y-6 lg:self-center xl:gap-y-10 w-full lg:w-1/2 text-[color:var(--color-font-main)]">
     <div>
       <h6 class="text-sm pl-6 uppercase relative before:content-[''] before:h-1 before:w-4 before:bg-[color:var(--color-brand-accent)] before:absolute before:top-1/2 before:-translate-y-1/2 before:left-0 lg:text-lg">
         Book a Consultation
       </h6>
-      <p>Contact me today for a free 20-minute consultation to discuss how I can help streamline your digital operations.</p>
+      <p>Schedule a quick consultation to explore how AI search readiness can help your business stay visible in an AI-driven web.</p>
 
-      <p class="font-bold mt-3">Let me know if you are looking for:</p>
+      <p class="font-bold mb-2 mt-3">Most requests fall into one of these areas:</p>
       <ul class="list-disc list-inside space-y-2">
-        <li><strong>Tech Tune-Up:</strong> A one-time package to assess, organise, and optimise your current digital systems.</li>
-        <li><strong>Monthly Maintenance:</strong> Ongoing website and digital systems maintenance to keep everything running smoothly.</li>
-        <li><strong>Long Term Help:</strong> Comprehensive support for all your digital needs, allowing you to focus entirely on your core business.</li>
+        <li><strong>AI Search Audit:</strong> A structured review of how ready your website is for AI-generated results.</li>
+        <li><strong>Local AI Setup:</strong> Help with optimising your Google Business Profile, local schema, and reviews.</li>
+        <li><strong>Prompt Frameworks:</strong> Structured prompts and templates for AI-ready content creation.</li>
       </ul>
 
       <h6 class="text-sm pl-6 uppercase relative mt-5 before:content-[''] before:h-1 before:w-4 before:bg-[color:var(--color-brand-accent)] before:absolute before:top-1/2 before:-translate-y-1/2 before:left-0 lg:text-lg">
         Availability
       </h6>
-      <p>I am currently available on Tuesday and Wednesday. I am unavailable Monday and Friday. This is subject to change.</p>
+      <p>Consultations are available Tuesday through Thursday. Requests outside these days may be scheduled by arrangement.</p>
     </div>
   </div>
 </section>

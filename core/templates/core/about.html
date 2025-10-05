@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}About – Digital Marketing and eCommerce Specialist{% endblock %}
+{% block title %}About – AI Marketing Platform{% endblock %}
 
 {% block content %}
 <div class="p-6 md:p-16 space-y-16">
@@ -9,106 +9,102 @@
   <!-- Intro Section -->
   <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
     <div class="space-y-6 order-2 lg:order-1">
-      <h1 class="text-3xl font-bold text-[--color-brand-primary]">Your Digital Marketing Specialist</h1>
+      <h1 class="text-3xl font-bold text-[--color-brand-primary]">About the AI Marketing Platform</h1>
       <p class="text-[--color-font-main] leading-relaxed">
-        I’m Diane Corriette, a Digital Marketing Specialist. This is me in my snoodie — because that’s how I spend most of my days!  
-        I’m over 50, part of the <i>“We Do Not Care Club”</i>, and I run a lifestyle business with a cozy, practical approach.  
+        The AI Marketing Platform was built to help small businesses and digital creators prepare their websites for the new era of AI-driven search.  
+        Instead of focusing on tools that promise automation, we focus on <strong>structure, clarity, and visibility</strong> — so AI systems can easily understand and recommend your content.
       </p>
       <p class="text-[--color-font-main] leading-relaxed">
-        My work is about helping small and local businesses set up online systems, simplify their tools, and avoid wasting money on subscriptions you don’t need.  
-        Whether you want to DIY or hand it over, I make the tech side easier.  
-        <a href="#contact" class="text-[--color-brand-secondary] hover:text-[--color-brand-accent] underline transition">Get In Touch</a>
+        Our goal is simple: help businesses stay visible in a landscape where traditional SEO is being replaced by <strong>AI Search Readiness</strong>.  
+        Whether you manage your own site or work with a developer, our guides, checklists, and templates show you how to become part of the answers AI tools provide.
       </p>
     </div>
     <div class="order-1 lg:order-2">
-      <img src="https://res.cloudinary.com/dtjypy9b9/image/upload/v1747736405/PXL_20240531_104611610_1_dth7q0.webp"
-           alt="digital marketing specialist helping businesses"
-           class="w-half h-auto rounded-xl object-cover shadow-md" loading="lazy">
+      <img
+        src="{% static 'images/aimarketing-home.webp' %}"
+        alt="AI search readiness for modern websites"
+        class="max-w-full h-auto"
+        loading="eager"
+      />
     </div>
   </section>
 
-  <!-- Certificates Section -->
-    <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-  <img src="{% static 'images/full-stack-software-developer-certificate.png' %}" 
-       alt="Full-stack software developer certificate"
-       class="w-full h-72 object-cover rounded-xl shadow-md" />
 
-  <img src="{% static 'images/digital_marketing_certificate.jpg' %}" 
-       alt="Digital marketing specialist certificate"
-       class="w-full h-72 object-cover rounded-xl shadow-md" />
-</section>
-
-  <!-- Who I Am + How I Work -->
+  <!-- Platform Purpose + Member Access -->
   <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
     <div class="border border-[--color-brand-primary] rounded-lg bg-[--color-brand-light] p-6 md:p-8 shadow-sm">
-      <h2 class="text-xl font-semibold text-[--color-brand-primary] mb-4">Who I Am</h2>
+      <h2 class="text-xl font-semibold text-[--color-brand-primary] mb-4">What the Platform Offers</h2>
       <p class="text-[--color-font-main] leading-relaxed">
-        I started in online marketing and community building back in 2007, grew membership sites, 
-        and ran SEO services with Little Fish Digital Media.  
-        In 2014 I trained in Digital Marketing, later qualifying as a full-stack developer.  
-        Today, I combine these skills to support small and local businesses with digital marketing and ecommerce.
+        The platform combines practical guides, local AI search checklists, and done-for-you templates that simplify AI visibility.  
+        Every resource is designed to help you apply AI-ready structure to your website — from cluster pages to FAQ schema.
       </p>
-      <p class="mt-3">
-        <a href="https://aimarketingplatform.app/news/my-technical-va-timeline/"
-           target="_blank" rel="noopener noreferrer"
-           class="text-[--color-brand-secondary] hover:text-[--color-brand-accent] underline transition">
-          My Full Timeline →
-        </a>
+      <p class="text-[--color-font-main] leading-relaxed mt-4">
+        New resources are added regularly, including frameworks for small businesses, agencies, and content creators who want to build sustainable visibility in AI-powered search engines.
       </p>
     </div>
 
     <div class="border border-[--color-brand-primary] rounded-lg bg-[--color-brand-light] p-6 md:p-8 shadow-sm">
-      <h2 class="text-xl font-semibold text-[--color-brand-primary] mb-4">How I Work</h2>
+      <h2 class="text-xl font-semibold text-[--color-brand-primary] mb-4">Prompt Template for Members</h2>
       <p class="text-[--color-font-main] leading-relaxed">
-        I focus on keeping your digital marketing simple and sustainable.  
-        You can choose step-by-step DIY PDFs that guide you through setup, or done-for-you services where I build it for you.  
-        Either way, your systems will be professional, connected, and AI-search ready.
+        Paid members gain access to a <strong>Prompt Template Library</strong> — a private area that contains structured prompts and pre-written frameworks you can use inside ChatGPT or similar tools.  
+        These templates help you generate AI Search–ready content quickly, including FAQs, schema ideas, and cluster page outlines.
+      </p>
+      <p class="text-[--color-font-main] leading-relaxed mt-4">
+        Access to this library will be available to anyone who has purchased at least one product from the AI Marketing Platform Shop.  
+        Once your purchase is confirmed, you’ll automatically gain member access to the prompt templates section.
       </p>
       <p class="mt-3">
         <a href="{% url 'shop:product_list' %}"
            target="_blank" rel="noopener noreferrer"
            class="text-[--color-brand-secondary] hover:text-[--color-brand-accent] underline transition">
-          Visit the AI Marketing Platform Shop →
+          Explore Products →
         </a>
       </p>
     </div>
   </section>
 
+  <!-- Images Section -->
+  <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+    <img src="{% static 'images/4.webp' %}" 
+         alt="AI Search readiness"
+         class="w-full h-72 object-cover rounded-xl shadow-md" />
+
+    <img src="{% static 'images/2.webp' %}" 
+         alt="Local business ai search"
+         class="w-full h-72 object-cover rounded-xl shadow-md" />
+  </section>
+
   <!-- Tools Section -->
   <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
     <div class="border border-[--color-brand-secondary] rounded-lg bg-[--color-brand-light] p-6 md:p-8 shadow-sm">
-      <h2 class="text-xl font-semibold text-[--color-brand-secondary] mb-4">Why Systeme.io</h2>
+      <h2 class="text-xl font-semibold text-[--color-brand-secondary] mb-4">Spare Header</h2>
       <p class="text-[--color-font-main] leading-relaxed">
-        <a href="https://systeme.io/?sa=sa02490211147f583955a3eb1c4b3f55247280cb2b"
-           target="_blank" rel="noopener noreferrer"
-           class="text-[--color-brand-secondary] hover:text-[--color-brand-accent] underline transition">Systeme.io</a>
-        is my go-to all-in-one platform. It brings funnels, websites, email, automation, and memberships together in one place.  
-        That means fewer tools, lower costs, and less hassle.
+
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec blandit velit nec risus rhoncus, vel pretium nibh ultrices.  
+      Integer ultricies magna sed facilisis tristique. Proin in arcu sit amet ipsum suscipit porta.
       </p>
     </div>
 
     <div class="border border-[--color-brand-secondary] rounded-lg bg-[--color-brand-light] p-6 md:p-8 shadow-sm">
-      <h2 class="text-xl font-semibold text-[--color-brand-secondary] mb-4">Why ShopWired</h2>
-      <p class="text-[--color-font-main] leading-relaxed">
-        <a href="https://www.shopwired.co.uk/?affiliate=djangify"
-           target="_blank" rel="noopener noreferrer"
-           class="text-[--color-brand-secondary] hover:text-[--color-brand-accent] underline transition">ShopWired</a>
-        is the best UK alternative to Shopify. It handles VAT properly, has excellent support, and is built with UK businesses in mind.  
-        I recommend it to clients who want to sell products or services online.
+      <h2 class="text-xl font-semibold text-[--color-brand-secondary] mb-4">Dummy HEADER</h2>
+      
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec blandit velit nec risus rhoncus, vel pretium nibh ultrices.  
+      Integer ultricies magna sed facilisis tristique. Proin in arcu sit amet ipsum suscipit porta.
       </p>
     </div>
   </section>
 
-  <!-- Beyond AI Marketing Platform -->
+  <!-- Future Development -->
   <section class="border border-[--color-brand-primary] rounded-lg bg-[--color-brand-light] p-6 md:p-8 shadow-sm mb-16">
-    <h2 class="text-xl font-semibold text-[--color-brand-primary] mb-4">Beyond AI Marketing Platform</h2>
+    <h2 class="text-xl font-semibold text-[--color-brand-primary] mb-4">Future Development</h2>
     <p class="text-[--color-font-main] leading-relaxed">
-      Before moving into digital marketing, I worked as a life coach, mainly with women and teens on self-confidence.  
-      I now run
-      <a href="https://www.inspirationalguidance.com"
-         target="_blank" rel="noopener noreferrer"
-         class="text-[--color-brand-secondary] hover:text-[--color-brand-accent] underline transition">
-         Inspirational Guidance</a>, a personal development site that empowers women to live with more confidence, resilience, and self-authorship.
+      The AI Marketing Platform is continuously evolving. Future updates will include interactive checklists, automation examples, and a dashboard for tracking AI-readiness progress.  
+      <span class="italic">[Add future update details or placeholder text here]</span>
+    </p>
+    <p class="text-[--color-font-main] leading-relaxed mt-4">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec blandit velit nec risus rhoncus, vel pretium nibh ultrices.  
+      Integer ultricies magna sed facilisis tristique. Proin in arcu sit amet ipsum suscipit porta.
     </p>
   </section>
 

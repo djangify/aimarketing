@@ -1,35 +1,40 @@
 {% load static %}
 <!-- News Section -->
 <section class="p-6 flex flex-col gap-y-10 bg-primary text-text md:p-16 lg:gap-x-10 lg:flex-row-reverse *:basis-full">
-    <div class="flex flex-col gap-y-5 lg:self-center xl:gap-y-10 *:space-y-2">
+    <div class="flex flex-col  gap-y-5 lg:self-center xl:gap-y-10 *:space-y-2">
         <div>
             <h6 class="text-sm pl-6 uppercase relative before before:h-1 before:w-4 before:bg-accent before:top-2/4 before:-left-0 lg:text-lg">
-                news
+                insights
             </h6>
             <h2 class="text-2xl capitalize lg:text-3xl">
-                News. Articles. Blog Posts
+                Articles & Updates on AI Search Readiness
             </h2>
         </div>
 
         <p>
-            Content creation is a regular part of the work I enjoy. Whether it is writing for my blog or supporting you in creating content for yours! As well as Digital Marketing related information, I write about AI search readiness, all-in-one online marketing platforms, PDF Creation and more.
+            Explore practical insights and case studies on how businesses can stay visible as AI reshapes search.  
+            Our latest articles cover <strong>AI Search Readiness</strong>, <strong>Local Business Visibility</strong>,  
+            and frameworks for creating structured content that AI tools can recognise and feature.  
+            Each post is designed to help you adapt early, act strategically, and make your website AI-ready.
         </p>
 
         <a href="{% url 'news:list' %}"
-           class="uppercase p-2 border-2 border-accent font-semibold self-start text-xs rounded inline-block hover:text-accent transition-colors sm:text-lg sm:px-4" >View News</a>
+           class="uppercase p-2 border-2 border-accent font-semibold self-start text-xs rounded inline-block hover:text-accent transition-colors sm:text-lg sm:px-4" >
+           View All Articles
+        </a>
     </div>
 
     <div class="grid gap-y-5 md:grid-cols-2 ">
-        <div class="grid sm:grid-rows-subgrid sm:row-span-5 gap-y-4 p-6 px-4 rounded bg-secondary shadow-lg shadow-primary border-t-2 border-accent">
+        <div class="grid sm:grid-rows-subgrid sm:row-span-5 gap-y-4 p-6 px-4 rounded bg-secondary  shadow-lg shadow-primary border-t-2 border-accent">
             <figure>
-                <img class="object-[65%]" src="{% static 'images/aimarketingplatform.webp' %}" alt="Digital Marketing Specialist" />
+                <img class="object-[65%]" src="{% static 'images/ai-search-marketing-platform.webp' %}" alt="AI Search Readiness Frameworks" />
             </figure>
-            <h3 class="text-xl">What Is A Cluster Page?</h3>
+            <h3 class="text-xl">What Is AI Search Readiness?</h3>
             
             <p>
-                Learn how in the age of AI you can get your website AI Search ready using Cluster Pages and FAQs... 
+                Learn what it means to make your website AI-visible and why cluster pages, FAQs, and schema now define the next era of search optimisation.
             </p>
-            <a class="uppercase justify-self-start px-6 py-2 border-2 border-accent font-semibold self-start rounded flex items-center group lg:text-sm" href="https://aimarketingplatform.app/news/what-is-a-cluster-page/">
+            <a class="uppercase justify-self-start px-6 py-2 border-2 border-accent font-semibold self-start rounded flex items-center group lg:text-sm" href="https://aimarketingplatform.app/news/what-is-ai-search-readiness/">
                 <span>Read More</span>
                 <i class="fa-solid fa-angles-right text-text ml-2 group-hover:translate-x-2 transition-transform"></i>
             </a>
@@ -37,14 +42,14 @@
 
         <div class="grid sm:grid-rows-subgrid sm:row-span-5 gap-y-4 p-6 rounded bg-secondary shadow-lg shadow-primary px-4 border-t-2 border-accent">
             <figure>
-                <img class="object-[65%]" src="{% static 'images/aimarketing.webp' %}" alt="Digital Marketing Specialist" />
+                <img class="object-[65%]" src="{% static 'images/local-search-readiness-local-business.webp' %}" alt="Local Business AI Search" />
             </figure>
-            <h3 class="text-xl">Digital Marketing Specialist</h3>
+            <h3 class="text-xl">Local Business AI Search</h3>
             
             <p>
-                What is a Digital Marketing Specialist and how can they help your business?
+                See how local businesses can optimise their profiles, reviews, and service pages so AI tools like Google Gemini and Bing Copilot recommend them directly.
             </p>
-            <a class="uppercase justify-self-start px-6 py-2 border-2 border-accent font-semibold self-start rounded flex items-center group lg:text-sm" href="https://aimarketingplatform.app/news/what-is-a-digital-marketing-specialist">
+            <a class="uppercase justify-self-start px-6 py-2 border-2 border-accent font-semibold self-start rounded flex items-center group lg:text-sm" href="https://aimarketingplatform.app/news/local-business-ai-search/">
                 <span>Read More</span>
                 <i class="fa-solid fa-angles-right text-text ml-2 group-hover:translate-x-2 transition-transform"></i>
             </a>
