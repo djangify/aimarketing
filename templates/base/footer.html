@@ -22,7 +22,7 @@
         <ul class="space-y-1">
           <li><a href="{% url 'core:home' %}" class="hover:text-[--color-brand-secondary] transition">Home</a></li>
           <li><a href="{% url 'shop:product_list' %}" class="hover:text-[--color-brand-secondary] transition">Shop</a></li>
-          <li><a href="{% url 'news:list' %}" class="hover:text-[--color-brand-secondary] transition">Blog</a></li>
+          
           <li><a href="{% url 'core:about' %}" class="hover:text-[--color-brand-secondary] transition">About</a></li>
           {% if not request.user.is_authenticated %}
               <li><a href="{% url 'accounts:register' %}" class="text-[--color-brand-light]/70 hover:text-[--color-brand-secondary] transition">Register</a></li>
@@ -40,8 +40,9 @@
         <ul class="space-y-1">
           <li><a href="{% url 'core:local_ai_search' %}" class="hover:text-[--color-brand-secondary] transition">Local AI Search</a></li>
           <li><a href="{% url 'core:ai_search' %}" class="hover:text-[--color-brand-secondary] transition">AI Search Readiness</a></li>
-          <li><a href="{% url 'core:digital_marketing_specialist' %}" class="hover:text-[--color-brand-secondary] transition">Digital Marketing</a></li>
-          <li><a href="{% url 'core:pdf_creation' %}" class="hover:text-[--color-brand-secondary] transition">PDF Creation</a></li>
+          <li><a href="{% url 'news:list' %}" class="hover:text-[--color-brand-secondary] transition">Blog</a></li>
+          <li><a href="{% url 'core:support_policy' %}" class="hover:text-[--color-brand-secondary] transition">Support</a></li>
+          
         </ul>
       </div>
 
@@ -53,7 +54,6 @@
           <li><a href="{% url 'core:ai_writing_policy' %}" class="hover:text-[--color-brand-secondary] transition">AI Policy</a></li>
           <li><a href="{% url 'core:cookie_policy' %}" class="hover:text-[--color-brand-secondary] transition">Cookie Policy</a></li>
           <li><a href="{% url 'core:privacy_policy' %}" class="hover:text-[--color-brand-secondary] transition">Privacy Policy</a></li>
-          <li><a href="{% url 'core:support_policy' %}" class="hover:text-[--color-brand-secondary] transition">Support Policy</a></li>
           <li><a href="{% url 'core:terms_conditions' %}" class="hover:text-[--color-brand-secondary] transition">Terms & Conditions</a></li>
         </ul>
       </div>
@@ -61,7 +61,7 @@
 
     <!-- Bottom Copyright -->
     <div class="border-t border-[--color-brand-accent]/30 text-center pt-6 text-sm text-[--color-brand-light]/60">
-      &copy; 2025 AI Marketing Platform. Digital Marketing Specialist. All rights reserved.
+      &copy; 2025 AI Marketing Platform. <a href="/">AI Search Readiness</a>. Be the answer AI chooses.
     </div>
   </div>
 </footer>
