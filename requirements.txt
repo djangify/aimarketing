@@ -27,4 +27,3 @@ stripe
 typing_extensions
 urllib3
 whitenoise
-django-ckeditor #included in migration so dont remove

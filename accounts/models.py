@@ -11,17 +11,32 @@ from datetime import timedelta
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
     verified = models.BooleanField(default=False)
-    bio = models.TextField(max_length=500, blank=True)
+    bio = models.TextField(max_length=650, blank=True)
 
+    # --- Business information (from promptsite) ---
+    business_name = models.CharField(max_length=255, blank=True, null=True)
+    business_type = models.CharField(max_length=255, blank=True, null=True)
+    business_location = models.CharField(max_length=255, blank=True, null=True)
+    target_audience = models.CharField(max_length=255, blank=True, null=True)
+
+    # --- E-commerce favourites (from aimarketing) ---
     favourite_products = models.ManyToManyField(
         "shop.Product", blank=True, related_name="favorited_by"
+    )
+
+    # --- Promptsite fields ---
+    saved_prompts = models.ManyToManyField(
+        "prompts.Prompt", blank=True, related_name="saved_by"
+    )
+    saved_templates = models.ManyToManyField(
+        "prompt_templates.PromptTemplate", blank=True, related_name="saved_by"
     )
 
     def __str__(self):
         return f"{self.user.username}'s profile"
 
 
-# Create a UserProfile automatically when a User is created
+# --- Profile creation signals ---
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
@@ -30,15 +45,13 @@ def create_user_profile(sender, instance, created, **kwargs):
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
-    # Check if profile exists before trying to save it
-    # This fixes the "User has no profile" error for existing users
     try:
         instance.profile.save()
     except User.profile.RelatedObjectDoesNotExist:
-        # Create a profile for existing users who don't have one
         UserProfile.objects.create(user=instance)
 
 
+# --- Email Verification Token ---
 class EmailVerificationToken(models.Model):
     """Model for email verification tokens"""
 
@@ -56,6 +69,7 @@ class EmailVerificationToken(models.Model):
         return f"Verification for {self.user.username}"
 
 
+# --- Member Resources (from main site) ---
 class MemberResource(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()

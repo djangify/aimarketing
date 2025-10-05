@@ -27,6 +27,9 @@ urlpatterns = [
     path("contact/", include("contact.urls")),
     path("accounts/", include("accounts.urls")),
     path("shop/", include("shop.urls")),
+    path("prompts/", include("prompts.urls")),
+    path("prompt_generator/", include("prompt_generator.urls")),
+    path("prompt_templates/", include("prompt_templates.urls")),
     path(
         "sitemap.xml",
         sitemap,

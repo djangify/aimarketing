@@ -2,17 +2,19 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
-from .models import MemberResource, UserProfile
 from django.utils.timesince import timesince
+from .models import UserProfile, MemberResource
 
 
+# -------------------------------
+# Inline UserProfile inside User
+# -------------------------------
 class UserProfileInline(admin.StackedInline):
     model = UserProfile
     can_delete = False
     verbose_name_plural = "Profile"
 
 
-# Extend the existing UserAdmin to include profile information
 class CustomUserAdmin(UserAdmin):
     inlines = (UserProfileInline,)
     list_display = (
@@ -24,16 +26,36 @@ class CustomUserAdmin(UserAdmin):
     )
 
 
-# Re-register UserAdmin with our custom version
+# Replace the default User admin with our custom version
 admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)
 
 
+# -------------------------------
+# UserProfile Admin
+# -------------------------------
 @admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):
-    list_display = ("user", "get_email", "verified", "get_date_joined", "account_age")
-    list_filter = ("verified",)
-    search_fields = ("user__username", "user__email")
+    list_display = (
+        "user",
+        "get_email",
+        "verified",
+        "business_name",
+        "business_type",
+        "business_location",
+        "target_audience",
+        "get_date_joined",
+        "account_age",
+    )
+    list_filter = ("verified", "business_type", "business_location")
+    search_fields = (
+        "user__username",
+        "user__email",
+        "business_name",
+        "business_type",
+        "business_location",
+        "target_audience",
+    )
 
     def get_email(self, obj):
         return obj.user.email
@@ -51,6 +73,9 @@ class UserProfileAdmin(admin.ModelAdmin):
     account_age.short_description = "Account Age"
 
 
+# -------------------------------
+# Member Resources Admin
+# -------------------------------
 @admin.register(MemberResource)
 class MemberResourceAdmin(admin.ModelAdmin):
     list_display = ("title", "created_at", "is_active", "order")

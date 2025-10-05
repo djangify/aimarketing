@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     "accounts",
     "shop",
     "widget_tweaks",
+    "prompts",
+    "prompt_templates",
+    "prompt_generator",
 ]
 
 MIDDLEWARE = [
@@ -121,6 +124,8 @@ LOGOUT_REDIRECT_URL = "/"
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 7  # 1 week
 SESSION_SAVE_EVERY_REQUEST = True
 CORS_SUPPORT_CREDENTIALS = True
+SESSION_COOKIE_SAMESITE = "Lax"
+SESSION_COOKIE_HTTPONLY = True
 
 DEFAULT_FROM_EMAIL = "noreply@aimarketingplatform.app"
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
@@ -128,7 +133,7 @@ EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
 AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
-    "accounts.authentication.EmailAuthBackend",
+    "accounts.backends.EmailOrUsernameModelBackend",
 ]
 
 # Stripe settings

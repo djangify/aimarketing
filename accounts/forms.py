@@ -7,11 +7,17 @@ import re
 import random
 
 
+# -------------------------------
+# Login Form
+# -------------------------------
 class LoginForm(forms.Form):
     username = forms.CharField(label="Username or Email")
     password = forms.CharField(widget=forms.PasswordInput)
 
 
+# -------------------------------
+# Registration Form
+# -------------------------------
 class UserRegistrationForm(UserCreationForm):
     email = forms.EmailField(
         required=True, help_text="Required. Please provide a valid email address."
@@ -41,21 +47,25 @@ class UserRegistrationForm(UserCreationForm):
         )
 
     def clean_username(self):
-        username = self.cleaned_data.get("username").strip().lower()
+        username = self.cleaned_data.get("username", "").strip().lower()
 
-        # Enforce length
+        # Enforce minimum length
         if len(username) < 3:
             raise forms.ValidationError("Username must be at least 3 characters long.")
 
-        # Enforce allowed characters: letters, numbers, underscore
+        # Enforce allowed characters
         if not re.match(r"^[a-zA-Z0-9_]+$", username):
             raise forms.ValidationError(
                 "Username can only contain letters, numbers, and underscores."
             )
 
-        # Optional: override with slugified version
-        self.cleaned_data["username"] = username
         return username
+
+    def clean_email(self):
+        email = self.cleaned_data.get("email")
+        if User.objects.filter(email=email).exists():
+            raise forms.ValidationError("This email address is already in use.")
+        return email
 
     def clean(self):
         cleaned_data = super().clean()
@@ -66,16 +76,13 @@ class UserRegistrationForm(UserCreationForm):
             base = email.split("@")[0] if email else "user"
             suggested = f"{base}_{random.randint(1000, 9999)}"
             self.add_error(
-                "username", f"Username is too short. Try something like: {suggested}"
+                "username", f"Username too short. Try something like: {suggested}"
             )
 
-    def clean_email(self):
-        email = self.cleaned_data.get("email")
-        if User.objects.filter(email=email).exists():
-            raise forms.ValidationError("This email address is already in use.")
-        return email
 
-
+# -------------------------------
+# User Edit Form (Basic User Info)
+# -------------------------------
 class UserEditForm(forms.ModelForm):
     class Meta:
         model = User
@@ -93,15 +100,49 @@ class UserEditForm(forms.ModelForm):
         }
 
 
+# -------------------------------
+# User Profile Form (Merged)
+# -------------------------------
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ("bio",)
+        fields = (
+            "bio",
+            "business_name",
+            "business_type",
+            "business_location",
+            "target_audience",
+        )
         widgets = {
             "bio": forms.Textarea(
                 attrs={
                     "rows": 4,
                     "class": "w-full rounded-md border-gray-300 shadow-sm",
+                    "placeholder": "Tell us a little about yourself...",
+                }
+            ),
+            "business_name": forms.TextInput(
+                attrs={
+                    "class": "w-full rounded-md border-gray-300 shadow-sm",
+                    "placeholder": "Business name (optional)",
+                }
+            ),
+            "business_type": forms.TextInput(
+                attrs={
+                    "class": "w-full rounded-md border-gray-300 shadow-sm",
+                    "placeholder": "Business type (optional)",
+                }
+            ),
+            "business_location": forms.TextInput(
+                attrs={
+                    "class": "w-full rounded-md border-gray-300 shadow-sm",
+                    "placeholder": "Business location (optional)",
+                }
+            ),
+            "target_audience": forms.TextInput(
+                attrs={
+                    "class": "w-full rounded-md border-gray-300 shadow-sm",
+                    "placeholder": "Target audience (optional)",
                 }
             ),
         }

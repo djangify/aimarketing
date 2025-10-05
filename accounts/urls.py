@@ -1,26 +1,46 @@
 # accounts/urls.py
 from django.urls import path
 from django.contrib.auth import views as auth_views
-from . import views
 from django.urls import reverse_lazy
+from . import views
 
 app_name = "accounts"
 
 urlpatterns = [
+    # -------------------------
+    # Authentication & Profile
+    # -------------------------
     path("register/", views.register_view, name="register"),
     path("login/", views.login_view, name="login"),
     path("logout/", views.logout_view, name="logout"),
     path("profile/", views.profile_view, name="profile"),
     path("dashboard/", views.dashboard_view, name="dashboard"),
+    # -------------------------
+    # Email Verification
+    # -------------------------
+    path("verification-sent/", views.verification_sent, name="verification_sent"),
+    path("verify-email/<uuid:token>/", views.verify_email, name="verify_email"),
+    # -------------------------
+    # Favourites (Shop, Prompts, Templates)
+    # -------------------------
     path(
         "favourite-product/<slug:product_slug>/",
         views.add_favourite_product,
         name="add_to_wishlist",
     ),
-    # Email verification
-    path("verification-sent/", views.verification_sent, name="verification_sent"),
-    path("verify-email/<uuid:token>/", views.verify_email, name="verify_email"),
-    # Password change
+    path(
+        "favourite-prompt/<int:prompt_id>/",
+        views.add_favourite_prompt,
+        name="add_favourite_prompt",
+    ),
+    path(
+        "favourite-template/<slug:slug>/",
+        views.add_favourite_template,
+        name="add_favourite_template",
+    ),
+    # -------------------------
+    # Password Change / Reset
+    # -------------------------
     path(
         "password-change/",
         auth_views.PasswordChangeView.as_view(
@@ -35,7 +55,6 @@ urlpatterns = [
         ),
         name="password_change_done",
     ),
-    # Password reset
     path(
         "password-reset/",
         auth_views.PasswordResetView.as_view(
@@ -66,5 +85,13 @@ urlpatterns = [
             template_name="accounts/password_reset_complete.html"
         ),
         name="password_reset_complete",
+    ),
+    # -------------------------
+    # Public Resources
+    # -------------------------
+    path(
+        "resources-preview/",
+        views.public_resources_preview,
+        name="public_resources_preview",
     ),
 ]
